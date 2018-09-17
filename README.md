@@ -1,4 +1,6 @@
 # Grupo-5
 Ejemplo de prueba:
 
-  - Probando sincronizaci�n de PC a GitHub
+  - Probando sincronización de PC a GitHub
+
+  - Probando sincronización de GitHub a PC
