@@ -1,5 +1,4 @@
 # Grupo-5
-Ejemplo de prueba
-asdasd
+Ejemplo de prueba:
 
-Saa, anda re tunning
+  - Probando sincronización de PC a GitHub
