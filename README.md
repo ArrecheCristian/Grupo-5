@@ -1,9 +1,3 @@
-# Grupo-5
-Ejemplo de prueba:
+﻿# Grupo-5
 
-  - Probando sincronización de PC a GitHub
-
-  - Probando sincronización de GitHub a P
-  -Saaa, va cañon
-  -2 actualizaciones
-  
+	Los primeros commits serán muy generales y abarcativos, ya que empezamos a usar esta herramienta tarde y la entrega 1 ya estaba prácticamente terminada.
