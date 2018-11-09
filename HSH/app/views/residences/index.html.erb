@@ -10,11 +10,11 @@
 	</thead>
 
 	<tbody>
-		<% @residence.each do |r| %>
+		<% @residence.each do |resi| %>
 		<tr>
-			<td><%= r.title %></td>
-			<td><%= link_to 'Eliminar'%></td>
+			<td><%= resi.title %></td>
 			<td><%= link_to 'Editar'%></td>
+			<td><%= link_to 'Eliminar', resi, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '¿Está seguro que desea eliminar la residencia?' }  %></td>
 
 		</tr>
 		<% end%>
