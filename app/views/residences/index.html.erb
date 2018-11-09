@@ -1,0 +1,25 @@
+<h2>Residencias</h2>
+
+<table class="table">
+	
+	<thead>
+		<tr>
+			<th width ="50%"> Complejo: </th>
+			<th colspan="1"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @residence.each do |r| %>
+		<tr>
+			<td><%= r.title %></td>
+			<td><%= link_to 'Eliminar'%></td>
+			<td><%= link_to 'Editar'%></td>
+
+		</tr>
+		<% end%>
+	</tbody>
+
+</table>
+
+<%= link_to 'Nueva residencia', new_residence_path, class: 'btn btn-primary' %>
