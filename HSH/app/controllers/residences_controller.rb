@@ -11,9 +11,20 @@ class ResidencesController < ApplicationController
   end
 
   def edit
+    #Recibo el id de la pelicula que quiero editar
+    @residence = Residence.find(params[:id])
   end
 
   def update
+    #Recibo el parametro de la pelicula a actualizar
+    #Se llama al update despues de apretar en el edit
+    @residence = Residence.find(params[:id])
+
+    if @residence.update(residence_params)
+      redirect_to residences_path, notice: 'La residencia fue modificada con éxito'
+      else
+        render :edit
+      end
   end
 
   def destroy
@@ -29,8 +40,8 @@ class ResidencesController < ApplicationController
 
 
   def create
-    @residence = Residence.new(params.require(:residence).permit(:title,:description,:address,:precio,:person))
-    
+    @residence = Residence.new(residence_params)
+
     if @residence.save
         redirect_to residences_path, notice: 'La residencia fue creado con éxito'
       else
@@ -38,8 +49,10 @@ class ResidencesController < ApplicationController
       end
   end
 
-  #def residence_params
-   # params.require(:residence).permit(:title,:description,:address,:precio,:person)
-  #end
+private
+
+  def residence_params
+    params.require(:residence).permit(:title,:description,:address,:precio,:person)
+  end
 
 end
