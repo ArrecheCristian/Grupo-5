@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
 		if (@user.Password == '1234' )
-			redirect_to root_path 
+			redirect_to residences_path 
 			@user.save
 
 		elsif  (@user.Password != '1234' )

@@ -1,2 +1,0 @@
-class Vivienda < ApplicationRecord
-end
