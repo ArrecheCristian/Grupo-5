@@ -1,0 +1,2 @@
+class HomeUser < ApplicationRecord
+end
