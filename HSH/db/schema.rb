@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_185238) do
+ActiveRecord::Schema.define(version: 2018_11_11_012441) do
 
   create_table "auctions", force: :cascade do |t|
     t.integer "precioBase"
@@ -32,14 +32,17 @@ ActiveRecord::Schema.define(version: 2018_11_10_185238) do
   end
 
   create_table "residences", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.string "address"
-    t.integer "stars"
+    t.string "complejo"
+    t.string "ubicacion"
+    t.string "semana"
+    t.string "temporada"
+    t.integer "capacidad"
+    t.string "descripcion"
+    t.integer "precio"
+    t.integer "estrellas"
+    t.string "imagen"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "precio"
-    t.integer "person"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,5 +50,5 @@ ActiveRecord::Schema.define(version: 2018_11_10_185238) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
 end

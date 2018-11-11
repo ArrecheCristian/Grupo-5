@@ -1,13 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyString
-  address: MyString
-  stars: 1
+  complejo: MyString
+  ubicacion: MyString
+  semana: MyString
+  temporada: MyString
+  capacidad: 1
+  descripcion: MyString
+  precio: 1
+  estrellas: 1
+  imagen: MyString
 
 two:
-  title: MyString
-  description: MyString
-  address: MyString
-  stars: 1
+  complejo: MyString
+  ubicacion: MyString
+  semana: MyString
+  temporada: MyString
+  capacidad: 1
+  descripcion: MyString
+  precio: 1
+  estrellas: 1
+  imagen: MyString

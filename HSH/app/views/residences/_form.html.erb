@@ -1,10 +1,14 @@
 <%= simple_form_for @residence do |f| %>
 
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :address %>
+  <%= f.input :complejo %>
+  <%= f.input :descripcion %>
+  <%= f.input :ubicacion %>
   <%= f.input :precio %>
-  <%= f.input :person %>
-  <%= f.submit %>
+  <%= f.input :capacidad %>
+  <%= f.input :estrellas %>
+  <%= f.input :semana %>
+  <%= f.input :temporada %>
+  <%= f.input :imagen %>
+  <button type= f.submit class="btn btn-primary"> Crear Residencia </button>
 
 <% end %>

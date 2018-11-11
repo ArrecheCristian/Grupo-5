@@ -32,9 +32,9 @@ class ResidencesController < ApplicationController
   	residence = Residence.find(params[:id])
 
   	if residence.destroy
-  		redirect_to residences_path, notice: "La residencia '#{residence.title}' ha sido eliminada con éxito"
-  	else 
-  		redirect_to residences_path, notice: "ERROR al eliminar la residencia '#{residence.title}'" 
+  		redirect_to residences_path, notice: "La residencia '#{residence.complejo}' ha sido eliminada con éxito"
+  	else
+  		redirect_to residences_path, notice: "ERROR al eliminar la residencia '#{residence.complejo}'"
   	end
   end
 
@@ -52,7 +52,7 @@ class ResidencesController < ApplicationController
 private
 
   def residence_params
-    params.require(:residence).permit(:title,:description,:address,:precio,:person)
+    params.require(:residence).permit(:complejo,:descripcion,:ubicacion,:precio,:capacidad,:semana,:temporada,:imagen,:estrellas)
   end
 
 end

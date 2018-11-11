@@ -1,7 +1,7 @@
 <h2>Residencias</h2>
 
 <table class="table">
-	
+
 	<thead>
 		<tr>
 			<th width ="50%"> Complejo: </th>
@@ -12,7 +12,7 @@
 	<tbody>
 		<% @residence.each do |resi| %>
 		<tr>
-			<td><%= resi.title %></td>
+			<td><%= resi.complejo %></td>
 			<td><%= link_to 'Editar', edit_residence_path(resi), class: 'btn btn-info btn-sm'%></td>
 			<td><%= link_to 'Eliminar', resi, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '¿Está seguro que desea eliminar la residencia?' }  %></td>
 
