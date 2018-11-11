@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
 	
-	def new
-	  @user = User.new
+	def index
+		@user = User.all		
 	end
 
-	def index		
+	def new
+	  @user = User.new
 	end
 
 	def create
         @user = User.new(user_params)
 
 		if (@user.Password == '1234' )
-			redirect_to residences_path 
 			@user.save
+			redirect_to residences_path 
 
 		elsif  (@user.Password != '1234' )
 			redirect_to new_user_path					
@@ -26,3 +27,22 @@ class UsersController < ApplicationController
 
 
 end
+
+
+
+  def create
+
+  	@usuario = Usuario.create(params.require(:usuario).permit(:mail))
+
+  	if @usuario.save
+  		redirect_to @usuario
+  	else
+  		render :new
+  	end
+
+  end
+
+  def show
+  	@usuario = Usuario.find(params[:id])
+  end
+

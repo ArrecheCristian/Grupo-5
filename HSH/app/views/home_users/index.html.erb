@@ -1,0 +1,19 @@
+
+
+<table class="table">
+	
+	<tr>
+		<th>Complejo</th>
+		<th>Descripción</th>
+	
+	</tr>
+	
+	<% Residence.ordenFecha.each do |r| %>
+		<tr>
+			<td> <%= r.title %> </td>
+			<td> <%= r.description %> </td>
+	
+		</tr>
+	<% end %>
+</table>
+
