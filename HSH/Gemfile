@@ -60,3 +60,6 @@ gem 'simple_form'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'hirb'
+
+gem 'twitter-bootstrap-rails'
+

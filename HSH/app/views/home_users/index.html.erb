@@ -1,19 +1,28 @@
-
-
-<table class="table">
 	
-	<tr>
-		<th>Complejo</th>
-		<th>Descripción</th>
-	
-	</tr>
-	
-	<% Residence.ordenFecha.each do |r| %>
-		<tr>
-			<td> <%= r.title %> </td>
-			<td> <%= r.description %> </td>
-	
-		</tr>
+<nav class="navbar navbar-dark bg-dark">
+	<%= form_tag '/home_users', :method => :get do %>
+		<%= label_tag :search, 'Búsqueda', style:'color :white'%>
+		<%= text_field_tag :search, nil, 
+			placeholder: "Busca tu lugar" %>
+		<%= submit_tag 'Buscar' %>
 	<% end %>
-</table>
+</nav>
+
+
+	<span><%= @busq ? "Buscando: " + @busq : "" %></span>
+	
+	<table class="table">		
+		<tr>
+			<th>Complejo</th>
+			<th>Descripción</th>	
+		</tr>	 
+		<% @residences.each do |r| %>
+			<tr>
+				<td> <%= r.complejo %> </td>
+				<td> <%= r.descripcion %> </td>
+			</tr>
+		<% end %>
+
+	</table>
+
 

@@ -1,5 +1,12 @@
 class HomeUsersController < ApplicationController
-  def index
-  	@home_user = HomeUser.all
-  end
+
+
+	def index
+
+		@busq = params[:search]
+
+		@residences = Residence.all.where("complejo LIKE ?", "%#{params[:search]}%")
+	end
+
+
 end
