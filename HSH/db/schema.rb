@@ -19,18 +19,6 @@ ActiveRecord::Schema.define(version: 2018_11_11_012441) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "clientes", force: :cascade do |t|
-    t.string "complejo"
-    t.string "localidad"
-    t.string "semana"
-    t.string "temporada"
-    t.integer "capacidad"
-    t.string "descripcion"
-    t.integer "precio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "home_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
