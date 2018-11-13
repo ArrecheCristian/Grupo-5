@@ -1,12 +1,10 @@
 class AuctionsController < ApplicationController
+
 	def new
 		@auction = Auction.new
-		@auction.residencia_id = params[:id]
-	
-
-
-		
+		@auction.residencia_id = params[:id]		
 	end
+
 
 	def create
 
@@ -22,12 +20,31 @@ class AuctionsController < ApplicationController
 	end
 
 
+    def edit
+ 
+    	  @auction = Auction.find(params[:id])
+     	
+    end
+
+
+	def update
+		@auctionExistente = Auction.find(params[:id])
+		@auctionNuevo = Auction.new(auctions_params)
+		if (@auctionExistente.precioBase < @auctionNuevo.precioBase)
+			if @auctionExistente.update(residence_params)
+      			flash[:notice] = 'La puja fue realizada con éxito'
+             end
+         else
+         	flash[:alert] = 'Monto debajo de la ultima puja'
+ 
+
+	end
 
 
 private
 
   def auctions_params
-    params.require(:auction).permit(:precioBase,:residencia_id)
+    params.require(:auction).permit(:precioBase,:residencia_id,:email)
   end
 
 
