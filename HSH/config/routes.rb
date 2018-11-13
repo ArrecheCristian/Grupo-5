@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-	
-  
+
+
 	resources :residences
-	resources :clientes
-	resources :users
-	resources :home_users
-  root 'users#index'
+ 	resources :clientes
+ 	resources :auctions, :except => 'new'	
+ 	resources :users
+ 	resources :home_users
+ 	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
+
+  	root 'users#index'
 
 end
