@@ -1,8 +1,9 @@
 
 
-<div><%= @auction.residencia_id %></div> 
-
+ 
   <%= simple_form_for @auction do |f| %>
+
+  <%= f.input :residencia_id , :readonly => true   %>
 
   <%= f.input :precioBase %>
 

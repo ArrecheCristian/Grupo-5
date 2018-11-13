@@ -2,7 +2,7 @@ class AuctionsController < ApplicationController
 	def new
 		@auction = Auction.new
 		@auction.residencia_id = params[:id]
-		@auction.precioBase = 5
+	
 
 
 		
@@ -12,6 +12,13 @@ class AuctionsController < ApplicationController
 
 		@auction = Auction.new(auctions_params)
 		@auction.save
+		if (@auction.save )
+			flash[:notice] = " Ha agregado correctamente la residencia a subasta" 
+			redirect_to residence_path(@auction.residencia_id)
+		else 
+			flash[:alert] = "No se pudo guardar"
+		    redirect_to residence_path(@auction.residencia_id)
+		end
 	end
 
 
