@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_012441) do
+ActiveRecord::Schema.define(version: 2018_11_13_203721) do
 
   create_table "auctions", force: :cascade do |t|
     t.integer "precioBase"
     t.integer "residencia_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "home_users", force: :cascade do |t|
