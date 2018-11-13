@@ -1,28 +1,51 @@
 	
 <nav class="navbar navbar-dark bg-dark">
 	<%= form_tag '/home_users', :method => :get do %>
-		<%= label_tag :search, 'Búsqueda', style:'color :white'%>
-		<%= text_field_tag :search, nil, 
+		<%= label_tag :com, 'Complejo', style:'color :white'%>
+		<%= text_field_tag :com,params[:com], 
+			placeholder: "Busca tu lugar" %>
+		<%= label_tag :loc, 'Localidad', style:'color :white'%>
+		<%= text_field_tag :loc, params[:loc], 
+			placeholder: "Busca tu lugar" %>
+		<%= label_tag :pre, 'Precio', style:'color :white'%>
+		<%= number_field_tag :pre, params[:pre], 
 			placeholder: "Busca tu lugar" %>
 		<%= submit_tag 'Buscar' %>
 	<% end %>
 </nav>
 
 
-	<span><%= @busq ? "Buscando: " + @busq : "" %></span>
-	
-	<table class="table">		
-		<tr>
-			<th>Complejo</th>
-			<th>Descripción</th>	
-		</tr>	 
-		<% @residences.each do |r| %>
-			<tr>
-				<td> <%= r.complejo %> </td>
-				<td> <%= r.descripcion %> </td>
-			</tr>
-		<% end %>
 
-	</table>
+<span><h4> Filtrando por:</h4></span>
+<table>
+	<tr>
+		<td><%= params[:com] && params[:com] != "" ? "Complejo: " + params[:com] : "" %></td>
+	</tr>
+	
+	<tr>
+		<td><%= params[:loc] && params[:loc] != "" ? "Localidad: " + params[:loc] : "" %></td>
+	</tr>
+
+	<tr>
+		<td><%= @precio != 0.0 ? "Precio: " + "#{@precio}" : "" %></td>
+	</tr>
+</table>
+	
+
+
+
+<table class="table">		
+	<tr>
+		<th>Complejo</th>
+		<th>Localidad</th>	
+	</tr>	 
+	<% @residences.each do |r| %>
+		<tr>
+			<td> <%= r.complejo %> </td>
+			<td> <%= r.ubicacion %> </td>
+			<td> <%= r.precio %> </td>
+		</tr>
+	<% end %>
+</table>
 
 
