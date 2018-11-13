@@ -7,13 +7,22 @@
 		<th>Descripción</th>
 	
 	</tr>
-	
+	 
 	<% Residence.ordenFecha.each do |r| %>
 		<tr>
-			<td> <%= r.title %> </td>
-			<td> <%= r.description %> </td>
+			<td> <%= r.complejo %> </td>
+			<td> <%= r.descripcion %> </td>
 	
 		</tr>
 	<% end %>
+
+<select class="custom-select custom-select-lg mb-3">
+  <option selected>Filtrar</option>
+  <option value="1">uno</option>
+  <option value="2">dos</option>
+  <option value="3">tres</option>
+  
+</select>
+	
 </table>
 
