@@ -9,4 +9,11 @@ class HomeUsersController < ApplicationController
 		@residences = @precio != 0.0 ? @residences.where("(precio >= ?) AND (precio <= ?)", (0.8*@precio).to_i, (1.2*@precio).to_i ): @residences
 
 	end
+
+
+	def show
+    	@residence = Residence.find(params[:id])
+  	end
+
+
 end

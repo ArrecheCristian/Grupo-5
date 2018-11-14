@@ -1,0 +1,47 @@
+
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm">
+      <img src= <%=@residence.imagen %> , class="rounded" />
+    </div>
+    <div class="col-sm">
+      <table class="table">
+        <tr>
+          <td> <h2 class="display-4"><%= @residence.complejo %> </h2></td>
+        </tr>
+        <tr>
+          <td> <h6>Ubicación:<h6></td>
+          <td> <h6><%= @residence.ubicacion %><h6></td>
+        </tr>
+        <tr>
+          <td> <h6>Precio:(ARS)<h6></td>
+          <td> <h6><%= @residence.precio %><h6></td>
+        </tr>
+        <tr>
+          <td> <h6>Descripcion:<h6></td>
+          <td> <h6><%= @residence.descripcion %><h6></td>
+        </tr>
+        <tr>
+          <td> <h6>Capacidad<h6></td>
+          <td> <h6><%= @residence.capacidad %><h6> </td>
+        </tr>
+        <tr>
+          <td> <h6>Estrellas:<h6></td>
+          <td> <h6><%= @residence.estrellas %><h6></td>
+        </tr>
+        <tr>
+          <td> <h6>Semana:<h6></td>
+          <td> <h6><%= @residence.semana %><h6> </td>
+        </tr>
+        <tr>
+          <td> <h6>Temporada:<h6></td>
+          <td> <h6><%= @residence.temporada %><h6> </td>
+        </tr>
+        <tr>
+          <td><%= link_to 'Volver', home_users_path, class: 'btn btn-primary' %></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>

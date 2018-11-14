@@ -1,15 +1,12 @@
 class AuctionsController < ApplicationController
+
 	def new
 		@auction = Auction.new
-		@auction.residencia_id = params[:id]
-	
-
-
-		
+		@auction.residencia_id = params[:id]		
 	end
 
-	def create
 
+	def create
 		@auction = Auction.new(auctions_params)
 		@auction.save
 		if (@auction.save )
@@ -23,9 +20,7 @@ class AuctionsController < ApplicationController
 
 
 
-
 private
-
   def auctions_params
     params.require(:auction).permit(:precioBase,:residencia_id)
   end
