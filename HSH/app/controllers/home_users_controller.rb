@@ -2,6 +2,7 @@ class HomeUsersController < ApplicationController
 
 	def index
 
+			#Filtros de búsqueda
 			@residences = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
 
 			@residences = params[:loc] != "" ? @residences.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @residences
@@ -10,6 +11,8 @@ class HomeUsersController < ApplicationController
 			@residences = @precio != 0.0 ? @residences.where("(precio >= ?) AND (precio <= ?)", (0.8*@precio).to_i, (1.2*@precio).to_i ): @residences
 
 
+
+			#Se filtran las residencias que no están en subasta
 			aux = []
 
 			@residences.each do |r|
@@ -17,7 +20,6 @@ class HomeUsersController < ApplicationController
 					aux << r
 				end
 			end
-
 			@residences = @residences - aux
 
 	end

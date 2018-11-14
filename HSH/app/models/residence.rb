@@ -6,7 +6,6 @@ class Residence < ApplicationRecord
 	validates :temporada, presence: true
 	validates :capacidad, presence: true
 	validates :descripcion, presence: true
-	validates :precio, presence: true
 	validates :estrellas, presence: true
 	validates :imagen, presence: true
 

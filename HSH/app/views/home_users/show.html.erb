@@ -7,38 +7,38 @@
     <div class="col-sm">
       <table class="table">
         <tr>
-          <td> <h2 class="display-4"><%= @residence.complejo %> </h2></td>
+          <td> <h2><%= @residence.complejo %> <h2></td>
         </tr>
         <tr>
-          <td> <h6>Ubicación:<h6></td>
-          <td> <h6><%= @residence.ubicacion %><h6></td>
+          <td> <h4>Ubicación:<h4></td>
+          <td> <h5><%= @residence.ubicacion %><h5></td>
         </tr>
         <tr>
-          <td> <h6>Precio:(ARS)<h6></td>
-          <td> <h6><%= @residence.precio %><h6></td>
+          <td> <h4>Precio: $<h4></td>
+          <td> <h5><%= @residence.precio %><h5></td>
         </tr>
         <tr>
-          <td> <h6>Descripcion:<h6></td>
-          <td> <h6><%= @residence.descripcion %><h6></td>
+          <td> <h4>Descripcion:<h4></td>
+          <td> <h5><%= @residence.descripcion %><h5></td>
         </tr>
         <tr>
-          <td> <h6>Capacidad<h6></td>
-          <td> <h6><%= @residence.capacidad %><h6> </td>
+          <td> <h4>Capacidad<h4></td>
+          <td> <h5><%= @residence.capacidad %><h5> </td>
         </tr>
         <tr>
-          <td> <h6>Estrellas:<h6></td>
-          <td> <h6><%= @residence.estrellas %><h6></td>
+          <td> <h4>Estrellas:<h4></td>
+          <td> <h5><%= @residence.estrellas %><h5></td>
         </tr>
         <tr>
-          <td> <h6>Semana:<h6></td>
-          <td> <h6><%= @residence.semana %><h6> </td>
+          <td> <h4>Semana:<h4></td>
+          <td> <h5><%= @residence.semana %><h5> </td>
         </tr>
         <tr>
-          <td> <h6>Temporada:<h6></td>
-          <td> <h6><%= @residence.temporada %><h6> </td>
+          <td> <h4>Temporada:<h4></td>
+          <td> <h5><%= @residence.temporada %><h5> </td>
         </tr>
         <tr>
-          <td><%= link_to 'Volver', home_users_path, class: 'btn btn-primary' %></td>
+          <td><%= link_to 'Volver al listado', home_users_path, class: 'btn btn-dark btn-lg' %></td>
            <td><%= link_to 'Pujar', edit_auction_path, class: 'btn btn-primary btn-lg' %></td>
 
         </tr>

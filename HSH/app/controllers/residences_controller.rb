@@ -31,14 +31,16 @@ class ResidencesController < ApplicationController
   end
 
   def destroy
-  	#Recibo como parametro el id de la residencia a eliminar
-  	residence = Residence.find(params[:id])
+    #Recibo como parametro el id de la residencia a eliminar
+    residence = Residence.find(params[:id])
+    valor = params[:id].to_i
+    auction = Auction.where(residencia_id: valor).destroy_all
 
-  	if residence.destroy
-  		redirect_to residences_path, notice: "La residencia '#{residence.complejo}' ha sido eliminada con éxito"
-  	else
-  		redirect_to residences_path, notice: "ERROR al eliminar la residencia '#{residence.complejo}'"
-  	end
+    if residence.destroy
+      redirect_to residences_path, notice: "La residencia '#{residence.complejo}' ha sido eliminada con éxito"
+    else
+      redirect_to residences_path, notice: "ERROR al eliminar la residencia '#{residence.complejo}'"
+    end
   end
 
 

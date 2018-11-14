@@ -1,6 +1,5 @@
 
-<div>
-  
+<div class="ml-5" style="font-size: 9pt">
   <%= simple_form_for @residence do |f| %>
 
     <%= f.input :complejo %>
@@ -13,7 +12,8 @@
     <%= f.input :temporada %>
     <%= f.input :imagen %>
 
-    <button type= f.submit class="btn btn-primary"> Guardar </button>
+    <td><%= link_to 'Cancelar', residences_path, class: 'btn btn-dark btn-lg' %></td>
+    <button type= f.submit class="btn btn-primary btn-lg"> Guardar </button>
   <% end %>
 
 </div>

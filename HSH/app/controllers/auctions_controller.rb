@@ -7,7 +7,6 @@ class AuctionsController < ApplicationController
 
 
 	def index
-
 		@auction = Auction.all
 
 	end
@@ -18,14 +17,13 @@ class AuctionsController < ApplicationController
 	end
 
 
-
   	def destroy
   		auction = Auction.find(params[:id])
 
   		if auction.destroy
-  			redirect_to auctions_path
+  			redirect_to auctions_path, notice: "La subasta ha sido eliminada con éxito"
   		else
-  			redirect_to auctions_path
+  			redirect_to auctions_path, notice: "ERROR al eliminar la subasta. Intentelo nuevamente"
   		end
 
   	end
@@ -35,10 +33,10 @@ class AuctionsController < ApplicationController
 		@auction = Auction.new(auctions_params)
 		@auction.save
 		if (@auction.save )
-			flash[:notice] = " Ha agregado correctamente la residencia a subasta"
+			flash[:notice] = "La residencia ha entrado en subasta con éxito"
 			redirect_to residence_path(@auction.residencia_id)
 		else
-			flash[:alert] = "No se pudo guardar"
+			flash[:alert] = "No se ha registrado la subasta. Verifique si la subasta ya está iniciada o intentelo nuevamente."
 		    redirect_to residence_path(@auction.residencia_id)
 		end
 	end
@@ -46,9 +44,8 @@ class AuctionsController < ApplicationController
 
 
     def edit
- 
-    	  @auction = Auction.find(params[:id])
-     	
+ 		valor = params[:id].to_i
+     	@auction = Auction.find(Auction.where(residencia_id: valor).ids)
     end
 
 
@@ -57,10 +54,12 @@ class AuctionsController < ApplicationController
 		@auctionNuevo = Auction.new(auctions_params)
 		if (@auctionExistente.precioBase < @auctionNuevo.precioBase)
 			if @auctionExistente.update(auctions_params)
-      			flash[:notice] = 'La puja fue realizada con éxito'
+      			flash[:notice] = 'Su puja ha sido registrada con éxito. Nos contactaremos con usted si es la puja ganadora'
+         		redirect_to home_user_path(@auctionExistente.residencia_id)
             end
         else
-         	flash[:alert] = 'Monto debajo de la ultima puja'
+         	flash[:alert] = 'Su puja no ha sido registrada. El monto ingresado es inferior a la puja máxima. Intentelo nuevamente'
+         	redirect_to home_user_path(@auctionExistente.residencia_id)
  
 
 	    end

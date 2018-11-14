@@ -1,11 +1,13 @@
+<div class="ml-5" style="font-size: 9pt">
 
   <%= simple_form_for @auction do |f| %>
 
   	<%= f.input :residencia_id , :readonly => true   %>
   	<%= f.input :precioBase %>
 
-  	<button type= f.submi class="btn btn-primary"> Subastar </button>
-  	<button type= f.submi class="btn btn-primary"> Cancelar </button>
+  	<%= link_to 'Cancelar', residences_path, class: 'btn btn-dark btn-lg' %>
+  	<button type= f.submit class="btn btn-primary btn-lg"> Subastar </button>
 
 <% end %>
+</div>
 
