@@ -11,11 +11,11 @@ class UsersController < ApplicationController
 	def create
         @user = User.new(user_params)
 
-		if (@user.Password == '1234' )
+		if (@user.Password == '015154' )
 			@user.save
 			redirect_to residences_path 
 
-		elsif  (@user.Password != '1234' )
+		elsif  (@user.Password != '015154' )
 			redirect_to new_user_path					
 		end
 	end
