@@ -15,9 +15,8 @@ class ResidencesController < ApplicationController
     #Recibo el id de la pelicula que quiero editar
     @residence = Residence.find(params[:id])
   
-      
-    end
   end
+  
 
   def update
     #Recibo el parametro de la pelicula a actualizar

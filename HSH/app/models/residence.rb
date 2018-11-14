@@ -1,5 +1,7 @@
 class Residence < ApplicationRecord
 
+	belongs_to :auction, dependent: :destroy
+
 	validates :complejo, presence: true
 	validates :ubicacion, presence: true
 	validates :semana, presence: true
