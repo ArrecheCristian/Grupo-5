@@ -13,9 +13,10 @@
 		<% @auction.each do |auc| %>
 		<tr>
 			<td><%= Residence.find(auc.residencia_id).complejo %></td>
+			<td>$<%= auc.precioBase %></td>
 			<td><%= link_to 'Ver', auction_path(auc), class: 'btn btn-info btn-sm'%></td>
-      
-      <td><%= link_to 'Eliminar', auc, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '¿Está seguro que desea eliminar la subasta?' }  %></td>
+
+			<td><%= link_to 'Eliminar', auc, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '¿Está seguro que desea eliminar la subasta?' }  %></td>
 
 
 		</tr>

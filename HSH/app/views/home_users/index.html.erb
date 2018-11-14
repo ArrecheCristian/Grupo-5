@@ -32,20 +32,22 @@
 </table>
 	
 
+<div class="row mt-5 justify-content-center">
 
-
-<table class="table">		
-	<tr>
-		<th>Complejo</th>
-		<th>Localidad</th>	
-	</tr>	 
 	<% @residences.each do |r| %>
-		<tr>
-			<td> <%= r.complejo %> </td>
-			<td> <%= r.ubicacion %> </td>
-			<td> <%= r.precio %> </td>
-		</tr>
+
+		<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
+			<img class="card-img-top" src="https://pix10.agoda.net/hotelImages/489/489266/489266_17032920250052009110.jpg?s=1024x768" alt="Card image cap">
+		  	<div class="card-body">
+		    	<h3 class="card-title"> <%= r.complejo %> </h3>
+		    	<p class="card-text"> 
+		    		<h5> <%= r.ubicacion %> </h5><br>
+		    		Capacidad: <%= r.capacidad %> <br>
+		    		Precio: $<%= r.precio %> <br>
+		    	</p>
+		    	
+		    	<a><%= link_to 'Ver más', home_user_path(r), class: 'btn btn-info btn-sm'%></a>
+		  	</div>
+		</div>
 	<% end %>
-</table>
-
-
+</div>
