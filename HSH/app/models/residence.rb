@@ -1,6 +1,5 @@
 class Residence < ApplicationRecord
 
-
 	validates :complejo, presence: true
 	validates :ubicacion, presence: true
 	validates :semana, presence: true

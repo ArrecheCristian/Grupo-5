@@ -6,41 +6,44 @@
     <div class="col-sm">
       <table class="table">
         <tr>
-          <td> <h2 class="display-4"><%= Residence.find(@auction.residencia_id).complejo %> </h2></td>
+          <td> <h2><%= Residence.find(@auction.residencia_id).complejo %> <h2></td>
         </tr>
         <tr>
-          <td> <h6>Ubicación:<h6></td>
-          <td> <h6><%= Residence.find(@auction.residencia_id).ubicacion  %><h6></td>
+          <td> <h4>Ubicación:<h4></td>
+          <td> <h5><%= Residence.find(@auction.residencia_id).ubicacion  %><h5></td>
         </tr>
         <tr>
-          <td> <h6>Precio:(ARS)<h6></td>
-          <td> <h6><%= @auction.precioBase %><h6></td>
+          <td> <h4>Precio:(ARS)<h4></td>
+          <td> <h5><%= @auction.precioBase %><h5></td>
         </tr>
         <tr>
-          <td> <h6>Descripcion:<h6></td>
-          <td> <h6><%= Residence.find(@auction.residencia_id).descripcion  %><h6></td>
+          <td> <h4>Descripcion:<h4></td>
+          <td> <h5><%= Residence.find(@auction.residencia_id).descripcion  %><h5></td>
         </tr>
         <tr>
-          <td> <h6>Capacidad<h6></td>
-          <td> <h6><%= Residence.find(@auction.residencia_id).capacidad  %><h6> </td>
+          <td> <h4>Capacidad<h4></td>
+          <td> <h5><%= Residence.find(@auction.residencia_id).capacidad  %><h5> </td>
         </tr>
         <tr>
-          <td> <h6>Estrellas:<h6></td>
-          <td> <h6><%= Residence.find(@auction.residencia_id).estrellas  %><h6></td>
+          <td> <h4>Estrellas:<h4></td>
+          <td> <h5><%= Residence.find(@auction.residencia_id).estrellas  %><h5></td>
         </tr>
         <tr>
-          <td> <h6>Semana:<h6></td>
-          <td> <h6><%= Residence.find(@auction.residencia_id).semana  %><h6> </td>
+          <td> <h4>Semana:<h4></td>
+          <td> <h5><%= Residence.find(@auction.residencia_id).semana  %><h5> </td>
         </tr>
         <tr>
-          <td> <h6>Temporada:<h6></td>
-          <td> <h6><%= Residence.find(@auction.residencia_id).temporada %><h6> </td>
-            <td> <h6>Email del postor:<h6></td>
-          <td> <h6><%= @auction.email %><h6> </td>
+          <td> <h4>Temporada:<h4></td>
+          <td> <h5><%= Residence.find(@auction.residencia_id).temporada %><h5> </td>
+         </tr>
+         <tr>   
+            <td> <h4>Email - Ganador actual:<h4></td>
+            <td> <h5><%= @auction.email %><h5> </td>
         </tr>
+        
         <tr>
-          <td><%= link_to 'Volver', auctions_path, class: 'btn btn-primary' %></td>
-          <td><%= link_to 'Pujar', edit_auction_path, class: 'btn btn-primary' %></td>
+          <td><%= link_to 'Volver', auctions_path, class: 'btn btn-dark btn-lg' %></td>
+          <td><%= link_to 'Pujar', edit_auction_path, class: 'btn btn-primary btn-lg' %></td>
         </tr>
         </tr>
 
