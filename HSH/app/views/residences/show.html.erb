@@ -34,12 +34,12 @@
           <td> <h5><%= @residence.semana %><h5> </td>
         </tr>
         <tr>
-          <td> <h4>Temporada:<h4></td>
-          <td> <h5><%= @residence.temporada %><h5> </td>
-        </tr>
-        <tr>
           <td><%= link_to 'Volver', residences_path, class: 'btn btn-dark btn-lg' %></td>
           <td><%= link_to 'Iniciar Subasta', new_auction_path(@residence), class: 'btn btn-primary btn-lg' %></td>
+        </tr>
+        <tr>
+          <td><%= link_to 'Editar', edit_residence_path(@residence), class: 'btn btn-dark btn-mm'%></td>
+          <td><%= link_to 'Eliminar', @residence, method: :delete, class: 'btn btn-danger btn-mm', data: { confirm: '¿Está seguro que desea eliminar la residencia?' }  %></td>
         </tr>
 
       </table>

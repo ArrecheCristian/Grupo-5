@@ -1,0 +1,16 @@
+
+
+<div class="ml-5" style="font-size: 9pt">
+  <%= simple_form_for @puja do |f| %>
+
+
+    <%= f.input :auction_id , :readonly => true   %>
+    <%= f.input :monto %>
+    <%= f.email_field :email %>
+
+
+    <td><%= link_to 'Cancelar', home_users_path, class: 'btn btn-dark btn-lg' %></td>
+    <button type= f.submit class="btn btn-primary btn-lg"> Guardar </button>
+  <% end %>
+
+</div>

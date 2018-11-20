@@ -15,7 +15,7 @@
         </tr>
         <tr>
           <td> <h4>Precio: $<h4></td>
-          <td> <h5><%= @residence.precio %><h5></td>
+          <td> <h5><%= @residence.auction.precioBase %><h5></td>
         </tr>
         <tr>
           <td> <h4>Descripcion:<h4></td>
@@ -38,11 +38,29 @@
           <td> <h5><%= @residence.temporada %><h5> </td>
         </tr>
         <tr>
+
+
+
           <td><%= link_to 'Volver al listado', home_users_path, class: 'btn btn-dark btn-lg' %></td>
-           <td><%= link_to 'Pujar', edit_auction_path, class: 'btn btn-primary btn-lg' %></td>
+          <td><%= link_to 'Quiero subastar!', new_puja_path(:id => @residence.auction.id), class: 'btn btn-dark btn-lg' %></td>
 
         </tr>
       </table>
+    </div>
+
+    <div class="col-sm">
+      <table class="table">
+        <tr>
+          <th> Listado de Pujas </th>
+        </tr>
+          <% m = @residence.auction.pujas.all %>
+          <% m.each do |nombregenerico| %>
+        <tr>
+          <td> <%= nombregenerico.email %> </td>
+          <td> <%= nombregenerico.monto %> </td>
+        </tr>
+
+      <% end %>
     </div>
 
   </div>

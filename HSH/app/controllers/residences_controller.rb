@@ -14,9 +14,9 @@ class ResidencesController < ApplicationController
   def edit
     #Recibo el id de la pelicula que quiero editar
     @residence = Residence.find(params[:id])
-  
+
   end
-  
+
 
   def update
     #Recibo el parametro de la pelicula a actualizar
@@ -34,7 +34,7 @@ class ResidencesController < ApplicationController
     #Recibo como parametro el id de la residencia a eliminar
     residence = Residence.find(params[:id])
     valor = params[:id].to_i
-    auction = Auction.where(residencia_id: valor).destroy_all
+    auction = Auction.where(residence_id: valor).destroy_all
 
     if residence.destroy
       redirect_to residences_path, notice: "La residencia '#{residence.complejo}' ha sido eliminada con éxito"
@@ -57,7 +57,7 @@ class ResidencesController < ApplicationController
 private
 
   def residence_params
-    params.require(:residence).permit(:complejo,:descripcion,:ubicacion,:precio,:capacidad,:semana,:temporada,:imagen,:estrellas)
+    params.require(:residence).permit(:complejo,:descripcion,:ubicacion,:precio,:capacidad,:imagen,:estrellas)
   end
 
 end

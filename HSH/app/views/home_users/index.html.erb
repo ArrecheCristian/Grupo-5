@@ -1,14 +1,14 @@
-	
+
 <nav class="navbar navbar-dark bg-dark">
 	<%= form_tag '/home_users', :method => :get do %>
 		<%= label_tag :com, 'Complejo', style:'color :white'%>
-		<%= text_field_tag :com,params[:com], 
+		<%= text_field_tag :com,params[:com],
 			placeholder: "Busca tu lugar" %>
 		<%= label_tag :loc, 'Localidad', style:'color :white'%>
-		<%= text_field_tag :loc, params[:loc], 
+		<%= text_field_tag :loc, params[:loc],
 			placeholder: "Busca tu lugar" %>
 		<%= label_tag :pre, 'Precio', style:'color :white'%>
-		<%= number_field_tag :pre, params[:pre], 
+		<%= number_field_tag :pre, params[:pre],
 			placeholder: "Busca tu lugar" %>
 		<%= submit_tag 'Buscar' %>
 	<% end %>
@@ -21,7 +21,7 @@
 	<tr>
 		<td><%= params[:com] && params[:com] != "" ? "Complejo: " + params[:com] : "" %></td>
 	</tr>
-	
+
 	<tr>
 		<td><%= params[:loc] && params[:loc] != "" ? "Localidad: " + params[:loc] : "" %></td>
 	</tr>
@@ -30,24 +30,24 @@
 		<td><%= @precio != 0.0 ? "Precio: " + "#{@precio}" : "" %></td>
 	</tr>
 </table>
-	
+
 
 <div class="row mt-5 justify-content-center">
 
 	<% @residences.each do |r| %>
 
-		<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
-			<img class="card-img-top" src= <%=r.imagen%> alt="Card image cap">
-		  	<div class="card-body">
-		    	<h3 class="card-title"> <%= r.complejo %> </h3>
-		    	<p class="card-text"> 
-		    		<h5> <%= r.ubicacion %> </h5><br>
-		    		Capacidad: <%= r.capacidad %> <br>
-		    		Precio: $<%= r.precio %> <br>
-		    	</p>
-		    	
-		    	<a><%= link_to 'Ver más', home_user_path(r), class: 'btn btn-info btn-sm'%></a>
-		  	</div>
-		</div>
-	<% end %>
+	<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
+		<img class="card-img-top" src= <%=r.imagen%> alt="Card image cap">
+			<div class="card-body">
+				<h3 class="card-title"> <%= r.complejo %> </h3>
+				<p class="card-text">
+					<h5> <%= r.ubicacion %> </h5><br>
+					Capacidad: <%= r.capacidad %> <br>
+					Precio: $<%= r.auction.precioBase %> <br>
+				</p>
+
+				<a><%= link_to 'Ver más', home_user_path(r), class: 'btn btn-info btn-sm'%></a>
+			</div>
+	</div>
+<% end %>
 </div>

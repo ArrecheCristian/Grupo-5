@@ -1,16 +1,16 @@
 <div class="jumbotron">
   <div class="row">
     <div class="col-sm">
-      <img src= <%=Residence.find(@auction.residencia_id).imagen %> , class="rounded" />
+      <img src= <%=@auction.residence.imagen %> , class="rounded" />
     </div>
     <div class="col-sm">
       <table class="table">
         <tr>
-          <td> <h2><%= Residence.find(@auction.residencia_id).complejo %> <h2></td>
+          <td> <h2><%= @auction.residence.complejo %> <h2></td>
         </tr>
         <tr>
           <td> <h4>Ubicación:<h4></td>
-          <td> <h5><%= Residence.find(@auction.residencia_id).ubicacion  %><h5></td>
+          <td> <h5><%= @auction.residence.ubicacion  %><h5></td>
         </tr>
         <tr>
           <td> <h4>Precio:(ARS)<h4></td>
@@ -18,33 +18,35 @@
         </tr>
         <tr>
           <td> <h4>Descripcion:<h4></td>
-          <td> <h5><%= Residence.find(@auction.residencia_id).descripcion  %><h5></td>
+          <td> <h5><%= @auction.residence.descripcion  %><h5></td>
         </tr>
         <tr>
           <td> <h4>Capacidad<h4></td>
-          <td> <h5><%= Residence.find(@auction.residencia_id).capacidad  %><h5> </td>
+          <td> <h5><%= @auction.residence.capacidad  %><h5> </td>
         </tr>
         <tr>
           <td> <h4>Estrellas:<h4></td>
-          <td> <h5><%= Residence.find(@auction.residencia_id).estrellas  %><h5></td>
+          <td> <h5><%= @auction.residence.estrellas  %><h5></td>
         </tr>
         <tr>
           <td> <h4>Semana:<h4></td>
-          <td> <h5><%= Residence.find(@auction.residencia_id).semana  %><h5> </td>
+          <td> <h5><%= @auction.residence.semana  %><h5> </td>
         </tr>
         <tr>
           <td> <h4>Temporada:<h4></td>
-          <td> <h5><%= Residence.find(@auction.residencia_id).temporada %><h5> </td>
+          <td> <h5><%= @auction.residence.temporada %><h5> </td>
          </tr>
-         <tr>   
+         <tr>
             <td> <h4>Email - Ganador actual:<h4></td>
             <td> <h5><%= @auction.email %><h5> </td>
         </tr>
-        
+
         <tr>
           <td><%= link_to 'Volver', auctions_path, class: 'btn btn-dark btn-lg' %></td>
+          <td><%= link_to 'Eliminar Subasta', @auction, method: :delete, class: 'btn btn-danger btn-me', data: { confirm: '¿Está seguro que desea eliminar la subasta?' }  %></td>
+
         </tr>
-        </tr>
+
 
       </table>
     </div>
