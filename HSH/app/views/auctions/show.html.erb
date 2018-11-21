@@ -51,5 +51,21 @@
       </table>
     </div>
 
+
+    <div class="col-sm">
+      <table class="table">
+        <tr>
+          <th> Listado de Pujas </th>
+        </tr>
+          <% m = @auction.pujas.all %>
+          <% m.each do |nombregenerico| %>
+        <tr>
+          <td> <%= nombregenerico.email %> </td>
+          <td> <%= nombregenerico.monto %> </td>
+        </tr>
+
+      <% end %>
+    </div>
+
   </div>
 </div>

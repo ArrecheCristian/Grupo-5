@@ -3,6 +3,8 @@ class PujasController < ApplicationController
   def new
     @puja = Puja.new
     @puja.auction_id = params[:id]
+    @puja.precioBase_actual = @puja.auction.precioBase
+
   end
 
   def index
@@ -15,20 +17,24 @@ class PujasController < ApplicationController
 
   def create
     @puja = Puja.new(puja_params)
-    if (@puja.monto > @puja.auction.precioBase)
-        @puja.save
-        @puja.auction.update(:precioBase => @puja.monto)
-        @puja.auction.update(:email => @puja.email)
-        redirect_to home_users_path, notice: 'La puja se hizo exitosamente'
-      else
-        flash[:alert] = "No se ha registrado la puja. El monto es mas bajo que el actual."
-          render :new
+    @puja.save
+    
+    if @puja.save
+      if(@puja.monto > @puja.auction.precioBase)
+          @puja.auction.update(:precioBase => @puja.monto)
+          @puja.auction.update(:email => @puja.email)
       end
+        redirect_to home_users_path, notice: 'La residencia fue creado con éxito'
+      else
+        render :new
+      end
+
   end
 
 private
+
   def puja_params
-    params.require(:puja).permit(:monto,:email,:auction_id)
+    params.require(:puja).permit(:monto,:email,:auction_id,:precioBase_actual)
   end
 
 end
