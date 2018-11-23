@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_21_225637) do
+=======
+ActiveRecord::Schema.define(version: 2018_11_20_211902) do
+>>>>>>> 9d89d53cdec4f4f3a46f64c75299fde2c661c63b
 
   create_table "auctions", force: :cascade do |t|
     t.integer "precioBase"

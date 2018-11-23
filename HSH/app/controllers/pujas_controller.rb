@@ -24,7 +24,7 @@ class PujasController < ApplicationController
           @puja.auction.update(:precioBase => @puja.monto)
           @puja.auction.update(:email => @puja.email)
       end
-        redirect_to home_users_path, notice: 'La subasta se ha efectuado con exito'
+       redirect_to home_users_path, notice: 'La subasta se ha efectuado con exito'
       else
         render :new
       end
