@@ -16,7 +16,7 @@ class HomeUsersController < ApplicationController
 			aux = []
 
 			@residences.each do |r|
-				if (Auction.where(residence_id: r.id).count == 0)
+				if (Auction.where(residence_id: r.id, estado: "ACTIVA").count == 0)
 					aux << r
 				end
 			end

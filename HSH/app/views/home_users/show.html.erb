@@ -10,6 +10,10 @@
           <td> <h2><%= @residence.complejo %> <h2></td>
         </tr>
         <tr>
+          <td> <h4>Estado:<h4></td>
+          <td> <h5 style="color: green"><%= @residence.auction.estado %><h5></td>
+        </tr>
+        <tr>
           <td> <h4>Ubicación:<h4></td>
           <td> <h5><%= @residence.ubicacion %><h5></td>
         </tr>
@@ -38,29 +42,16 @@
           <td> <h5><%= @residence.temporada %><h5> </td>
         </tr>
         <tr>
-
-
+            <td> <h4>Ganador actual:<h4></td>
+            <td> <h5><%= @residence.auction.email %><h5> </td>
+        </tr>
+        <tr>
 
           <td><%= link_to 'Volver al listado', home_users_path, class: 'btn btn-dark btn-lg' %></td>
           <td><%= link_to 'Quiero subastar!', new_puja_path(:id => @residence.auction.id), class: 'btn btn-dark btn-lg' %></td>
 
         </tr>
       </table>
-    </div>
-
-    <div class="col-sm">
-      <table class="table">
-        <tr>
-          <th> Listado de Pujas </th>
-        </tr>
-          <% m = @residence.auction.pujas.all %>
-          <% m.each do |nombregenerico| %>
-        <tr>
-          <td> <%= nombregenerico.email %> </td>
-          <td> <%= nombregenerico.monto %> </td>
-        </tr>
-
-      <% end %>
     </div>
 
   </div>

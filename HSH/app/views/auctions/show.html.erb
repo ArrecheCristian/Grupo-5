@@ -8,13 +8,18 @@
         <tr>
           <td> <h2><%= @auction.residence.complejo %> <h2></td>
         </tr>
+         <tr>
+          <td> <h4>Estado:<h4></td>
+          <td> <h5 style="color: green"><%= @auction.estado %><h5></td>
+        </tr>
+        <tr>
         <tr>
           <td> <h4>Ubicación:<h4></td>
           <td> <h5><%= @auction.residence.ubicacion  %><h5></td>
         </tr>
         <tr>
           <td> <h4>Precio:(ARS)<h4></td>
-          <td> <h5><%= @auction.precioBase %><h5></td>
+          <td><h5>$<%= @auction.precioBase %><h5></td>
         </tr>
         <tr>
           <td> <h4>Descripcion:<h4></td>
@@ -37,18 +42,35 @@
           <td> <h5><%= @auction.residence.temporada %><h5> </td>
          </tr>
          <tr>
-            <td> <h4>Email - Ganador actual:<h4></td>
+            <td> <h4>Ganador actual:<h4></td>
             <td> <h5><%= @auction.email %><h5> </td>
         </tr>
 
         <tr>
           <td><%= link_to 'Volver', auctions_path, class: 'btn btn-dark btn-lg' %></td>
-          <td><%= link_to 'Eliminar Subasta', @auction, method: :delete, class: 'btn btn-danger btn-me', data: { confirm: '¿Está seguro que desea eliminar la subasta?' }  %></td>
-
+          <td><%= link_to 'Eliminar Subasta', @auction, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la subasta?' }  %></td>
+        </tr>
+        <tr>
+          <td><%= link_to 'Terminar Subasta', edit_auction_path(@auction), class: 'btn btn-dark btn-lg', data: { confirm: '¿Está seguro que desea terminar la subasta?' }  %></td>
         </tr>
 
-
       </table>
+    </div>
+
+
+    <div class="col-sm">
+      <table class="table">
+        <tr>
+          <th> Listado de Pujas </th>
+        </tr>
+          <% m = @auction.pujas.all %>
+          <% m.each do |nombregenerico| %>
+        <tr>
+          <td> <%= nombregenerico.email %> </td>
+          <td> <%= nombregenerico.monto %> </td>
+        </tr>
+
+      <% end %>
     </div>
 
   </div>

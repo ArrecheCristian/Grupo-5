@@ -3,6 +3,7 @@
   <%= simple_form_for @auction do |f| %>
 
   	<%= f.input :residence_id , :readonly => true   %>
+  	<%= f.input :estado , :readonly => true   %>
   	<%= f.input :precioBase %>
 
   	<%= link_to 'Cancelar', residences_path, class: 'btn btn-dark btn-lg' %>
