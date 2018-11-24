@@ -1,3 +1,20 @@
+<nav class="navbar navbar-dark bg-dark">
+	<%= form_tag '/auctions', :method => :get do %>
+		<%= label_tag :com, 'Complejo', style:'color :white'%>
+		<%= text_field_tag :com,params[:com],
+			placeholder: "¿Qué buscas?" %>
+		<%= label_tag :loc, 'Localidad', style:'color :white'%>
+		<%= text_field_tag :loc, params[:loc],
+			placeholder: "¿Qué buscas?" %>
+		<%= label_tag :des, 'Descripción', style:'color :white'%>
+		<%= text_field_tag :des, params[:des],
+			placeholder: "¿Qué buscas?" %>
+		<%= submit_tag 'Buscar' %>
+	<% end %>
+</nav>
+
+
+
 <h2 class="text-uppercase" > Subastas vigentes: </h2>
 
 <table class="table">
@@ -7,7 +24,7 @@
 			<td style="font-size: 15pt">Precio: </td>
 		</tr>
 
-		<% @auction.each do |auc| %>
+		<% @auctions.each do |auc| %>
 		<tr>
 			<td style="font-size: 8pt"><%= Residence.find(auc.residence_id).complejo %></td>
 			<td style="font-size: 8pt">$<%= auc.precioBase %></td>

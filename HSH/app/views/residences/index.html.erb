@@ -1,3 +1,22 @@
+<nav class="navbar navbar-dark bg-dark">
+	<%= form_tag '/residences', :method => :get do %>
+		<%= label_tag :com, 'Complejo', style:'color :white'%>
+		<%= text_field_tag :com,params[:com],
+			placeholder: "¿Qué buscas?" %>
+		<%= label_tag :loc, 'Localidad', style:'color :white'%>
+		<%= text_field_tag :loc, params[:loc],
+			placeholder: "¿Qué buscas?" %>
+		<%= label_tag :des, 'Descripción', style:'color :white'%>
+		<%= text_field_tag :des, params[:des],
+			placeholder: "¿Qué buscas?" %>
+		<%= submit_tag 'Buscar' %>
+	<% end %>
+</nav>
+
+
+
+
+
 <span> <h2 class="text-uppercase" > Residencias guardadas:</h2> </span>
 
 <div>
@@ -7,7 +26,7 @@
 				<td style="font-size: 15pt"> Ubicación: </td>
 			</tr>
 
-			<% @residence.each do |resi| %>
+			<% @residences.each do |resi| %>
 				<tr>
 					<td style="font-size: 8pt"><%= resi.complejo %></td>
 					<td style="font-size: 8pt"><%= resi.ubicacion %></td>

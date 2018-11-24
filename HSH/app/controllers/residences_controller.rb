@@ -1,15 +1,25 @@
 class ResidencesController < ApplicationController
+  
   def index
     @residence = Residence.all
+    
+    #Filtros de búsqueda
+    @residences = params[:com] ? @residence.where("complejo LIKE ?", "%#{params[:com]}%") : @residence
+
+    @residences = params[:loc] != "" ? @residences.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @residences
+
+    @residences = params[:des] != "" ? @residences.where("descripcion LIKE ?", "%#{params[:des]}%") : @residences
   end
 
   def show
     @residence = Residence.find(params[:id])
   end
 
+
   def new
     @residence = Residence.new
   end
+
 
   def edit
     #Recibo el id de la pelicula que quiero editar
