@@ -33,13 +33,26 @@
           <td> <h4>Semana:<h4></td>
           <td> <h5><%= @residence.semana %><h5> </td>
         </tr>
+
+        <%-# Agregamos el campo de estado de la subasta para esa residencia -%>
+        <%-# Si nunca se inicio, no tiene estado, por eso el if. Sino se rompe -%>
+         <tr>
+          <td> <h4>Subasta:<h4></td>
+
+          <% if (@auction.where(residence_id: @residence.id).count == 1) %>           
+              <td> <h5><%= @residence.auction.estado %><h5> </td>
+          <% else %>
+               <td> <h5> Sin iniciar <h5> </td>
+          <% end %>
+        </tr>
+       
         <tr>
-          <td><%= link_to 'Volver', residences_path, class: 'btn btn-dark btn-lg' %></td>
-          <td><%= link_to 'Iniciar Subasta', new_auction_path(@residence), class: 'btn btn-primary btn-lg' %></td>
+          <td><%= link_to 'Editar', edit_residence_path(@residence), class: 'btn btn-dark btn-lg'%></td>
+          <td><%= link_to 'Eliminar', @residence, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la residencia?' }  %></td>
         </tr>
         <tr>
-          <td><%= link_to 'Editar', edit_residence_path(@residence), class: 'btn btn-dark btn-mm'%></td>
-          <td><%= link_to 'Eliminar', @residence, method: :delete, class: 'btn btn-danger btn-mm', data: { confirm: '¿Está seguro que desea eliminar la residencia?' }  %></td>
+          <td><%= link_to 'Volver', residences_path, class: 'btn btn-dark btn-me' %></td>
+          <td><%= link_to 'Iniciar Subasta', new_auction_path(@residence), class: 'btn btn-primary btn-lg' %></td>
         </tr>
 
       </table>

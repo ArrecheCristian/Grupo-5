@@ -12,6 +12,7 @@ class ResidencesController < ApplicationController
   end
 
   def show
+    @auction = Auction.all
     @residence = Residence.find(params[:id])
   end
 
@@ -35,9 +36,9 @@ class ResidencesController < ApplicationController
 
     if @residence.update(residence_params)
       redirect_to residences_path, notice: 'La residencia fue modificada con éxito'
-      else
-        render :edit
-      end
+    else
+       render :edit
+     end
   end
 
   def destroy
@@ -49,7 +50,7 @@ class ResidencesController < ApplicationController
        @residence.destroy
        redirect_to residences_path, notice: "La residencia '#{@residence.complejo}' ha sido eliminada con éxito"
       else
-        redirect_to residences_path, alert: "ERROR al eliminar la residencia '#{@residence.complejo}'.La residencia esta en subasta"
+        redirect_to residences_path, alert: "ERROR al eliminar la residencia '#{@residence.complejo}'. La residencia está en subasta"
       end
 
   end
@@ -60,9 +61,9 @@ class ResidencesController < ApplicationController
 
     if @residence.save
         redirect_to residences_path, notice: 'La residencia fue creado con éxito'
-      else
-        render :new
-      end
+    else
+       render :new
+    end
   end
 
 private
