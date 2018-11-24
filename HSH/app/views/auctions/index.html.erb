@@ -24,14 +24,14 @@
 			<td style="font-size: 15pt">Precio: </td>
 		</tr>
 
-		<% @auctions.each do |auc| %>
+		<% @resiAuction.each do |resAuc| %>
 		<tr>
-			<td style="font-size: 8pt"><%= Residence.find(auc.residence_id).complejo %></td>
-			<td style="font-size: 8pt">$<%= auc.precioBase %></td>
+			<td style="font-size: 8pt"><%= resAuc.complejo %></td>
+			<td style="font-size: 8pt">$<%= resAuc.auction.precioBase %></td>
 			
 			<td>
-				<%= link_to 'Ver Detalles', auction_path(auc), class: 'btn btn-dark btn-me'%>
-				<%= link_to 'Eliminar Subasta', auc, method: :delete, class: 'btn btn-danger btn-me', data: { confirm: '¿Está seguro que desea eliminar la subasta?' }  %>	
+				<%= link_to 'Ver Detalles', auction_path(resAuc.auction), class: 'btn btn-dark btn-me'%>
+				<%= link_to 'Eliminar Subasta', resAuc.auction, method: :delete, class: 'btn btn-danger btn-me', data: { confirm: '¿Está seguro que desea eliminar la subasta?' }  %>	
 			</td>
 
 

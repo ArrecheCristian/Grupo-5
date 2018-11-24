@@ -9,21 +9,24 @@ class AuctionsController < ApplicationController
 
 	def index
 
-		auction = Auction.all
+		@auction= Auction.all
+			#Filtros de búsqueda
+		@resiAuction = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
 
-		#resiAuction = []
-		#residence = Residence.all
-		#auction.each do |auc|
-		#	resiAuction << Residence.find(auc.residence_id)
-		#end
+		@resiAuction = params[:loc] != "" ? @resiAuction.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @resiAuction
+
+		@resiAuction = params[:des] != "" ? @resiAuction.where("descripcion LIKE ?", "%#{params[:des]}%") : @resiAuction
+
+		#Se filtran las residencias que no están en subasta
+		aux = []
+
+		@resiAuction.each do |r|
+			if (Auction.where(residence_id: r.id).count == 0)
+				aux << r
+			end
+		end
 		
-
-		@auctions = params[:com] ? Residence.where(Residence.auction).where("complejo LIKE ?", "%#{params[:com]}%") : auction
-
-      	#@auctions = params[:loc] != "" ? @auctions.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @auctions
-
-      	#@auctions = params[:des] != "" ? @auctions.where("descripcion LIKE ?", "%#{params[:des]}%") : @auctions
-
+		@resiAuction = @resiAuction - aux
 	end
 
 
