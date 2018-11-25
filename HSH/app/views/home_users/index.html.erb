@@ -1,6 +1,4 @@
 
-<% if user_signed_in? %>	
-
 <nav class="navbar navbar-dark bg-dark">
 	<%= form_tag '/home_users', :method => :get do %>
 		<%= label_tag :com, 'Complejo', style:'color :white'%>
@@ -51,7 +49,5 @@
 				<a><%= link_to 'Ver más', home_user_path(r), class: 'btn btn-info btn-sm'%></a>
 			</div>
 	</div>
-  <center><h2>Upps, no ha iniciado sesión, por favor, inicie una y vuelva a intentar. </h2></center>
 <% end %>
 </div>
-

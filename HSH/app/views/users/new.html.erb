@@ -1,51 +1,11 @@
 <body>
 
-	
+	<%= form_for @user do |f| %>
+	<div class="form_group ml-5" style="font-size: 10pt">
+		<%= f.label :Contraseña %>
+		<%= f.password_field :Password  %>
+		<%=f.submit 'Confirmar código', class: 'btn btn-primary btn-lg' %>
+	</div>
+   <%end%>
 
-
-	<div class="row">
-	  <div class="col-md-5 col-md-offset-1">
-    	<h1> Registarme</h1>
-    	<%= form_for @user do |f| %>
-
-	      <%= f.label :email %>
-    	  <%= f.email_field :email, class: 'form-control' %>
-
-    	  <%= f.label :Password %>
-      	  <%= f.password_field :Password, class: 'form-control' %>
-
-      	  <center><%= f.submit "Resgistrarme", class: "btn btn-primary" %></center>
-
-        <% end %>
-
-  	  </div>
-
-  		
-  			 <div class="col-md-5 col-md-offset-1">
-
-		  	<table width="500" cellspacing="1" cellpadding="3" border="0" bgcolor="#165480"> 
-				<tr> 
-		   			<td bgcolor="#007bff"> 
-						<font size=2 face="verdana, arial, helvetica"> 
-							<b>Informacion importante para futuros usuario</b> 
-						</font> 
-		  			</td> 
-				</tr> 
-				<tr> 
-		    		<td bgcolor="#ffffcc">2
-		   				<font face="verdana, arial, helvetica" size=1> 
-		   					dcscnsd,
-
-		   				</font> 
-		   			</td> 
-				</tr> 
-			</table>
-		</div>
-	
-
-  	</div>
-
-      		
-	
-</body>
 

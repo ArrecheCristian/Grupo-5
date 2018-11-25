@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
 
-  
-  devise_for :users
+  get 'user_lists/index'
+  get 'user_lists/show'
 	resources :residences
  	resources :clientes
  	resources :auctions, :except => 'new'
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
  	resources :home_users
 	resources :pujas
  	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
-  	root 'home_users#index'
-    
-  
+
+  	root 'users#index'
+
 end

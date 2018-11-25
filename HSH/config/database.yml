@@ -22,8 +22,4 @@ test:
 
 production:
   <<: *default
-  adapter: postgresqlS
-  username: angel
-  password: 40717810
-
   database: db/production.sqlite3
