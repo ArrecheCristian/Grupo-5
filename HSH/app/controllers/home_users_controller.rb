@@ -2,7 +2,7 @@ class HomeUsersController < ApplicationController
 		 
 	def index
 
-			
+			@auction= Auction.all
 			#Filtros de búsqueda
 			@residences = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
 
@@ -17,25 +17,24 @@ class HomeUsersController < ApplicationController
 			aux = []
 
 			@residences.each do |r|
-				if (Auction.where(residencia_id: r.id).count == 0)
+				if (Auction.where(residence_id: r.id, estado: "ACTIVA").count == 0)
 					aux << r
 				end
 			end
 			@residences = @residences - aux
+
 
 	
 	
     end
 
 
+
 	def show
-    	@residence = Residence.find(params[:id])	
-    	 valor = params[:id].to_i
-    	@auction = Auction.find(Auction.where(residencia_id: valor).ids)
+    	@residence = Residence.find(params[:id])
+
  	end
 
 
 
 end
- 
-

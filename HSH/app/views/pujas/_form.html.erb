@@ -1,0 +1,31 @@
+
+
+<div class="ml-5" style="font-size: 10pt">
+  <%= form_for @puja do |f| %>
+    <div class="mx-2 mb-3">
+        <table class="table">
+          <tr>
+            <td> <h2><%= f.hidden_field :auction_id , :readonly => true   %> <h2></td>
+          </tr>
+          <tr>
+            <td> <label for=“precioBase_actual"> La puja debe ser mayor a: (ARS)</label></td>
+            <td> <%= f.number_field :precioBase_actual , :readonly => true   %><br><br></td>
+          </tr>
+          <tr>
+            <td> <label for=“monto"> Puja: (ARS)</label></td>
+            <td> <%= f.number_field :monto, placeholder: "$" %><br><br></td>
+          </tr>
+          <tr>
+            <td> <label for=“email"> Email:</label></td>
+            <td> <%= f.email_field :email , placeholder: 'Correo electrónico'  %> <br><br><br></td>
+          </tr>
+          <tr>
+            <td> <%= link_to 'Cancelar', home_users_path, class: 'btn btn-dark btn-lg' %>
+            <button type= f.submit class="btn btn-primary btn-lg"> Registrar puja </button></td>
+          </tr>
+        </table>
+
+
+  <% end %>
+
+</div>

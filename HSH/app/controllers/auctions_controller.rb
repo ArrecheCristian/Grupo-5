@@ -2,29 +2,49 @@ class AuctionsController < ApplicationController
 
 	def new
 		@auction = Auction.new
-		@auction.residencia_id = params[:id]		
+		@auction.residence_id = params[:id]
+		@auction.estado = "ACTIVA"
 	end
 
 
 	def index
-		@auction = Auction.all
 
+		@auction= Auction.all
+			#Filtros de búsqueda
+		@resiAuction = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
+
+		@resiAuction = params[:loc] != "" ? @resiAuction.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @resiAuction
+
+		@resiAuction = params[:des] != "" ? @resiAuction.where("descripcion LIKE ?", "%#{params[:des]}%") : @resiAuction
+
+		#Se filtran las residencias que no están en subasta
+		aux = []
+
+		@resiAuction.each do |r|
+			if (Auction.where(residence_id: r.id).count == 0)
+				aux << r
+			end
+		end
+		
+		@resiAuction = @resiAuction - aux
 	end
 
 
 	def show
 		@auction = Auction.find(params[:id])
+
 	end
 
 
   	def destroy
-  		auction = Auction.find(params[:id])
+  		@auction = Auction.find(params[:id])
 
-  		if auction.destroy
-  			redirect_to auctions_path, notice: "La subasta ha sido eliminada con éxito"
-  		else
-  			redirect_to auctions_path, notice: "ERROR al eliminar la subasta. Intentelo nuevamente"
-  		end
+  			if @auction.estado == "FINALIZADA"
+  				@auction.destroy
+  				redirect_to auctions_path, notice: "La subasta ha sido eliminada con éxito"
+  			else
+  				redirect_to auctions_path, alert: "ERROR al eliminar la subasta. Esta sigue ACTIVA"
+  			end
 
   	end
 
@@ -34,46 +54,47 @@ class AuctionsController < ApplicationController
 		@auction.save
 		if (@auction.save )
 			flash[:notice] = "La residencia ha entrado en subasta con éxito"
-			redirect_to residence_path(@auction.residencia_id)
+			redirect_to residence_path(@auction.residence_id)
 		else
 			flash[:alert] = "No se ha registrado la subasta. Verifique si la subasta ya está iniciada o intentelo nuevamente."
-		    redirect_to residence_path(@auction.residencia_id)
+		    redirect_to residence_path(@auction.residence_id)
 		end
 	end
 
 
 
     def edit
- 		valor = params[:id].to_i
-     	@auction = Auction.find(Auction.where(residencia_id: valor).ids)
+#		@auction = Auction.where(residence_id: params[:id])
+		@auction = Auction.find(params[:id])
+
+		if(@auction.estado == "ACTIVA")
+
+			@auction.update(:estado => "FINALIZADA")
+		else
+			redirect_to auctions_path, alert: 'La subasta ya ha sido finalizada previamente'
+		end
     end
 
 
 	def update
-		@auctionExistente = Auction.find(params[:id])
-		@auctionNuevo = Auction.new(auctions_params)
-		if (@auctionExistente.precioBase < @auctionNuevo.precioBase)
-			if @auctionExistente.update(auctions_params)
-      			flash[:notice] = 'Su puja ha sido registrada con éxito. Nos contactaremos con usted si es la puja ganadora'
-         		redirect_to home_user_path(@auctionExistente.residencia_id)
-            end
-        else
-         	flash[:alert] = 'Su puja no ha sido registrada. El monto ingresado es inferior a la puja máxima. Intentelo nuevamente'
-         	redirect_to home_user_path(@auctionExistente.residencia_id)
- 
+		@auction = Auction.find(params[:id])
 
-	    end
+    	if @auction.update(auctions_params)
+      		redirect_to auctions_path, notice: 'La subasta ha finalizado con éxito'
+      	else
+        	render :edit
+      	end
 	end
 
 
 
 
 	private
-  		
+
   	def auctions_params
-    	params.require(:auction).permit(:precioBase,:residencia_id,:email)
+    	params.require(:auction).permit(:precioBase,:residence_id,:email,:estado)
   	end
-  	
+
 
 
 end

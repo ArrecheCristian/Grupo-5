@@ -1,23 +1,80 @@
+<style>
+    { margin: 0; padding: 0; }
+
 
 <html>
 <body 
-
-</body>
-</html>
-
-
-	<div> <%= image_tag "HSH-Text.svg", class: "logo", style: 'height:50%;width:50%;' %>  </div>
-
-
-	<div class="mt-4" style="width: 200px;">
-		<span class="border-bottom">
-		<%= link_to 'Elegí tu destino',home_users_path, class: 'btn btn-primary btn-lg btn-block' %>
-		</span>
-	</div>
+    html { 
+        background: url('https://ak9.picdn.net/shutterstock/videos/22089199/thumb/1.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
 
 
-  	<div class="mt-5" class="mx-5" style="width: 200px;"  >
-    	<%= link_to 'Ingreso Usuario Administrador',new_user_path, class: 'btn btn-primary btn-lg btn-block' %>
-	</div>
 
+<%#> Residencia aleatoria, usando card<%>
+<div class="float-left">
+
+  <div class="card card-custom mx-5 mb-3" style="width: 80rem;">
+    <img class="card-img-top" src= <%=@residence.imagen%> alt="Card image cap">
+      <div class="card-body">
+        <h3 class="card-title"> <%= @residence.complejo %> </h3>
+        <p class="card-text">
+          <h5> <%= @residence.ubicacion %> </h5><br>
+          Capacidad: <%= @residence.capacidad %> <br>
+        </p>
+      </div>
+  </div>
+</div>
+
+
+
+
+<div class="float-right">
+
+<%#> Estos botones despues directamente se sacarian y queda lindo, ahora lo dejo porque sino no tengo como acceder a las otras pag<%>
+ <div class="mt-2" style="width: 200px;">
+  <span class="border-bottom">
+  <%= link_to 'Elegí tu destino',home_users_path, class: 'btn btn-primary btn-lg btn-block' %>
+  </span>
+</div>
+
+<div class="mt-2" class="mx-5" style="width: 200px;"  >
+    <%= link_to 'Ingreso Usuario Administrador',new_user_path, class: 'btn btn-primary btn-lg btn-block' %>
+</div>
+
+
+
+<div class="card card-custom mx-5 mb-3" style="width:40rem;" >
+      
+      <div class="card-body">
+        <h3 class="card-title"> Iniciar Sesión </h3>
+      
+      <p class="card-text"> 
+        <form>
+          <div class="form-inline">
+            <div class="form-group mx-5 mb-4">
+              <label >Correo electrónico </label>
+              <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Ingrese su Email">
+            </div>
+          </div>
+        
+          <div class="form-inline">
+            <div class="form-group mx-5 mb-2">
+              <label>Contraseña</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
+            </div>
+          </div>
+    
+          <div class="mx-5 mb-2">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+          </div>
+        </form>
+
+      </p>
+      </div>
+  </div>
 </div>

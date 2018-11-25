@@ -1,7 +1,45 @@
 <div class="jumbotron">
-	<h2 class="text-uppercase" > Realizar una Puja </h2>
+	<h2 class="text-uppercase" > Subasta Finalizada </h2>
 </div>
 
-<div class="container">
-	<%= render "form2" %>
+<div class="col-sm">
+    <table class="table">
+        <tr>
+          <td> <h2><%= @auction.residence.complejo %> <h2></td>
+        </tr>
+        <tr>
+          <td> <h4>Ubicación:<h4></td>
+          <td> <h5><%= @auction.residence.ubicacion  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Descripcion:<h4></td>
+          <td> <h5><%= @auction.residence.descripcion  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Capacidad<h4></td>
+          <td> <h5><%= @auction.residence.capacidad  %><h5> </td>
+        </tr>
+        <tr>
+          <td> <h4>Estrellas:<h4></td>
+          <td> <h5><%= @auction.residence.estrellas  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Semana:<h4></td>
+          <td> <h5><%= @auction.residence.semana  %><h5> </td>
+        </tr>
+         <tr>
+            <td> <h4>Ganador:<h4></td>
+            <td> <h3 style="color: green"><%= @auction.email %><h3> </td>
+        </tr>
+        <tr>
+          <td> <h4>Precio:(ARS)<h4></td>
+          <td> <h3 style="color: green">$<%= @auction.precioBase %><h3></td>
+        </tr>
+
+        <tr>
+          <td><%= link_to 'Volver', auctions_path, class: 'btn btn-dark btn-lg' %></td>
+        </tr>
+
+   	</table>
+ 
 </div>

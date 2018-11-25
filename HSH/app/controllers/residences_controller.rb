@@ -1,22 +1,33 @@
 class ResidencesController < ApplicationController
+  
   def index
     @residence = Residence.all
+    
+    #Filtros de búsqueda
+    @residences = params[:com] ? @residence.where("complejo LIKE ?", "%#{params[:com]}%") : @residence
+
+    @residences = params[:loc] != "" ? @residences.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @residences
+
+    @residences = params[:des] != "" ? @residences.where("descripcion LIKE ?", "%#{params[:des]}%") : @residences
   end
 
   def show
+    @auction = Auction.all
     @residence = Residence.find(params[:id])
   end
+
 
   def new
     @residence = Residence.new
   end
 
+
   def edit
     #Recibo el id de la pelicula que quiero editar
     @residence = Residence.find(params[:id])
-  
+
   end
-  
+
 
   def update
     #Recibo el parametro de la pelicula a actualizar
@@ -25,22 +36,23 @@ class ResidencesController < ApplicationController
 
     if @residence.update(residence_params)
       redirect_to residences_path, notice: 'La residencia fue modificada con éxito'
-      else
-        render :edit
-      end
+    else
+       render :edit
+     end
   end
 
   def destroy
     #Recibo como parametro el id de la residencia a eliminar
-    residence = Residence.find(params[:id])
-    valor = params[:id].to_i
-    auction = Auction.where(residencia_id: valor).destroy_all
+    @residence = Residence.find(params[:id])
 
-    if residence.destroy
-      redirect_to residences_path, notice: "La residencia '#{residence.complejo}' ha sido eliminada con éxito"
-    else
-      redirect_to residences_path, notice: "ERROR al eliminar la residencia '#{residence.complejo}'"
-    end
+
+    if @residence.auction == nil
+       @residence.destroy
+       redirect_to residences_path, notice: "La residencia '#{@residence.complejo}' ha sido eliminada con éxito"
+      else
+        redirect_to residences_path, alert: "ERROR al eliminar la residencia '#{@residence.complejo}'. La residencia está en subasta"
+      end
+
   end
 
 
@@ -49,15 +61,15 @@ class ResidencesController < ApplicationController
 
     if @residence.save
         redirect_to residences_path, notice: 'La residencia fue creado con éxito'
-      else
-        render :new
-      end
+    else
+       render :new
+    end
   end
 
 private
 
   def residence_params
-    params.require(:residence).permit(:complejo,:descripcion,:ubicacion,:precio,:capacidad,:semana,:temporada,:imagen,:estrellas)
+    params.require(:residence).permit(:complejo,:descripcion,:ubicacion,:precio,:capacidad,:imagen,:estrellas)
   end
 
 end
