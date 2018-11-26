@@ -1,5 +1,5 @@
 <div class="row">
- <div class="col-md-5 col-md-offset-1">
+  <div class="col-md-5 col-md-offset-1">
 
         <h2>Registrarme </h2>
 
@@ -10,15 +10,21 @@
 
             <%= f.input :Nombre, required: true, autofocus: true ,input_html: { autocomplete: "Nombre" }%>
 
-             <%= f.input :Apellido, required: true, autofocus: true ,input_html: { autocomplete: "Apellido" }%>
+            <%= f.input :Apellido, required: true, autofocus: true ,input_html: { autocomplete: "Apellido" }%>
 
-              <%= f.input :Edad, required: true, autofocus: true ,input_html: { autocomplete: "Edad" }%>
+            <%= f.input :Nacimiento, required: true, autofocus: true ,input_html: { autocomplete: "Nacimiento" }%>
 
-               <%= f.input :NroTarjeta, required: true, autofocus: true ,input_html: { autocomplete: "N_Tarjeta" }%>
+            <%= f.input :Numero_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Numero_tarjeta" }%>
+
+            <%= f.input :Vencimiento_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Vencimiento_tarjeta" }%>
+
+            <%= f.input :Banco, required: true, autofocus: true ,input_html: { autocomplete: "Banco" }%>
+
+            <%= f.input :Foto_perfil, required: true, autofocus: true ,input_html: { autocomplete: "Foto_perfil" }%>
 
             <%= f.input :email, required: true, autofocus: true ,input_html: { autocomplete: "email" }%>
             
-            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password, required: true, hint: ("Mínimo #{@minimum_password_length} caracteres" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
             
             <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
           
@@ -30,26 +36,28 @@
         <% end %>
 
         <%= render "devise/shared/links" %>
- </div>
+  </div>
 
-        <div class="col-md-5 col-md-offset-0">
+  <div class="col-md-5 col-md-offset-0">
 
-              <table width="500" cellspacing="1" cellpadding="3" border="0" bgcolor="#165480"> 
-              <tr> 
-                  <td bgcolor="#007bff"> 
-                  <font size=2 face="verdana, arial, helvetica"> 
-                    <b>Informacion importante para futuros usuario</b> 
-                  </font> 
-                  </td> 
-              </tr> 
-              <tr> 
-                  <td bgcolor="#ffffcc">2
-                    <font face="verdana, arial, helvetica" size=1> 
-                      dcscnsd,
+    <table width="500" cellspacing="1" cellpadding="3" border="0" bgcolor="#165480"> 
+      <tr> 
+        <td bgcolor="#007bff"> 
+        <font size=2 face="verdana, arial, helvetica"> 
+        <b>Mandar breve descripción del sistema</b> 
+        </font> 
+        </td> 
+      </tr> 
+      
+      <tr> 
+        <td bgcolor="#ffffcc">
+        <font face="verdana, arial, helvetica" size=1> 
+        Por ejemplo, como se manejan los créditos, subastas, etc.
+        </font> 
+        </td> 
+      </tr> 
+    </table>
 
-                    </font> 
-                  </td> 
-              </tr> 
-            </table>
-        </div>
- </div>
+  </div>
+  
+</div>

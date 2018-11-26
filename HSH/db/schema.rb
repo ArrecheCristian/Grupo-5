@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_030037) do
+ActiveRecord::Schema.define(version: 2018_11_26_165655) do
 
   create_table "auctions", force: :cascade do |t|
     t.integer "precioBase"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2018_11_26_030037) do
   create_table "users", force: :cascade do |t|
     t.string "Nombre"
     t.string "Apellido"
-    t.integer "Edad"
-    t.integer "NroTarjeta"
+    t.integer "Nacimiento"
+    t.integer "Numero_tarjeta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -62,6 +62,10 @@ ActiveRecord::Schema.define(version: 2018_11_26_030037) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "Vencimiento_tarjeta"
+    t.string "Banco"
+    t.string "Foto_perfil"
+    t.integer "DNI"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

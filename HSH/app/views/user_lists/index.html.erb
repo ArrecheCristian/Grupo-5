@@ -1,22 +1,25 @@
 <span> <h2 class="text-uppercase" > Usuarios registrados:</h2> </span>
 
 <div>
+	
 	<table class="table">
 			<tr>
 				<td style="font-size: 15pt"> Nombre: </td>
+				<td style="font-size: 15pt"> Apellido: </td>
 				<td style="font-size: 15pt"> DNI: </td>
 				<td style="font-size: 15pt"> Email: </td>
 			</tr>
 
-			<%#><% @user.each do |user| %>
+			<% @user.each do |user| %>
 				<tr>
-					<td style="font-size: 8pt"><%%></td>
-					<td style="font-size: 8pt"><%%></td>
-					
-					<td><%= link_to 'Ver perfil',user_lists_show_path, class: 'btn btn-dark btn-lg'%></td>
+					<td style="font-size: 8pt"> <%= user.Nombre %> </td>
+					<td style="font-size: 8pt"> <%= user.Apellido %> </td>
+					<td style="font-size: 8pt"> <%= user.DNI %> </td>
+					<td style="font-size: 8pt"> <%= user.email %> </td>
 
+					<td><%= link_to 'Ver perfil', user_list_path(user), class: 'btn btn-dark btn-lg'%></td>
 				</tr>
-			
-
+			<%end%>
 	</table>
+
 </div>
