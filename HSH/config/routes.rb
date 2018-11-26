@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 	resources :pujas
 	resources :weeks
  	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
-
-  	
+ 	root 'users#index'
+	get 'home_users' => 'HomeUsers#index', as: :user_root  	
 end

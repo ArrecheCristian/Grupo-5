@@ -12,6 +12,7 @@
 			placeholder: "Busca tu lugar" %>
 		<%= submit_tag 'Buscar' %>
 	<% end %>
+	<%= link_to "Cerrar Sesion", destroy_user_session_path, :method => :delete %>
 </nav>
 
 
