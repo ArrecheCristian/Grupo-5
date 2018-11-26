@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 
 <nav class="navbar navbar-dark bg-dark">
 	<%= form_tag '/home_users', :method => :get do %>
@@ -52,3 +53,8 @@
 	</div>
 <% end %>
 </div>
+<% else %>
+		<center><h2>¡Ups, al parecer no ha iniciado sesion!</h2></center>
+		<center> <%=link_to 'Iniciar sesion', root_path, class: 'btn btn-info btn-sm' %> </center>
+
+<% end %>
