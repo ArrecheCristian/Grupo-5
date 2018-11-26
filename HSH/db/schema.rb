@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_161119) do
+ActiveRecord::Schema.define(version: 2018_11_25_233502) do
 
   create_table "auctions", force: :cascade do |t|
     t.integer "precioBase"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_11_25_161119) do
     t.datetime "updated_at", null: false
     t.string "email"
     t.string "estado"
+    t.string "fecha"
   end
 
   create_table "home_users", force: :cascade do |t|
@@ -56,6 +57,14 @@ ActiveRecord::Schema.define(version: 2018_11_25_161119) do
 
   create_table "users", force: :cascade do |t|
     t.string "Password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weeks", force: :cascade do |t|
+    t.string "estado"
+    t.string "fecha"
+    t.integer "residence_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

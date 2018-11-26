@@ -4,4 +4,5 @@ class Auction < ApplicationRecord
 
   validates :residence_id, uniqueness: true
   validates :precioBase, presence: true
+  validates :fecha, uniqueness: { scope: :residence_id}
 end

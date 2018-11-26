@@ -92,7 +92,7 @@ class AuctionsController < ApplicationController
 	private
 
   	def auctions_params
-    	params.require(:auction).permit(:precioBase,:residence_id,:email,:estado)
+    	params.require(:auction).permit(:precioBase,:residence_id,:email,:estado,:fecha)
   	end
 
 

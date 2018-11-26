@@ -5,6 +5,8 @@
   	<%= f.input :residence_id , :readonly => true   %>
   	<%= f.input :estado , :readonly => true   %>
   	<%= f.input :precioBase %>
+  	<%= f.label :fecha %>
+  	<input id=@auction.fecha name="auction[fecha]" type="date" step="7" min=2018-11-18  /><h6>(Debe estar en el limite de los 6 meses)<h6>
 
   	<%= link_to 'Cancelar', residences_path, class: 'btn btn-dark btn-lg' %>
   	<button type= f.submit class="btn btn-primary btn-lg"> Subastar </button>

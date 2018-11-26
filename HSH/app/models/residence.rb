@@ -1,5 +1,6 @@
 class Residence < ApplicationRecord
 	has_one :auction, dependent: :destroy
+	has_many :weeks, dependent: :destroy
 
 	validates :complejo, presence: true , uniqueness: true
 	validates :ubicacion, presence: true

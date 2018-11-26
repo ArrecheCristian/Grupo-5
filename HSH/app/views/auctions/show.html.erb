@@ -35,7 +35,7 @@
         </tr>
         <tr>
           <td> <h4>Semana:<h4></td>
-          <td> <h5><%= @auction.residence.semana  %><h5> </td>
+          <td> <h5><%= @auction.fecha  %><h5> </td>
         </tr>
         <tr>
           <td> <h4>Temporada:<h4></td>
@@ -50,7 +50,9 @@
           <td><%= link_to 'Finalizar Subasta', edit_auction_path(@auction), class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea finalizar la subasta? Podrá continuar viendo sus datos en "Ver detalles"' }  %></td>
           <td><%= link_to 'Eliminar Subasta', @auction, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la subasta? Se perderán todos los datos asociados a ella' }  %></td>
         </tr>
+
         <tr>
+          <td><%= link_to 'Agregar semana', new_week_path(:id => @auction.residence.id), class: 'btn btn-dark btn-me' %></td>
           <td><%= link_to 'Volver', auctions_path, class: 'btn btn-dark btn-me' %></td>
           
         </tr>
@@ -58,7 +60,7 @@
       </table>
     </div>
 
-
+    
     <div class="col-sm">
       
       <table class="table">

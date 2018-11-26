@@ -1,0 +1,13 @@
+
+<div class="ml-5" style="font-size: 9pt">
+  <%= simple_form_for @week do |f| %>
+
+    <%= f.input :estado , :readonly => true  %>
+    <%= f.input :residence_id  , :readonly => true %>
+    <input id=@week.fecha name="week[fecha]" type="date" step="7" min=2018-11-18 />
+
+    <td><%= link_to 'Cancelar', residences_path, class: 'btn btn-dark btn-lg' %></td>
+    <button type= f.submit class="btn btn-primary btn-lg"> Guardar </button>
+  <% end %>
+
+</div>
