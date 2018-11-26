@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 	resources :weeks
  	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
  	root 'users#index'
-	get 'home_users' => 'HomeUsers#index', as: :user_root  	
+	get 'home_users' => 'homeusers#index', as: :user_root  	
 end
