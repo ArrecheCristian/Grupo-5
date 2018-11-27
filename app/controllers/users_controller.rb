@@ -48,24 +48,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-	
-
-
-  def create
-  	@usuario = Usuario.create(params.require(:usuario).permit(:mail))
-
-  	if @usuario.save
-  		redirect_to @usuario
-  	else
-  		render :new
-  	end
-  end
-
-  
-  def show
-  	@usuario = Usuario.find(params[:id])
-  end
-
 
   private
   	def user_params

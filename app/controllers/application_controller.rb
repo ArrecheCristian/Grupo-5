@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-	before_action :configure_permitted_parameters,  if: :devise_controller?
+	require 'sprocket/railtie'
+  before_action :configure_permitted_parameters,  if: :devise_controller?
 
 	 
   def authenticate_user!
@@ -44,7 +45,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
+private
 
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
 
 
 
