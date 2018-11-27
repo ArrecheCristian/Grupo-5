@@ -1,0 +1,41 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm">
+      <img src= <%=@residence.imagen %> , class="rounded" />
+    </div>
+    <div class="col-sm">
+      <table class="table">
+        <tr>
+          <td> <h2><%= @residence.complejo %> <h2></td>
+        </tr>
+        <tr>
+          <td> <h4>Ubicación:<h4></td>
+          <td> <h5><%= @residence.ubicacion %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Precio: $<h4></td>
+          <td> <h5><%= @residence.precio %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Descripcion:<h4></td>
+          <td> <h5><%= @residence.descripcion %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Capacidad<h4></td>
+          <td> <h5><%= @residence.capacidad %><h5> </td>
+        </tr>
+        <tr>
+          <td> <h4>Estrellas:<h4></td>
+          <td> <h5><%= @residence.estrellas %><h5></td>
+        </tr>
+        <tr>
+
+          <td><%= link_to 'Ver calendario', new_week_path(:id => @residence.id), class: 'btn btn-dark btn-lg' %></td>
+          <td><%= link_to 'Volver', home_users_path, class: 'btn btn-dark btn-lg' %></td>
+
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
