@@ -1,7 +1,7 @@
 class HomeUsersController < ApplicationController
 
 	def index
-			@auction= Auction.all
+			@residence = Residence.all
 			#Filtros de búsqueda
 			@residences = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
 

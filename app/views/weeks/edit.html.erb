@@ -10,7 +10,7 @@
         </tr>
          <tr>
           <td> <h4>Estado:<h4></td>
-          <td> <h5 style="color: green">DISPONIBLE<h5></td>
+          <td> <h5 style="color: red">OCUPADA<h5></td>
         </tr>
         <tr>
         <tr>
@@ -39,8 +39,8 @@
         <tr>
           
         <tr>
-          <td><%= link_to 'Volver', @week, method: :delete, class: 'btn btn-dark btn-me' %></td>
-          <td><%= link_to 'Guardar Reserva', home_users_path, class: 'btn btn-dark btn-me' %></td>
+          <td><%= link_to 'Eliminar', @week, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %> %></td>
+          <td><%= link_to 'Volver', residences_path, class: 'btn btn-dark btn-me' %></td>
         </tr>
 
       </table>

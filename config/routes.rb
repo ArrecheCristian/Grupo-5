@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   	devise_for :users
 	resources :residences
  	resources :clientes
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
  	resources :home_users
 	resources :pujas
 	resources :weeks
+	resources :seekers
  	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
  	root 'users#index'
 	get 'home_users' => 'homeusers#index', as: :user_root  	
