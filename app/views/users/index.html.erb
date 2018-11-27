@@ -41,30 +41,49 @@
 <div class="float-right">
 
 
+  <% if !admin_signed_in? %>
 
-<%#> Inicio de sesion, tambien uso una card para que quede mejor ubicada, sino queda en cualquier lado<%>
-<div class="card card-custom mx-5 mb-3" style="width:40rem;" >
-      
-      <div class="card-body">
-        <h3 class="card-title"> Iniciar Sesión </h3>
-      
-      <p class="card-text"> 
-        
-        <%= render 'users/sessions/form' %>
+      <%#> Inicio de sesion, tambien uso una card para que quede mejor ubicada, sino queda en cualquier lado<%>
+      <div class="card card-custom mx-5 mb-3" style="width:40rem;" >
+            
+            <div class="card-body">
+              <h3 class="card-title"> Iniciar Sesión</h3>
+               <h4>(clientes)</h4>
+            
+            <p class="card-text"> 
+              
+              <%= render 'users/sessions/form' %>
 
-      </p>
-      </div>
-  </div>
-  <div class="card card-custom mx-5 mb-3" style="width:40rem;" >
-      
-      <div class="card-body">
-        <h3 class="card-title"> Iniciar Sesión </h3>
-      
-      <p class="card-text"> 
-        
-        <td><%= link_to 'Iniciar como Administrador', new_admin_session_path, class: 'btn btn-dark btn-mm'%></td>
+            </p>
+            </div>
+        </div>
+    
+  <% end %>
 
-      </p>
-      </div>
-  </div>
+  <% if !user_signed_in? %>
+      <% if !admin_signed_in? %>
+
+        <div class="card card-custom mx-5 mb-3" style="width:40rem;" >           
+            <div class="card-body">
+              <h4 class="card-title"> Administracion  </h4>
+              <p class="card-text">   
+                <td><%= link_to 'Iniciar como Administrador', new_admin_session_path, class: 'btn btn-dark btn-mm'%></td>
+              </p>
+            </div>
+        </div>
+
+      <%else%>
+
+
+          <div class="card card-custom mx-5 mb-3" style="width:40rem;" >
+              <div class="card-body">
+                <h3 class="card-title"> Cerrar sesión de administrador </h3>
+                 <p class="card-text"> 
+                <%= link_to "Cerrar Sesion", destroy_admin_session_path,class: 'btn btn-dark btn-mm', :method => :delete %>
+              </p>
+            </div>
+          </div>
+
+      <% end %>
+  <% end %>      
 </div>
