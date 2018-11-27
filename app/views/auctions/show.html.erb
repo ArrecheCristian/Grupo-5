@@ -48,7 +48,7 @@
 
         <tr>
           <td><%= link_to 'Finalizar Subasta', edit_auction_path(@auction), class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea finalizar la subasta? Podrá continuar viendo sus datos en "Ver detalles"' }  %></td>
-          <td><%= link_to 'Eliminar Subasta', @auction, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la subasta? Se perderán todos los datos asociados a ella' }  %></td>
+          <td><%= link_to 'Eliminar Subasta', auction_path(@auction), method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la subasta? Se perderán todos los datos asociados a ella' }  %></td>
         </tr>
 
         <tr>

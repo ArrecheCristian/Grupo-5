@@ -67,7 +67,7 @@
 					<td style="font-size: 8pt"><%= resi.ubicacion %></td>
 					<td><%= link_to 'Ver detalles', residence_path(resi), class: 'btn btn-dark btn-mm'%></td>
 					<td><%= link_to 'Editar', edit_residence_path(resi), class: 'btn btn-dark btn-mm'%></td>
-					<td><%= link_to 'Eliminar', resi, method: :delete, class: 'btn btn-danger btn-mm', data: { confirm: '¿Está seguro que desea eliminar la residencia?' }  %></td>
+					<td><%= link_to 'Eliminar', residence_path(resi), method: :delete, class: 'btn btn-danger btn-mm', data: { confirm: '¿Está seguro que desea eliminar la residencia?' }  %></td>
 
 				</tr>
 			<% end%>

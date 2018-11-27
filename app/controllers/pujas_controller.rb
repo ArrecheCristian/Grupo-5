@@ -4,16 +4,18 @@ class PujasController < ApplicationController
     @puja = Puja.new
     @puja.auction_id = params[:id]
     @puja.precioBase_actual = @puja.auction.precioBase
-
   end
+
 
   def index
     @puja = Puja.all
   end
 
+
   def show
     @puja = Puja.find(params[:id])
   end
+
 
   def create
     @puja = Puja.new(puja_params)
@@ -28,13 +30,10 @@ class PujasController < ApplicationController
     else
       render :new
     end
-
   end
 
-private
-
-  def puja_params
-    params.require(:puja).permit(:monto,:email,:auction_id,:precioBase_actual)
-  end
-
+  private
+    def puja_params
+      params.require(:puja).permit(:monto,:email,:auction_id,:precioBase_actual)
+    end
 end

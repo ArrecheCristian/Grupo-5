@@ -13,7 +13,7 @@
 			placeholder: "Busca tu lugar" %>
 		<%= submit_tag 'Buscar' %>
 	<% end %>
-	<%= link_to "Cerrar Sesion", destroy_user_session_path, :method => :delete %>
+	<%= link_to t('devise.sessions.sign_out'), destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-sm' %>
 </nav>
 
 
@@ -54,7 +54,9 @@
 <% end %>
 </div>
 <% else %>
-		<center><h2>¡Ups, al parecer no ha iniciado sesion!</h2></center>
-		<center> <%=link_to 'Iniciar sesion', root_path, class: 'btn btn-info btn-sm' %> </center>
+		<center><h2>¡ERROR! Antes debe inciar sesión en nuestro sistema</h2></center>
+		<center><h4>Para iniciar sesión o registrarse:</h4></center>
+
+		<center> <%=link_to 'Click aquí', root_path, class: 'btn btn-primary btn-lg' %> </center>
 
 <% end %>

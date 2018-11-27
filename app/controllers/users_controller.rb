@@ -27,7 +27,6 @@ class UsersController < ApplicationController
 			else
 				@residence = nil
 			end
-			
 		end
 	end
 
@@ -35,6 +34,7 @@ class UsersController < ApplicationController
 	def new
 	  @user = User.new
 	end
+
 
 	def create
         @user = User.new(user_params)
@@ -48,18 +48,10 @@ class UsersController < ApplicationController
 		end
 	end
 
-	private
-  		def user_params
-    		params.require(:user).permit(:Password)
-  	end
-
-
-end
-
+	
 
 
   def create
-
   	@usuario = Usuario.create(params.require(:usuario).permit(:mail))
 
   	if @usuario.save
@@ -67,10 +59,17 @@ end
   	else
   		render :new
   	end
-
   end
 
+  
   def show
   	@usuario = Usuario.find(params[:id])
   end
 
+
+  private
+  	def user_params
+    	params.require(:user).permit(:Password)
+  	end
+
+end
