@@ -15,14 +15,19 @@ class UsersController < ApplicationController
 				aux << r.id
 			end
 
-			#Genero un número random comprendido entre el tamaño del array
-			r = Random.new
-			i = r.rand(0...aux.length) 		
-			#Obtengo el id de la pos random
-			id = aux[i]
+			if (aux.length > 0)
+				#Genero un número random comprendido entre el tamaño del array
+				r = Random.new
+				i = r.rand(0...aux.length) 		
+				#Obtengo el id de la pos random
+				id = aux[i]
 
-			#Obtengo la residencia con dicho id
-			@residence = Residence.find(id)
+				#Obtengo la residencia con dicho id
+				@residence = Residence.find(id)
+			else
+				@residence = nil
+			end
+			
 		end
 	end
 
