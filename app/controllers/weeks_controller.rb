@@ -13,11 +13,13 @@ class WeeksController < ApplicationController
   def destroy
     @week = Week.find(params[:id])
 
-    if  @week.destroy     
-       redirect_to home_users_path
+    if  @week.destroy 
+      if user_signed_in?     
+        redirect_to home_users_path
       else
-        redirect_to weeks_path, alert: "ERROR al eliminar la reserva"
+        redirect_to residences_path
       end
+    end
   end
 
   def show
