@@ -1,4 +1,5 @@
 class PujasController < ApplicationController
+    before_action :authenticate_user!  
 
   def new
     @puja = Puja.new

@@ -1,12 +1,20 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters,  if: :devise_controller?
 
+
+## corrobora que al menos haya un admin o un user logueado
+  def require_login
+    unless user_signed_in? || admin_signed_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to root_path # halts request cycle
+    end
+  end
 	 
   def authenticate_user!
     if user_signed_in?
       super
     else
-      redirect_to root_path, :notice => 'Por favor , inicie sesión para continuar'
+      redirect_to root_path, :notice => 'Estimado: inicie sesión como usuario para continuar'
       ## if you want render 404 page
       ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end

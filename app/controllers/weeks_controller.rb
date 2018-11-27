@@ -1,5 +1,6 @@
 class WeeksController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:show , :new, :create]
+  before_action :authenticate_admin! , only: [:destroy , :edit  , :index]
   def new
   	@week = Week.new
   	@week.residence_id = params[:id]
