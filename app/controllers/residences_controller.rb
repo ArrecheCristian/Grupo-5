@@ -47,11 +47,11 @@ class ResidencesController < ApplicationController
     @residence = Residence.find(params[:id])
 
 
-    if @residence.auction == nil
+    if (@residence.auction == nil) && (@residence.weeks.count == 0)
        @residence.destroy
        redirect_to residences_path, notice: "La residencia '#{@residence.complejo}' ha sido eliminada con éxito"
       else
-        redirect_to residences_path, alert: "ERROR al eliminar la residencia '#{@residence.complejo}'. La residencia está en subasta"
+        redirect_to residences_path, alert: "ERROR al eliminar la residencia '#{@residence.complejo}'. La residencia tiene semanas reservadas"
       end
 
   end
