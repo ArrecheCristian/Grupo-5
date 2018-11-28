@@ -3,5 +3,5 @@ class Week < ApplicationRecord
 
  	validates :residence_id, presence: true
   	validates :fecha, uniqueness: {scope: :residence_id}
- # 	validates :estado, presence: true
+  	validates :estado, presence: true
 end

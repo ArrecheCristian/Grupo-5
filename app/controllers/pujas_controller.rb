@@ -29,6 +29,7 @@ class PujasController < ApplicationController
           redirect_to home_users_path, notice: 'La subasta se ha efectuado con exito'
       end
     else
+      flash[:alert] = "ERROR: No ha completado los campos correctamente, o la subasta no supero el monto minimo."
       render :new
     end
   end

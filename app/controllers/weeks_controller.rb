@@ -4,7 +4,7 @@ class WeeksController < ApplicationController
   def new
   	@week = Week.new
   	@week.residence_id = params[:id]
- # 	@week.estado = "DISPONIBLE"
+  	@week.estado = current_user.email
   end
 
   def index
@@ -54,7 +54,7 @@ class WeeksController < ApplicationController
 	private
 
   	def weeks_params
-    	params.require(:week).permit(:residence_id,:fecha)
+    	params.require(:week).permit(:residence_id,:fecha,:estado)
   	end
 
 end
