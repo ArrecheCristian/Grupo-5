@@ -1,5 +1,5 @@
 class HomeUsersController < ApplicationController
-	 before_action :authenticate_user!  
+	 before_action :authenticated_user!  
 
 	def index
 			@residence = Residence.all

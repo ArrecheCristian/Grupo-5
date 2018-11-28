@@ -14,6 +14,7 @@
 		<%= submit_tag 'Buscar' %>
 	<% end %>
 	<%= link_to t('devise.sessions.sign_out'), destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-sm'%>
+	<%= link_to "Edit profile", edit_user_registration_path%>
 </nav>
 
 

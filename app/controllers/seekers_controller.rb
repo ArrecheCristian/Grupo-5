@@ -1,5 +1,5 @@
 class SeekersController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticated_user!
 
 	def show
   		@residence = Residence.find(params[:id])

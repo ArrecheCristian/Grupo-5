@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	require 'sprocket/railtie'
+	
   before_action :configure_permitted_parameters,  if: :devise_controller?
 
 
@@ -11,9 +11,10 @@ class ApplicationController < ActionController::Base
     end
   end
 	 
-  def authenticate_user!
+  def authenticated_user!
     if user_signed_in?
-      super
+
+      authenticate_user!
     else
       redirect_to root_path, :notice => 'Estimado: inicie sesión como usuario para continuar'
       ## if you want render 404 page
@@ -21,9 +22,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
- def authenticate_admin!
+ def authenticated_admin!
     if admin_signed_in?
-      super
+      authenticate_admin!
     else
       redirect_to root_path, :notice => 'Acceso Restringido para clientes'
       ## if you want render 404 page
