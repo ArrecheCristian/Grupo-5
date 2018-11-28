@@ -1,10 +1,11 @@
 class PujasController < ApplicationController
-    before_action :authenticate_user!  
+    before_action :authenticated_user!  
 
   def new
     @puja = Puja.new
     @puja.auction_id = params[:id]
     @puja.precioBase_actual = @puja.auction.precioBase
+    @puja.email = current_user.email
   end
 
 

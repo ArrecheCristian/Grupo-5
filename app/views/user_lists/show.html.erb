@@ -35,13 +35,36 @@
           <td> <h4>Email:<h4></td>
           <td> <h5><%=@user.email%><h5></td>
         </tr>
-       
+          
+          <tr>
+          <td> <h4>Premium:<h4></td>
+          <td> <h5><%=@user.premium%><h5></td>
+        </tr>
+        <tr>
+
+
+
+
+          </tr>
         <tr>
           <td><%= link_to 'Volver al listado', user_lists_path, class: 'btn btn-dark btn-lg' %></td>
-          <td><%= link_to 'Editar', class: 'btn btn-dark btn-lg' %></td>
+          <td><%= link_to 'Editar',edit_custom_path, class: 'btn btn-dark btn-lg' %></td>
         </tr>
 
       </table>
+<div class="span6 offset3">
+<%= form_for @user do |f| %>
+
+
+ 
+  <br>
+  <%= f.label :premium, "¡Es usuario premium?}.".html_safe %>
+  <%= f.check_box :premium %>
+  <br><br>
+
+  <%= f.submit "Cambiar Tipo" %>
+<% end %>
+</div>
     </div>
 
   </div>

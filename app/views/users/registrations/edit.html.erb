@@ -1,3 +1,10 @@
+
+
+
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+
+        
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -10,17 +17,34 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false
+
+     <%= f.input :Nombre, required: true, autofocus: true ,input_html: { autocomplete: "Nombre" }%>
+
+    <%= f.input :Apellido, required: true, autofocus: true ,input_html: { autocomplete: "Apellido" }%>
+
+    <%= f.input :Nacimiento, required: true, autofocus: true ,input_html: { autocomplete: "Nacimiento" }%>
+
+     <%= f.input :Numero_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Numero_tarjeta" }%>
+
+     <%= f.input :Vencimiento_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Vencimiento_tarjeta" }%>
+
+     <%= f.input :Banco, required: true, autofocus: true ,input_html: { autocomplete: "Banco" }%>
+
+     <%= f.input :Foto_perfil, required: true, autofocus: true ,input_html: { autocomplete: "Foto_perfil" }%>
+
+    <%= f.input :password, hint: "leave it blank if you don't want to change it",required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
+
+    <%= f.input :password_confirmation, required: false,input_html: { autocomplete: "new-password" } %>
+    
+    <%= f.input :current_password,hint: "we need your current password to confirm your changes",required: true,
                 input_html: { autocomplete: "current-password" } %>
+
+      <% if admin_signed_in? %>
+
+         <%= f.input :premium, required: true, autofocus: true ,input_html: { autocomplete: "¿Premium?" }%>
+
+      <%end%>
   </div>
 
   <div class="form-actions">
@@ -28,8 +52,11 @@
   </div>
 <% end %>
 
+
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
+</div>
