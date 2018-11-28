@@ -2,6 +2,7 @@
 <div class="ml-5" style="font-size: 9pt">
   <%= simple_form_for @week do |f| %>
 
+  	<%= f.input :estado  , :readonly => true %>
     <%= f.input :residence_id  , :readonly => true %>
     <input id=@week.fecha name="week[fecha]" type="date" step="7" min=2018-11-18 value=2018-11-18 >
     <h6>Recuerde que el rango permitido es entre 6 y 8 meses de anticipación<h6>

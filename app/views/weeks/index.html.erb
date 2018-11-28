@@ -6,6 +6,7 @@
         <td style="font-size: 15pt"> Complejo: </td>
         <td style="font-size: 15pt"> Ubicación: </td>
         <td style="font-size: 15pt"> Fecha: </td>
+        <td style="font-size: 15pt"> Usuario: </td>
 
       </tr>
 
@@ -14,6 +15,7 @@
           <td style="font-size: 8pt"><%= semana.residence.complejo %></td>
           <td style="font-size: 8pt"><%= semana.residence.ubicacion %></td>
           <td style="font-size: 8pt"><%= semana.fecha %></td>
+          <td style="font-size: 8pt"><%= semana.estado %></td>
           <td><%= link_to 'Ver detalles', edit_week_path(semana), class: 'btn btn-dark btn-mm'%></td>
 
         </tr>

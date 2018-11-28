@@ -40,7 +40,7 @@
           
         <tr>
           <td><%= link_to 'Volver', @week, method: :delete, class: 'btn btn-dark btn-me' %></td>
-          <td><%= link_to 'Guardar Reserva', home_users_path, class: 'btn btn-dark btn-me' %></td>
+          <td><%= link_to 'Guardar Reserva', home_users_path, class: 'btn btn-dark btn-me' , data: { confirm: 'La reserva de la semana esta por concretarse ¿Desea continuar?' } %></td>
         </tr>
 
       </table>
