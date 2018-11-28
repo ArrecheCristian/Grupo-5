@@ -18,7 +18,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link active" href="/user_lists">Usuarios</a>
+        <a class="nav-link active" href="/user_lists">Listado de suarios</a>
       </li>
 
 
@@ -43,7 +43,7 @@
 	<% end %>
 
 
-    <%= link_to "Cerrar Sesion", destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-sm'%>
+    <%= link_to "Cerrar Sesion", destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-me'%>
 
 </nav>
 
@@ -72,7 +72,9 @@
 			<% end%>
 
 	</table>
-  <%= link_to 'Lista de reservas', weeks_path, class: 'btn btn-dark btn-mm'%>
+	<div class="mx-2 mt-3">
+  		<%= link_to 'Lista de reservas', weeks_path, class: 'btn btn-dark btn-lg'%>
+  	</div>
 </div>
 
 

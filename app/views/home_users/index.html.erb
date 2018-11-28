@@ -15,8 +15,6 @@
 	<% end %>
 	<%= link_to 'Ver mi pefil', seekers_path(:id =>current_user.id), class: 'btn btn-secondary btn-sm' %>
 
-	<%= link_to "Editar mi perfil", edit_user_registration_path, class: 'btn btn-secondary btn-sm'%>
-
 	<%= link_to 'Cerrar Sesion', destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-sm'%>
 </nav>
 
