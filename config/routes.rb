@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
-  devise_for :users
+  	devise_for :admins
+  	devise_for :users do
+  		get '/users/sign_out' => 'devise/sessions#destroy'
+	end
 	resources :residences
  	resources :clientes
  	resources :auctions, :except => 'new'
