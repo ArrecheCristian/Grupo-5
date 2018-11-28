@@ -48,11 +48,11 @@ class UsersController < ApplicationController
 	end
 
 
-	def edit_custom
+#	def edit_custom
     #Recibo el id de la pelicula que quiero editar
-    	@user = User.find(params[:id])
+#    	@user = User.find(params[:id])
 
-  	end
+  #	end
 
 
 
