@@ -20,23 +20,21 @@
 
 
 
-<span><h4> Filtrando por:</h4></span>
+<%#><span><h4> Filtrando por:</h4></span>
 <table>
 	<tr>
 		<td><%= params[:com] && params[:com] != "" ? "Complejo: " + params[:com] : "" %></td>
-	</tr>
+<%#>	</tr>
 
 	<tr>
 		<td><%= params[:loc] && params[:loc] != "" ? "Localidad: " + params[:loc] : "" %></td>
-	</tr>
+	<%#></tr>
 
 	<tr>
 		<td><%= @precio != 0.0 ? "Precio: " + "#{@precio}" : "" %></td>
-	</tr>
-</table>
+<%#%>
 
-<br>
-<br>
+
 <br>
 <h2 class="text-uppercase"> Aprovechá nuestras residencias en subasta! </h2>
 
@@ -65,10 +63,29 @@
 	<br>
 	<br>
 	<br>
+
+	<nav class="navbar navbar-dark bg-dark">
+		<%= form_tag '/home_users', :method => :get do %>
+			<%= label_tag :com2, 'Complejo', style:'color :white'%>
+			<%= text_field_tag :com2,params[:com2],
+				placeholder: "Busca tu lugar" %>
+			<%= label_tag :loc2, 'Localidad', style:'color :white'%>
+			<%= text_field_tag :loc2, params[:loc2],
+				placeholder: "Busca tu lugar" %>
+			<%= label_tag :pre2, 'Precio', style:'color :white'%>
+			<%= number_field_tag :pre2, params[:pre2],
+				placeholder: "Busca tu lugar" %>
+			<%= submit_tag 'Buscar' %>
+		<% end %>
+		<%= link_to 'Ver mi pefil', seekers_path(:id =>current_user.id), class: 'btn btn-secondary btn-sm' %>
+
+		<%= link_to 'Cerrar Sesion', destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-sm'%>
+	</nav>
+	
 	<h2 class="text-uppercase"> Asegurate nuestras residencias más lujosas mediante reserva directa! </h2>
 	<div class="row mt-5 justify-content-center">
 
-		<% @residence.each do |resi| %>
+		<% @residences2.each do |resi| %>
 
 		<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
 			<img class="card-img-top" src= <%=resi.imagen%> alt="Card image cap">
@@ -77,7 +94,9 @@
 					<p class="card-text">
 						<h5> <%= resi.ubicacion %> </h5><br>
 						Capacidad: <%= resi.capacidad %> <br>
-						Precio: $<%= resi.precio %> <br>
+						<%if (Auction.where(residence_id: resi.id, estado: "ACTIVA").count > 0)%>
+							Precio: $<%= resi.precio %> <br>
+						<%end%>
 					</p>
 
 					<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
