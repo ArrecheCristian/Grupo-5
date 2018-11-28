@@ -37,14 +37,14 @@
           <td> <h4>Semana:<h4></td>
           <td> <h5><%= @residence.auction.fecha %><h5> </td>
         </tr>
-        <tr>
+        <%#><tr>
           <td> <h4>Temporada:<h4></td>
           <td> <h5><%= @residence.temporada %><h5> </td>
-        </tr>
-        <tr>
+        
+        <%#><tr>
             <td> <h4>Ganador actual:<h4></td>
             <td> <h5><%= @residence.auction.email %><h5> </td>
-        </tr>
+        
         <tr>
 
           <td><%= link_to 'Volver al listado', home_users_path, class: 'btn btn-dark btn-lg' %></td>

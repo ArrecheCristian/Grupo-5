@@ -94,9 +94,6 @@
 					<p class="card-text">
 						<h5> <%= resi.ubicacion %> </h5><br>
 						Capacidad: <%= resi.capacidad %> <br>
-						<%if (Auction.where(residence_id: resi.id, estado: "ACTIVA").count > 0)%>
-							Precio: $<%= resi.precio %> <br>
-						<%end%>
 					</p>
 
 					<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
