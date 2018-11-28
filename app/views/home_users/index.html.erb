@@ -57,26 +57,28 @@
 	</div>
 <% end %>
 </div>
-<h2> Residencias para reserva directa: </h2>
-<div class="row mt-5 justify-content-center">
+<% if current_user.premium? %> 
+	<h2> Residencias para reserva directa: </h2>
+	<div class="row mt-5 justify-content-center">
 
-	<% @residence.each do |resi| %>
+		<% @residence.each do |resi| %>
 
-	<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
-		<img class="card-img-top" src= <%=resi.imagen%> alt="Card image cap">
-			<div class="card-body">
-				<h3 class="card-title"> <%= resi.complejo %> </h3>
-				<p class="card-text">
-					<h5> <%= resi.ubicacion %> </h5><br>
-					Capacidad: <%= resi.capacidad %> <br>
-					Precio: $<%= resi.precio %> <br>
-				</p>
+		<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
+			<img class="card-img-top" src= <%=resi.imagen%> alt="Card image cap">
+				<div class="card-body">
+					<h3 class="card-title"> <%= resi.complejo %> </h3>
+					<p class="card-text">
+						<h5> <%= resi.ubicacion %> </h5><br>
+						Capacidad: <%= resi.capacidad %> <br>
+						Precio: $<%= resi.precio %> <br>
+					</p>
 
-				<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
-			</div>
+					<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
+				</div>
+		</div>
+	<% end %>
 	</div>
 <% end %>
-</div>
 
 
 <% else %>
