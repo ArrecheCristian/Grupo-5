@@ -1,5 +1,21 @@
 <span> <h2 class="text-uppercase" > Usuarios registrados:</h2> </span>
 
+<nav class="navbar navbar-dark bg-dark">
+	<%= form_tag '/user_lists', :method => :get do %>
+		<%= label_tag :nom, 'Nombre', style:'color :white'%>
+		<%= text_field_tag :nom,params[:nom],
+			placeholder: "Buscar" %>
+		<%= label_tag :ape, 'Apellido', style:'color :white'%>
+		<%= text_field_tag :ape, params[:ape],
+			placeholder: "Busca" %>
+		<%= label_tag :DNI, 'DNI', style:'color :white'%>
+		<%= number_field_tag :DNI, params[:DNI],
+			placeholder: "Busca" %>
+		<%= submit_tag 'Buscar' %>
+	<% end %>
+</nav>
+
+
 <div>
 	
 	<table class="table">
@@ -10,7 +26,7 @@
 				<td style="font-size: 15pt"> Email: </td>
 			</tr>
 
-			<% @user.each do |user| %>
+			<% @usuarios.each do |user| %>
 				<tr>
 					<td style="font-size: 8pt"> <%= user.Nombre %> </td>
 					<td style="font-size: 8pt"> <%= user.Apellido %> </td>

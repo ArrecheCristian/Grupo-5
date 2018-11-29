@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-
+<br>
+<h2 class="text-uppercase"> Aprovechá nuestras residencias en subasta! </h2>
 <nav class="navbar navbar-dark bg-dark">
 	<%= form_tag '/home_users', :method => :get do %>
 		<%= label_tag :com, 'Complejo', style:'color :white'%>
@@ -36,7 +37,6 @@
 
 
 <br>
-<h2 class="text-uppercase"> Aprovechá nuestras residencias en subasta! </h2>
 
 <div class="row mt-5 justify-content-center">
 
@@ -64,6 +64,7 @@
 	<br>
 	<br>
 
+	<h2 class="text-uppercase"> Asegurate nuestras residencias más lujosas mediante reserva directa! </h2>
 	<nav class="navbar navbar-dark bg-dark">
 		<%= form_tag '/home_users', :method => :get do %>
 			<%= label_tag :com2, 'Complejo', style:'color :white'%>
@@ -77,12 +78,9 @@
 				placeholder: "Busca tu lugar" %>
 			<%= submit_tag 'Buscar' %>
 		<% end %>
-		<%= link_to 'Ver mi pefil', seekers_path(:id =>current_user.id), class: 'btn btn-secondary btn-sm' %>
-
-		<%= link_to 'Cerrar Sesion', destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-sm'%>
+		
 	</nav>
 	
-	<h2 class="text-uppercase"> Asegurate nuestras residencias más lujosas mediante reserva directa! </h2>
 	<div class="row mt-5 justify-content-center">
 
 		<% @residences2.each do |resi| %>

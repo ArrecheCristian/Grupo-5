@@ -13,7 +13,7 @@ class WeeksController < ApplicationController
 
   def destroy
     @week = Week.find(params[:id])
-
+    @week.destroy 
     if  @week.destroy 
       if user_signed_in?     
         redirect_to home_users_path
@@ -38,7 +38,6 @@ class WeeksController < ApplicationController
 
     if (Date.parse(@week.fecha) > limite1) && (Date.parse(@week.fecha) < limite2) 
       if @week.save
-          flash[:notice] = "Ver la semana"
           redirect_to week_path(@week)
       else
         flash[:alert] = "La semana no esta disponible"
