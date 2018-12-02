@@ -49,6 +49,7 @@
         <tr>
           <td><%= link_to 'Volver', residences_path, class: 'btn btn-dark btn-me' %></td>
           <td><%= link_to 'Iniciar Subasta', new_auction_path(@residence), class: 'btn btn-primary btn-lg' %></td>
+          <td><%= link_to 'Iniciar Hot-Sale', new_hotsale_path(:id =>@residence.id), class: 'btn btn-primary btn-lg' %></td>
         </tr>
 
       </table>

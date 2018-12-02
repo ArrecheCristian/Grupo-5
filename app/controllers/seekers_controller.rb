@@ -3,6 +3,10 @@ class SeekersController < ApplicationController
 
 	def show
   		@residence = Residence.find(params[:id])
+
+#  		@busca = @residence.week.find_by(fecha: params[:aux])
+ # 		@fecha = :aux
+
   	end
 
   	def index

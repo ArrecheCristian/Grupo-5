@@ -72,11 +72,11 @@ class AuctionsController < ApplicationController
 #		@auction = Auction.where(residence_id: params[:id])
 		@auction = Auction.find(params[:id])
 
-		if(@auction.estado == "ACTIVA")
+		if(@auction.estado == "ACTIVA") || (@auction.estado == "FINALIZADA")
 
 			@auction.update(:estado => "FINALIZADA")
 		else
-			redirect_to auctions_path, alert: 'La subasta ya ha sido finalizada previamente'
+			redirect_to edit_auction_path(@auction), alert: 'La subasta ya ha sido finalizada previamente'
 		end
     end
 

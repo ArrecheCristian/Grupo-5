@@ -5,6 +5,8 @@ class WeeksController < ApplicationController
   	@week = Week.new
   	@week.residence_id = params[:id]
   	@week.estado = current_user.email
+    @week.fecha = params[:fecha]
+
   end
 
   def index

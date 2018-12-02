@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_114036) do
+ActiveRecord::Schema.define(version: 2018_12_01_213157) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2018_11_27_114036) do
   end
 
   create_table "home_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hotsales", force: :cascade do |t|
+    t.integer "monto"
+    t.string "fecha"
+    t.string "estado"
+    t.string "email"
+    t.integer "residence_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

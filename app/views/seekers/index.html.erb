@@ -34,7 +34,6 @@
           <td> <h4>Email:<h4></td>
           <td> <h5><%=@user.email%><h5></td>
         </tr>
-       
         <tr>
           <td><%= link_to 'Volver ', home_users_path, class: 'btn btn-dark btn-lg' %></td>
           <td><%= link_to "Editar mi perfil", edit_user_registration_path, class: 'btn btn-dark btn-lg'%></td>
@@ -42,6 +41,18 @@
 
       </table>
     </div>
-
+    <div class="col-sm">
+        <table class="table">
+    <tr>
+      <th> Reservas </th>
+    </tr>
+        <% product = Week.where(estado: @user.email) %>
+        <% product.each do |nombregenerico| %>
+          <tr>
+            <td> <%= nombregenerico.residence.complejo %> </td>
+            <td> <%= nombregenerico.residence.ubicacion %> </td>
+            <td> <%= nombregenerico.fecha %> </td>
+          </tr>
+        <% end %>
   </div>
 </div>
