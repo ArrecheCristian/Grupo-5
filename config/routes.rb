@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 	resources :pujas
 	resources :weeks
 	resources :seekers
+	resources :users 
 	resources :hotsales
+	get '/users/edit_custom/:id', to: 'users#edit_custom', as: 'edit_custom'
+	put  '/users/edit_custom/:id', to: 'users#update_custom', as: 'update_custom'
  	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
  	root 'users#index'
 	get 'home_users' => 'homeusers#index', as: :user_root  	
