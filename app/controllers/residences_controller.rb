@@ -1,6 +1,6 @@
 class ResidencesController < ApplicationController
-
   before_action :authenticated_admin!  
+  
   def index
     @residence = Residence.all
     
