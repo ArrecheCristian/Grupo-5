@@ -25,7 +25,15 @@
           <td> <h5><%= @residence.estrellas %><h5></td>
         </tr>
         <tr>
+            <%= form_tag '/seekers', :method => :get do %>
+              <td><%= label_tag :aux, 'fecha', style:'color :black'%></td>
+              <td><%= date_field_tag :aux,params[:aux]%></td>
+              <td><%= submit_tag 'Buscar' %></td>
+            <% end %>
+        </tr>
+        <tr>
 
+          <td><%= link_to 'Buscar',  new_week_path(:id => @residence.id,:fecha =>@fecha), class: 'btn btn-dark btn-lg' %></td>
           <td><%= link_to 'Volver', home_users_path, class: 'btn btn-dark btn-lg' %></td>
           <td><%= link_to 'Ver calendario', new_week_path(:id => @residence.id), class: 'btn btn-dark btn-lg' %></td>
 

@@ -1,0 +1,25 @@
+
+
+<div class="ml-5" style="font-size: 10pt">
+  <%= form_for @week do |f| %>
+    <div class="mx-2 mb-3">
+        <table class="table">
+          <tr>
+            <td> <h2><%= f.hidden_field :residence_id , :readonly => true   %> <h2></td>
+          </tr>
+          <tr>
+            <td> <label for=“estado"> Email:</label></td>
+            <td> <%= f.email_field :estado , placeholder: 'Correo electrónico', :readonly => true   %> <br><br><br></td>
+          </tr>
+          <tr>
+            <td> <label for=“fecha"> Fecha:</label></td>
+            <td> <%= f.date_field :fecha , :readonly => true   %><br><br></td>
+          </tr>
+          <tr>
+            <td> <%= link_to 'Cancelar', home_users_path, class: 'btn btn-dark btn-lg' %>
+            <button type= f.submit class="btn btn-primary btn-lg"> guardar  </button></td>
+          </tr>
+        </table>
+
+
+  <% end %>

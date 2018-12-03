@@ -2,10 +2,10 @@
 <div class="ml-5" style="font-size: 9pt">
   <%= simple_form_for @week do |f| %>
 
-  	<%= f.input :estado  , :readonly => true %>
-    <%= f.input :residence_id  , :readonly => true %>
+  	<%= f.input :estado  , :readonly => true, wrapper_html: { class: 'hide' } %> 
+    <%= f.input :residence_id  , :readonly => true, wrapper_html: { class: 'hide' } %>
     <input id=@week.fecha name="week[fecha]" type="date" step="7" min=2018-11-18 value=2018-11-18 >
-    <h6>Recuerde que el rango permitido es entre 6 y 8 meses de anticipación<h6>
+    <h6>Recuerde que el rango permitido para reservar es entre 6 y 8 meses de anticipación<h6>
 
     <td><%= link_to 'Cancelar', home_users_path, class: 'btn btn-dark btn-lg' %></td>
     <button type= f.submit class="btn btn-primary btn-lg"> Buscar </button>

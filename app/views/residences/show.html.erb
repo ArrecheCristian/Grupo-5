@@ -13,10 +13,10 @@
           <td> <h4>Ubicación: <h4> </td>
           <td><h5><%= @residence.ubicacion %><h5></td>
         </tr>
-        <tr>
-          <td> <h4>Precio:(ARS)<h4></td>
+        <%#><tr>
+         <%#> <td> <h4>Precio:(ARS)<h4></td>
           <td> <h5><%= @residence.precio %><h5></td>
-        </tr>
+        
         <tr>
           <td> <h4>Descripción:<h4></td>
           <td> <h5><%= @residence.descripcion %><h5></td>
@@ -29,11 +29,7 @@
           <td> <h4>Estrellas:<h4></td>
           <td> <h5><%= @residence.estrellas %><h5></td>
         </tr>
-        <tr>
-          <td> <h4>Semana:<h4></td>
-          <td> <h5><%= @residence.semana %><h5> </td>
-        </tr>
-
+        
         <%-# Agregamos el campo de estado de la subasta para esa residencia -%>
         <%-# Si nunca se inicio, no tiene estado, por eso el if. Sino se rompe -%>
          <tr>
@@ -53,6 +49,7 @@
         <tr>
           <td><%= link_to 'Volver', residences_path, class: 'btn btn-dark btn-me' %></td>
           <td><%= link_to 'Iniciar Subasta', new_auction_path(@residence), class: 'btn btn-primary btn-lg' %></td>
+          <td><%= link_to 'Iniciar Hot-Sale', new_hotsale_path(:id =>@residence.id), class: 'btn btn-primary btn-lg' %></td>
         </tr>
 
       </table>

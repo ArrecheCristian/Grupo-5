@@ -1,10 +1,12 @@
 class WeeksController < ApplicationController
-  before_action :authenticate_user!, only: [:show , :new, :create]
-  before_action :authenticate_admin! , only: [:destroy , :edit  , :index]
+  before_action :authenticated_user!, only: [:show , :new, :create]
+  before_action :authenticated_admin! , only: [:destroy , :edit  , :index]
   def new
   	@week = Week.new
   	@week.residence_id = params[:id]
   	@week.estado = current_user.email
+    @week.fecha = params[:fecha]
+
   end
 
   def index
@@ -13,7 +15,7 @@ class WeeksController < ApplicationController
 
   def destroy
     @week = Week.find(params[:id])
-
+    @week.destroy 
     if  @week.destroy 
       if user_signed_in?     
         redirect_to home_users_path
@@ -38,7 +40,6 @@ class WeeksController < ApplicationController
 
     if (Date.parse(@week.fecha) > limite1) && (Date.parse(@week.fecha) < limite2) 
       if @week.save
-          flash[:notice] = "Ver la semana"
           redirect_to week_path(@week)
       else
         flash[:alert] = "La semana no esta disponible"

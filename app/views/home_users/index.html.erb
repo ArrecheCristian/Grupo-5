@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-
+<br>
+<h2 class="text-uppercase"> Aprovechá nuestras residencias en subasta! </h2>
 <nav class="navbar navbar-dark bg-dark">
 	<%= form_tag '/home_users', :method => :get do %>
 		<%= label_tag :com, 'Complejo', style:'color :white'%>
@@ -13,26 +14,30 @@
 			placeholder: "Busca tu lugar" %>
 		<%= submit_tag 'Buscar' %>
 	<% end %>
-	<%= link_to t('devise.sessions.sign_out'), destroy_user_session_path, method: :delete, class: 'btn btn-secondary btn-sm'%>
+
+	<%= link_to 'Ver mi pefil', seekers_path(:id =>current_user.id), class: 'btn btn-secondary btn-sm' %>
+
+	<%= link_to 'Cerrar Sesion', destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-sm'%>
 </nav>
 
 
 
-<span><h4> Filtrando por:</h4></span>
+<%#><span><h4> Filtrando por:</h4></span>
 <table>
 	<tr>
 		<td><%= params[:com] && params[:com] != "" ? "Complejo: " + params[:com] : "" %></td>
-	</tr>
+<%#>	</tr>
 
 	<tr>
 		<td><%= params[:loc] && params[:loc] != "" ? "Localidad: " + params[:loc] : "" %></td>
-	</tr>
+	<%#></tr>
 
 	<tr>
 		<td><%= @precio != 0.0 ? "Precio: " + "#{@precio}" : "" %></td>
-	</tr>
-</table>
+<%#%>
 
+
+<br>
 
 <div class="row mt-5 justify-content-center">
 
@@ -53,26 +58,49 @@
 	</div>
 <% end %>
 </div>
-<h2> Residencias para reserva directa: </h2>
-<div class="row mt-5 justify-content-center">
+<% if current_user.premium? %> 
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
-	<% @residence.each do |resi| %>
+	<h2 class="text-uppercase"> Asegurate nuestras residencias más lujosas mediante reserva directa! </h2>
+	<nav class="navbar navbar-dark bg-dark">
+		<%= form_tag '/home_users', :method => :get do %>
+			<%= label_tag :com2, 'Complejo', style:'color :white'%>
+			<%= text_field_tag :com2,params[:com2],
+				placeholder: "Busca tu lugar" %>
+			<%= label_tag :loc2, 'Localidad', style:'color :white'%>
+			<%= text_field_tag :loc2, params[:loc2],
+				placeholder: "Busca tu lugar" %>
+			<%= label_tag :pre2, 'Precio', style:'color :white'%>
+			<%= number_field_tag :pre2, params[:pre2],
+				placeholder: "Busca tu lugar" %>
+			<%= submit_tag 'Buscar' %>
+		<% end %>
+		
+	</nav>
+	
+	<div class="row mt-5 justify-content-center">
 
-	<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
-		<img class="card-img-top" src= <%=resi.imagen%> alt="Card image cap">
-			<div class="card-body">
-				<h3 class="card-title"> <%= resi.complejo %> </h3>
-				<p class="card-text">
-					<h5> <%= resi.ubicacion %> </h5><br>
-					Capacidad: <%= resi.capacidad %> <br>
-					Precio: $<%= resi.precio %> <br>
-				</p>
+		<% @residences2.each do |resi| %>
 
-				<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
-			</div>
+		<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
+			<img class="card-img-top" src= <%=resi.imagen%> alt="Card image cap">
+				<div class="card-body">
+					<h3 class="card-title"> <%= resi.complejo %> </h3>
+					<p class="card-text">
+						<h5> <%= resi.ubicacion %> </h5><br>
+						Capacidad: <%= resi.capacidad %> <br>
+					</p>
+
+					<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
+				</div>
+		</div>
+	<% end %>
 	</div>
 <% end %>
-</div>
 
 
 <% else %>

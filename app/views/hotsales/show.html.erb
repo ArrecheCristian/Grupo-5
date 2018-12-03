@@ -1,0 +1,59 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm">
+      <img src= <%=@hotsale.residence.imagen %> , class="rounded" />
+    </div>
+    <div class="col-sm">
+      <table class="table">
+        <tr>
+          <td> <h2><%= @hotsale.residence.complejo %> <h2></td>
+        </tr>
+         <tr>
+          <td> <h4>Estado:<h4></td>
+          <td> <h5 style="color: green"><%= @hotsale.estado %><h5></td>
+        </tr>
+        <tr>
+        <tr>
+          <td> <h4>Ubicación:<h4></td>
+          <td> <h5><%= @hotsale.residence.ubicacion  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Precio:(ARS)<h4></td>
+          <td><h5>$<%= @hotsale.monto %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Descripcion:<h4></td>
+          <td> <h5><%= @hotsale.residence.descripcion  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Capacidad<h4></td>
+          <td> <h5><%= @hotsale.residence.capacidad  %><h5> </td>
+        </tr>
+        <tr>
+          <td> <h4>Estrellas:<h4></td>
+          <td> <h5><%= @hotsale.residence.estrellas  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Semana:<h4></td>
+          <td> <h5><%= @hotsale.fecha  %><h5> </td>
+        </tr>
+         <tr>
+            <td> <h4>Reservado por:<h4></td>
+            <td> <h5><%= @hotsale.email %><h5> </td>
+        </tr>
+
+        <tr>
+          <td><%#= link_to 'Finalizar Subasta', edit_auction_path(@auction), class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea finalizar la subasta? Podrá continuar viendo sus datos en "Ver detalles"' }  %></td>
+          <td><%= link_to 'Eliminar Hot-Sale', hotsale_path(@hotsale), method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar el Hot-Sale? Se perderán todos los datos asociados' }  %></td>
+          <td><%= link_to 'Editar', edit_hotsale_path(@hotsale), class: 'btn btn-dark btn-lg'%></td>
+        </tr>
+
+        <tr>
+          <td><%= link_to 'Volver', residences_path, class: 'btn btn-dark btn-me' %></td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</div>

@@ -1,4 +1,11 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+
+
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+
+        
+<h2> Actualizar perfil </h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -10,26 +17,48 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false
+
+     <%= f.input :Nombre, required: true, autofocus: true ,input_html: { autocomplete: "Nombre" }%>
+
+    <%= f.input :Apellido, required: true, autofocus: true ,input_html: { autocomplete: "Apellido" }%>
+
+    <%= f.input :Nacimiento, required: true, autofocus: true ,input_html: { autocomplete: "Nacimiento" }%>
+
+     <%= f.input :Numero_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Numero_tarjeta" }%>
+
+     <%= f.input :Vencimiento_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Vencimiento_tarjeta" }%>
+
+     <%= f.input :Banco, required: true, autofocus: true ,input_html: { autocomplete: "Banco" }%>
+
+     <%= f.input :Foto_perfil, required: true, autofocus: true ,input_html: { autocomplete: "Foto_perfil" }%>
+
+    <%= f.input :password, hint: "(Sólo si quieres cambiar tu contraseña)",required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
+
+    <%= f.input :password_confirmation, required: false,input_html: { autocomplete: "new-password" } %>
+    
+    <%= f.input :current_password,hint: "Necesitamos su contraseña actual para confirmar sus cambios",required: true,
                 input_html: { autocomplete: "current-password" } %>
+
+      <% if admin_signed_in? %>
+
+         <%= f.input :premium, required: true, autofocus: true ,input_html: { autocomplete: "¿Premium?" }%>
+
+      <%end%>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <div class="form-actions  mx-2 mb-3" >
+    <%= f.button :submit, "Guardar Cambios", class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<div class="mx-2 mt-3">
+    <%= link_to "Volver", :back, class: 'btn btn-dark btn-me'%>
 
-<%= link_to "Back", :back %>
+    <%= link_to "Borrar mi cuenta", registration_path(resource_name), data: { confirm: "¿Está seguro que desea borrar su cuenta? Ya no podrá iniciar sesión en nuestro sistema" }, method: :delete, class: 'btn btn-dark btn-me'%>
+    
+</div>
+
+</div>
+</div>

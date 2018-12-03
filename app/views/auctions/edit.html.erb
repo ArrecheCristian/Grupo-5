@@ -25,11 +25,12 @@
         </tr>
         <tr>
           <td> <h4>Semana:<h4></td>
-          <td> <h5><%= @auction.residence.semana  %><h5> </td>
+          <td> <h5><%= @auction.fecha  %><h5> </td>
         </tr>
          <tr>
             <td> <h4>Ganador:<h4></td>
-            <td> <h3 style="color: green"><%= @auction.email %><h3> </td>
+            <% product = User.find_by(email: @auction.email) %>
+            <td> <h3><%= link_to @auction.email, user_list_path(:id =>product.id) %><h3></td>
         </tr>
         <tr>
           <td> <h4>Precio:(ARS)<h4></td>

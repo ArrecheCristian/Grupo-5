@@ -17,7 +17,7 @@
           </tr>
           <tr>
             <td> <label for=“email"> Email:</label></td>
-            <td> <%= f.email_field :email , placeholder: 'Correo electrónico'  %> <br><br><br></td>
+            <td> <%= f.email_field :email , placeholder: 'Correo electrónico', :readonly => true   %> <br><br><br></td>
           </tr>
           <tr>
             <td> <%= link_to 'Cancelar', home_users_path, class: 'btn btn-dark btn-lg' %>

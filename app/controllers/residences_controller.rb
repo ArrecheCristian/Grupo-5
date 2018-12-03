@@ -1,6 +1,6 @@
 class ResidencesController < ApplicationController
 
-  before_action :authenticate_admin!  
+  before_action :authenticated_admin!  
   def index
     @residence = Residence.all
     
@@ -47,7 +47,7 @@ class ResidencesController < ApplicationController
     @residence = Residence.find(params[:id])
 
 
-    if (@residence.auction == nil) && (@residence.weeks.count == 0)
+    if (@residence.auction == nil) && (@residence.weeks.count == 0) && (@residence.hotsales.count == 0) 
        @residence.destroy
        redirect_to residences_path, notice: "La residencia '#{@residence.complejo}' ha sido eliminada con éxito"
       else
