@@ -11,57 +11,55 @@ class ApplicationController < ActionController::Base
     end
   end
 	 
+
   def authenticated_user!
     if user_signed_in?
 
       authenticate_user!
     else
-      redirect_to root_path, :notice => 'Estimado: inicie sesión como usuario para continuar'
+      redirect_to root_path, :notice => 'Inicie sesión como usuario cliente para continuar'
       ## if you want render 404 page
       ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end
   end
 
- def authenticated_admin!
+
+  def authenticated_admin!
     if admin_signed_in?
       authenticate_admin!
     else
-      redirect_to root_path, :notice => 'Acceso Restringido para clientes'
+      redirect_to root_path, :notice => 'Acceso RESTRINGIDO para clientes'
       ## if you want render 404 page
       ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end
   end
 
 
-
-
-
-
-   def after_sign_in_path_for(resource)
- 	   if admin_signed_in?
- 	   		residences_path
- 	   	elsif user_signed_in?
- 	   		root_path
- 	   	end
- 	   		
+  def after_sign_in_path_for(resource)
+ 	  if admin_signed_in?
+ 	   	residences_path
+ 	  elsif user_signed_in?
+ 	   	root_path
+ 	  end		
 	end
+
+
 	protected
 
   def configure_permitted_parameters
-    added_attrs = [:Nombre, :email, :password, :password_confirmation,:Apellido ,:Nacimiento,:Numero_tarjeta,:Vencimiento_tarjeta,
-    	:Banco,:Foto_perfil,:DNI ,:premium]
+    added_attrs = [:nombre, :email, :password, :password_confirmation,:apellido ,:nacimiento,:numero_tarjeta,:vencimiento_tarjeta,
+    	:banco,:foto_perfil,:dni ,:premium]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
-private
+
+
+  private
 
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end
 
-
-
-	 
 end

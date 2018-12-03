@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 	  @user = User.new
 	end
 
+
 	def update
 
 		 @user= User.find(params[:id])
@@ -48,17 +49,7 @@ class UsersController < ApplicationController
 	end
 
 
-#	def edit_custom
-    #Recibo el id de la pelicula que quiero editar
-#    	@user = User.find(params[:id])
-
-  #	end
-
-
-
-
-
-  private
+  	private
   	def user_params
     	params.require(:user).permit(:premium)
   	end
