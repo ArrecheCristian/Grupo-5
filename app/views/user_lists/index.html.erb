@@ -2,15 +2,15 @@
 
 <nav class="navbar navbar-dark bg-dark">
 	<%= form_tag '/user_lists', :method => :get do %>
-		<%= label_tag :nom, 'Nombre', style:'color :white'%>
+		<%= label_tag :nom, 'nombre', style:'color :white'%>
 		<%= text_field_tag :nom,params[:nom],
 			placeholder: "Buscar" %>
-		<%= label_tag :ape, 'Apellido', style:'color :white'%>
-		<%= text_field_tag :ape, params[:ape],
-			placeholder: "Busca" %>
-		<%= label_tag :DNI, 'DNI', style:'color :white'%>
-		<%= number_field_tag :DNI, params[:DNI],
-			placeholder: "Busca" %>
+		<%= label_tag :ape, 'apellido', style:'color :white'%>
+		<%= text_field_tag :ape,params[:ape],
+			placeholder: "Buscar" %>
+		<%= label_tag :docu, 'dni', style:'color :white'%>
+		<%= number_field_tag :docu,params[:docu],
+			placeholder: "Buscar" %>
 		<%= submit_tag 'Buscar' %>
 	<% end %>
 </nav>
@@ -26,12 +26,12 @@
 				<td style="font-size: 15pt"> Email: </td>
 			</tr>
 
-			<% @usuarios.each do |user| %>
+			<% @users.each do |user| %>
 				<tr>
-					<td style="font-size: 8pt"> <%= user.Nombre %> </td>
-					<td style="font-size: 8pt"> <%= user.Apellido %> </td>
-					<td style="font-size: 8pt"> <%= user.DNI %> </td>
-					<td style="font-size: 8pt"> <%= user.email %> </td>
+					<td style="font-size: 8pt"> <%=user.nombre%></td>
+					<td style="font-size: 8pt"> <%=user.apellido%> </td>
+					<td style="font-size: 8pt"> <%=user.dni%> </td>
+					<td style="font-size: 8pt"> <%=user.email%> </td>
 
 					<td><%= link_to 'Ver perfil', user_list_path(user), class: 'btn btn-dark btn-lg'%></td>
 				</tr>

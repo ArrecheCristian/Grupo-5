@@ -3,14 +3,15 @@ class UserListsController < ApplicationController
   
 
   def index
+    
   	@user = User.all
 
-    @usuarios = params[:nom] ? User.all.where("Nombre LIKE ?", "%#{params[:nom]}%") : User.all
+    @users = params[:nom] ? @user.where("nombre LIKE ?", "%#{params[:nom]}%"): @user
 
-    @usuarios = params[:ape] != "" ? @usuarios.where("Apellido LIKE ?", "%#{params[:ape]}%") : @usuarios
+    @users = params[:ape] != "" ? @users.where("apellido LIKE ?", "%#{params[:ape]}%"): @users
 
-    @doc = params[:DNI].to_i
-    @usuarios = @doc != 0 ? @usuarios.where("DNI == ?", params[:DNI]): @usuarios
+    @doc = params[:docu].to_i
+    @users = @doc != 0 ? @users.where("dni = ?", @doc): @users
 
   end
 
