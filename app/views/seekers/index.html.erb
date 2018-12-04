@@ -1,3 +1,4 @@
+<%#  Perfil de usuario para clientes %>
 <div class="jumbotron">
   <div class="row">
     
@@ -35,6 +36,10 @@
           <td> <h5><%=@user.email%><h5></td>
         </tr>
         <tr>
+          <td> <h4>Creditos:<h4></td>
+          <td> <h5><%=@user.credito%><h5></td>
+        </tr>
+        <tr>
           <td><%= link_to 'Volver ', home_users_path, class: 'btn btn-dark btn-lg' %></td>
           <td><%= link_to "Editar mi perfil", edit_user_registration_path, class: 'btn btn-dark btn-lg'%></td>
         </tr>
@@ -44,9 +49,39 @@
     <div class="col-sm">
         <table class="table">
     <tr>
-      <th> Reservas </th>
+      <th> Reservas de Residencias </th>
     </tr>
         <% product = Week.where(estado: @user.email) %>
+        <% product.each do |nombregenerico| %>
+          <tr>
+            <td> <%= nombregenerico.residence.complejo %> </td>
+            <td> <%= nombregenerico.residence.ubicacion %> </td>
+            <td> <%= nombregenerico.fecha %> </td>
+          </tr>
+        <% end %>
+  </div>
+
+  <div class="col-sm">
+        <table class="table">
+    <tr>
+      <th> Subastas Ganadas </th>
+    </tr>
+        <% product = Auction.where(email: @user.email,estado: "FINALIZADA") %>
+        <% product.each do |nombregenerico| %>
+          <tr>
+            <td> <%= nombregenerico.residence.complejo %> </td>
+            <td> <%= nombregenerico.residence.ubicacion %> </td>
+            <td> <%= nombregenerico.fecha %> </td>
+          </tr>
+        <% end %>
+  </div>
+
+  <div class="col-sm">
+        <table class="table">
+    <tr>
+      <th> Hot-Sales reservados </th>
+    </tr>
+        <% product = Hotsale.where(email: @user.email) %>
         <% product.each do |nombregenerico| %>
           <tr>
             <td> <%= nombregenerico.residence.complejo %> </td>

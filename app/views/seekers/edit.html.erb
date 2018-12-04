@@ -1,3 +1,4 @@
+<%#  Confirmacion de reserva para usuarios premium%>
 <div class="jumbotron">
   <div class="row">
     <div class="col-sm">
@@ -9,8 +10,8 @@
           <td> <h2><%= @week.residence.complejo %> <h2></td>
         </tr>
          <tr>
-          <td> <h4>Estado:<h4></td>
-          <td> <h5 style="color: green">DISPONIBLE<h5></td>
+          <td> <h4>Reservado por:<h4></td>
+          <td> <h5 style="color: green"><%= @week.estado %><h5></td>
         </tr>
         <tr>
         <tr>
@@ -38,12 +39,12 @@
         <tr>
           
         <tr>
-          <td><%= link_to 'Volver', @week, method: :delete, class: 'btn btn-dark btn-me' %></td>
-          <td><%= link_to 'Guardar Reserva', edit_seeker_path(@week), class: 'btn btn-dark btn-me' , data: { confirm: 'La reserva de la semana esta por concretarse ¿Desea continuar?' } %></td>
+          <td><%= link_to 'Volver', home_users_path, class: 'btn btn-dark btn-me' %></td>
         </tr>
 
       </table>
     </div>
 
   </div>
+</div>
 </div>

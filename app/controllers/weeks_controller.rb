@@ -1,15 +1,17 @@
 class WeeksController < ApplicationController
-  before_action :authenticated_user!, only: [:show , :new, :create]
+  before_action :authenticated_user!, only: [:show , :new, :create, :update]
   before_action :authenticated_admin! , only: [:destroy , :edit  , :index]
   def new
   	@week = Week.new
   	@week.residence_id = params[:id]
-  	@week.estado = current_user.email
-    @week.fecha = params[:fecha]
+ # 	@week.estado = current_user.email
+    
 
   end
 
   def index
+      Week.where(estado: "").destroy_all
+
      @week = Week.all
   end
 
@@ -31,6 +33,11 @@ class WeeksController < ApplicationController
 
   def edit
     @week = Week.find(params[:id])
+  end
+
+  def update
+    @week = Week.find(params[:id])
+
   end
 
   def create

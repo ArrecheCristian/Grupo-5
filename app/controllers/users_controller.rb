@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 
   private
   	def user_params
-    	params.require(:user).permit(:premium)
+    	params.require(:user).permit(:premium,:credito)
   	end
 
 end

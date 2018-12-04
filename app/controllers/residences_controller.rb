@@ -2,6 +2,8 @@ class ResidencesController < ApplicationController
 
   before_action :authenticated_admin!  
   def index
+    Week.where(estado: "").destroy_all
+    
     @residence = Residence.all
     
     #Filtros de búsqueda
