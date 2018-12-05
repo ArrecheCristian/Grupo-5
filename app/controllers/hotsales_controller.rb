@@ -3,11 +3,30 @@ class HotsalesController < ApplicationController
   
   def index
     @hotsale = Hotsale.all
+    #Filtros de búsqueda
+    @ResiHotsale = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
+
+    @ResiHotsale = params[:loc] != "" ? @ResiHotsale.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @ResiHotsale
+
+    @ResiHotsale = params[:des] != "" ? @ResiHotsale.where("descripcion LIKE ?", "%#{params[:des]}%") : @ResiHotsale
+
+    #Se filtran las residencias que no están en Hot-sale
+    aux = []
+
+    @ResiHotsale.each do |r|
+      if (Hotsale.where(residence_id: r.id).count == 0)
+        aux << r
+      end
+    end
+    
+    @ResiHotsale = @ResiHotsale - aux
   end
+
 
   def show
     @hotsale = Hotsale.find(params[:id])
   end
+
 
   def new
     @hotsale = Hotsale.new
@@ -20,9 +39,11 @@ class HotsalesController < ApplicationController
     @hotsale = Hotsale.find(params[:id])
   end
 
+
   def update
 
   end
+
 
   def destroy
     @hotsale = Hotsale.find(params[:id])
@@ -35,6 +56,7 @@ class HotsalesController < ApplicationController
       end
 
   end
+
 
   def create
     @hotsale = Hotsale.new(hotsale_params)

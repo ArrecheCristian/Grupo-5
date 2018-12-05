@@ -1,4 +1,20 @@
-<span> <h2 class="text-uppercase" > Hot-Sales</h2> </span>
+<nav class="navbar navbar-dark bg-dark">
+  <%= form_tag '/auctions', :method => :get do %>
+    <%= label_tag :com, 'Complejo', style:'color :white'%>
+    <%= text_field_tag :com,params[:com],
+      placeholder: "¿Qué buscas?" %>
+    <%= label_tag :loc, 'Localidad', style:'color :white'%>
+    <%= text_field_tag :loc, params[:loc],
+      placeholder: "¿Qué buscas?" %>
+    <%= label_tag :des, 'Descripción', style:'color :white'%>
+    <%= text_field_tag :des, params[:des],
+      placeholder: "¿Qué buscas?" %>
+    <%= submit_tag 'Buscar' %>
+  <% end %>
+</nav>
+
+
+<span> <h2 class="text-uppercase"> Hot-Sales</h2> </span>
 
 <div>
   <table class="table">
@@ -6,20 +22,23 @@
         <td style="font-size: 15pt"> Complejo: </td>
         <td style="font-size: 15pt"> Ubicación: </td>
         <td style="font-size: 15pt"> Fecha: </td>
-        <td style="font-size: 15pt"> Estado: </td>
+        <td style="font-size: 15pt"> Precio: </td>
         
 
       </tr>
 
-      <% @hotsale.each do |hot| %>
-        <tr>
-          <td style="font-size: 8pt"><%= hot.residence.complejo %></td>
-          <td style="font-size: 8pt"><%= hot.residence.ubicacion %></td>
-          <td style="font-size: 8pt"><%= hot.fecha %></td>
-          <td style="font-size: 8pt"><%= hot.estado %></td>
-          <td><%= link_to 'Ver detalles', hotsale_path(hot), class: 'btn btn-dark btn-mm'%></td>
+      <% @ResiHotsale.each do |resHot| %>
+          
+          <% Hotsale.where(residence_id: resHot.id).each do |hot|%>
+          <tr>
+            <td style="font-size: 8pt"><%= resHot.complejo %></td>
+            <td style="font-size: 8pt"><%= resHot.ubicacion %></td>
+            <td style="font-size: 8pt"><%= hot.fecha %></td>
+            <td style="font-size: 8pt"><%= hot.monto %></td>
+            <td><%= link_to 'Ver detalles', hotsale_path(hot), class: 'btn btn-dark btn-mm'%></td>
+          </tr>
+          <%end%>
 
-        </tr>
       <% end%>
 
   </table>
