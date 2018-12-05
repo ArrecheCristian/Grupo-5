@@ -35,6 +35,10 @@
           <td> <h4>Email:<h4></td>
           <td> <h5><%=@user.email%><h5></td>
         </tr>
+        <tr>
+          <td> <h4>Creditos:<h4></td>
+          <td> <h5><%=@user.credito%><h5></td>
+        </tr>
           
           <tr>
           <td> <h4>Premium:<h4></td>
@@ -63,6 +67,17 @@
   <br><br>
 
   <%= f.submit "Cambiar Tipo", class: 'btn btn-dark btn-me' %>
+<% end %>
+</div>
+
+<div class="span6 offset3">
+<%= form_for @user do |f| %>
+  <br>
+  <%= f.label :credito, "¿Desea recargar credito?"%>
+  <%= f.number_field :credito, :value => 2 , :readonly => true %>
+  <br><br>
+  
+  <%= f.submit "Cargar creditos", class: 'btn btn-dark btn-me' %>
 <% end %>
 </div>
     </div>

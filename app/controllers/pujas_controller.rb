@@ -20,19 +20,25 @@ class PujasController < ApplicationController
 
 
   def create
-    @puja = Puja.new(puja_params)
-    @puja.save
-    
-    if @puja.save
-      if(@puja.monto > @puja.auction.precioBase)
-          @puja.auction.update(:precioBase => @puja.monto)
-          @puja.auction.update(:email => @puja.email)
-          redirect_to home_users_path, notice: 'La subasta se ha efectuado con exito'
-      end
-    else
-      flash[:alert] = "ERROR: No ha completado los campos correctamente, o la subasta no supero el monto minimo."
-      render :new
-    end
+                
+      if ( current_user.credito > 0 )
+          @puja = Puja.new(puja_params)
+          @puja.save
+
+          if @puja.save
+            if(@puja.monto > @puja.auction.precioBase)
+                @puja.auction.update(:precioBase => @puja.monto)
+                @puja.auction.update(:email => @puja.email)
+                redirect_to home_users_path, notice: 'La subasta se ha efectuado con exito'
+            end
+          else
+            flash[:alert] = "ERROR: No ha completado los campos correctamente, o la subasta no supero el monto minimo."
+            render :new
+          end
+        else
+            flash[:alert] = "ERROR: Usted no posee creditos suficientes."
+            redirect_to home_users_path
+        end
   end
 
   private

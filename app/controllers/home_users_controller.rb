@@ -3,6 +3,9 @@ class HomeUsersController < ApplicationController
 
 	def index
 			@residence = Residence.all
+
+			Week.where(estado: "").destroy_all
+
 			#Filtros de búsqueda
 			@residences = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
 

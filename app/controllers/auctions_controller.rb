@@ -69,17 +69,27 @@ class AuctionsController < ApplicationController
 
 
     def edit
-#		@auction = Auction.where(residence_id: params[:id])
+
 		@auction = Auction.find(params[:id])
 
 		if(@auction.estado == "ACTIVA") || (@auction.estado == "FINALIZADA")
 
 			@auction.update(:estado => "FINALIZADA")
+
+			if (@auction.email == nil) || (@auction.pujas.count == 0)
+				@auction.update(:email => "no hubo ganador")
+				redirect_to auction_path(@auction), alert: 'La subasta no ha tenido ganador'
+			else
+				@auction.update(:precioBase => @auction.pujas.first.monto)
+	            @auction.update(:email => @auction.pujas.first.email)
+				@ganador=User.find_by(email: @auction.email)
+				@ganador.update(:credito => @ganador.credito - 1) 
+
+	 		end
 		else
 			redirect_to edit_auction_path(@auction), alert: 'La subasta ya ha sido finalizada previamente'
 		end
-    end
-
+   end
 
 	def update
 		@auction = Auction.find(params[:id])

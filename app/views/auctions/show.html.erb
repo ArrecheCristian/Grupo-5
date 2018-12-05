@@ -56,6 +56,10 @@
 
     
     <div class="col-sm">
+        <%p = User.where(credito:  0)%>
+        <%p.each do |nombregenerico| %>
+            <%Puja.where(email:  nombregenerico.email).destroy_all %>
+        <%end%>
       
       <table class="table">
         <tr>
@@ -64,12 +68,15 @@
         <tr>
           <td> <h4>Cliente:<h4> </td>
           <td> <h4>Puja:<h4> </td>
+          <td> <h4>Creditos:<h4> </td>
         </tr>
           <% m = @auction.pujas.all %>
           <% m.each do |nombregenerico| %>
             <tr>
               <td> <%= nombregenerico.email %> </td>
               <td> <%= nombregenerico.monto %> </td>
+              <% usuario=User.find_by(email: nombregenerico.email)%>
+              <td> <%= usuario.credito %> </td>
             </tr>
         <% end %>
 
