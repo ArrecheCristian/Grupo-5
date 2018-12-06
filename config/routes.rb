@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 	resources :weeks
 	resources :seekers
 	resources :users
+	post :admins_controllers, to: 'admins#validations', as: 'validations' 
 	
 	get '/users/edit_custom/:id', to: 'users#edit_custom', as: 'edit_custom'
  	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
