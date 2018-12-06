@@ -8,18 +8,24 @@ Rails.application.routes.draw do
 	resources :hotsales
 	resources :residences
  	resources :clientes
- 	resources :auctions, :except => 'new'
+ 	resources :auctions, :except => 'new' 
  	resources :user_lists
 	resources :home_users do
   		collection do
   			get :hotsale
     		get :hotsales
+    		get :auction_reservation
   		end
 	end
 	resources :pujas
-	resources :weeks
+	resources :weeks do
+	collection do
+  			get :reservation
+  		end
+	end
 	resources :seekers
 	resources :users
+	resources :cancellations
 	post :admins_controllers, to: 'admins#validations', as: 'validations' 
 	
 	get '/users/edit_custom/:id', to: 'users#edit_custom', as: 'edit_custom'

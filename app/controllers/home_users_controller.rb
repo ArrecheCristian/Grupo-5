@@ -42,6 +42,9 @@ class HomeUsersController < ApplicationController
 
  	end
 
+	def auction_reservation
+    	@auction = Auction.find(params[:id])
+ 	end
 
  	def hotsales
 

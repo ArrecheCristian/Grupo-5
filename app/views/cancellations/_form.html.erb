@@ -1,0 +1,19 @@
+<div class="ml-5" style="font-size: 9pt">
+
+  <%= simple_form_for @cancellation do |f| %>
+
+  	<%= f.input :complejo , :readonly => true, wrapper_html: { class: 'hide' }   %>
+  	<%= f.input :fecha , :readonly => true, wrapper_html: { class: 'hide' }   %>
+  	<%= f.input :descripcion , :readonly => true, wrapper_html: { class: 'hide' }   %>
+  	<%= f.input :usuario , :readonly => true, wrapper_html: { class: 'hide' }   %>
+  	<%= f.input :motivo %>
+
+  	<p>Ingrese el motivo  para la baja de su reserva y comuniquese con nuestras oficinas al 0800-XXX-XXXX para 
+  		para confirmar o rechazar su petición, segun la cercania de la fecha en cuestion.<p>
+  	<p>Si su petición es aceptada se le devolvera el credito empleado en esta reserva.<p>
+
+  	<%= link_to 'Cancelar', home_users_path, class: 'btn btn-dark btn-lg' %>
+  	<button type= f.submit class="btn btn-primary btn-lg"> Realizar </button>
+
+<% end %>
+</div>

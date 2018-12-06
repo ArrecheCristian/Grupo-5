@@ -57,6 +57,7 @@
             <td> <%= nombregenerico.residence.complejo %> </td>
             <td> <%= nombregenerico.residence.ubicacion %> </td>
             <td> <%= nombregenerico.fecha %> </td>
+            <td><%= link_to 'Detalle', reservation_weeks_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
           </tr>
         <% end %>
   </div>
@@ -72,6 +73,8 @@
             <td> <%= nombregenerico.residence.complejo %> </td>
             <td> <%= nombregenerico.residence.ubicacion %> </td>
             <td> <%= nombregenerico.fecha %> </td>
+            <td><%= link_to 'Detalle', auction_reservation_home_users_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
+
           </tr>
         <% end %>
   </div>

@@ -35,6 +35,10 @@ class WeeksController < ApplicationController
     @week = Week.find(params[:id])
   end
 
+  def reservation
+    @week = Week.find(params[:id])
+  end
+
   def update
     @week = Week.find(params[:id])
 

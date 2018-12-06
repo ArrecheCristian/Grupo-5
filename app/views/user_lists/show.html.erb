@@ -46,13 +46,9 @@
         </tr>
         <tr>
 
-
-
-
-          </tr>
+        </tr>
         <tr>
-          <td><%= link_to 'Volver al listado', user_lists_path, class: 'btn btn-dark btn-lg' %></td>
-          
+          <td><%= link_to 'Volver al listado', user_lists_path, class: 'btn btn-dark btn-lg' %></td>   
         </tr>
 
       </table>
@@ -74,7 +70,7 @@
 <%= form_for @user do |f| %>
   <br>
   <%= f.label :credito, "¿Desea recargar credito?"%>
-  <%= f.number_field :credito, :value => 2 , :readonly => true %>
+  <%= f.number_field :credito, :value => 2 %>
   <br><br>
   
   <%= f.submit "Cargar creditos", class: 'btn btn-dark btn-me' %>
@@ -82,5 +78,55 @@
 </div>
     </div>
 
+<div class="col-sm">
+        <table class="table">
+    <tr>
+      <th> Reservas de Residencias </th>
+    </tr>
+        <% product = Week.where(estado: @user.email) %>
+        <% product.each do |nombregenerico| %>
+          <tr>
+            <td> <%= nombregenerico.residence.complejo %> </td>
+            <td> <%= nombregenerico.residence.ubicacion %> </td>
+            <td> <%= nombregenerico.fecha %> </td>
+            <td><%= link_to 'Detalle', edit_week_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
+            <td><%= link_to 'Eliminar', nombregenerico, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
+
+          </tr>
+        <% end %>
+  </div>
+
+  <div class="col-sm">
+        <table class="table">
+    <tr>
+      <th> Subastas Ganadas </th>
+    </tr>
+        <% product = Auction.where(email: @user.email,estado: "FINALIZADA") %>
+        <% product.each do |nombregenerico| %>
+          <tr>
+            <td> <%= nombregenerico.residence.complejo %> </td>
+            <td> <%= nombregenerico.residence.ubicacion %> </td>
+            <td> <%= nombregenerico.fecha %> </td>
+            <td><%= link_to 'Detalle', auction_reservation_home_users_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
+
+          </tr>
+        <% end %>
+  </div>
+
+  <div class="col-sm">
+        <table class="table">
+    <tr>
+      <th> Hot-Sales reservados </th>
+    </tr>
+        <% product = Hotsale.where(email: @user.email) %>
+        <% product.each do |nombregenerico| %>
+          <tr>
+            <td> <%= nombregenerico.residence.complejo %> </td>
+            <td> <%= nombregenerico.residence.ubicacion %> </td>
+            <td> <%= nombregenerico.fecha %> </td>
+          </tr>
+        <% end %>
+  </div>
   </div>
 </div>
+
