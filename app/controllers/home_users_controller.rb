@@ -43,5 +43,34 @@ class HomeUsersController < ApplicationController
  	end
 
 
+ 	def hotsales
+
+	 	#Filtros de búsqueda
+	    @ResiHotsale = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
+
+	    @ResiHotsale = params[:loc] != "" ? @ResiHotsale.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @ResiHotsale
+
+	    @ResiHotsale = params[:des] != "" ? @ResiHotsale.where("descripcion LIKE ?", "%#{params[:des]}%") : @ResiHotsale
+
+	    #Se filtran las residencias que no están en Hot-sale
+	    aux = []
+
+	    @ResiHotsale.each do |r|
+	      if (Hotsale.where(residence_id: r.id).count == 0)
+	        aux << r
+	      end
+	    end
+	    
+	    @ResiHotsale = @ResiHotsale - aux
+	end
+
+
+	def hotsale
+		#Recibo el id de la residencia en Hot-Sale
+		#A partir de eso puedo sacar todos los Hot-Sale que tenga asociados
+		#Armar la vista hotsale con los datos principales y tipo
+		#un menu desplegable que digas las distintas fechas y precios
+
+	end
 
 end
