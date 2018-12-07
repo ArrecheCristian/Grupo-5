@@ -90,6 +90,7 @@
             <td> <%= nombregenerico.residence.complejo %> </td>
             <td> <%= nombregenerico.residence.ubicacion %> </td>
             <td> <%= nombregenerico.fecha %> </td>
+            <td><%= link_to 'Detalle', reservation_hotsales_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
           </tr>
         <% end %>
   </div>

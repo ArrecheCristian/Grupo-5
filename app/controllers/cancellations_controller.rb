@@ -17,6 +17,17 @@ class CancellationsController < ApplicationController
   		@cancellation = Cancellation.all
   end
 
+  def destroy
+      @cancellation = Cancellation.find(params[:id])
+
+      if @cancellation.destroy
+       redirect_to residences_path, notice: "La cancelacion ha sido eliminada con éxito"
+      else
+        redirect_to residences_path, alert: "ERROR al eliminar la cancelacion"
+      end
+
+  end
+
   def create #user
     @cancellation = Cancellation.new(cancellation_params)
 

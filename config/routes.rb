@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   	devise_for :admins
   	devise_for :users
 
-	resources :hotsales
+	resources :hotsales do
+  		collection do
+    		get :reservation
+  		end
+	end
 	resources :residences
  	resources :clientes
  	resources :auctions, :except => 'new' 

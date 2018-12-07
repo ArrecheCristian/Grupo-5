@@ -1,6 +1,6 @@
 class WeeksController < ApplicationController
   before_action :authenticated_user!, only: [:show , :new, :create, :update]
-  before_action :authenticated_admin! , only: [:destroy , :edit  , :index]
+  before_action :authenticated_admin! , only: [:edit  , :index]
   def new
   	@week = Week.new
   	@week.residence_id = params[:id]
@@ -10,6 +10,7 @@ class WeeksController < ApplicationController
   end
 
   def index
+      #borra las reservas sin dueño
       Week.where(estado: "").destroy_all
 
      @week = Week.all
@@ -17,14 +18,15 @@ class WeeksController < ApplicationController
 
   def destroy
     @week = Week.find(params[:id])
-    @week.destroy 
-    if  @week.destroy 
-      if user_signed_in?     
-        redirect_to home_users_path
-      else
-        redirect_to residences_path
-      end
+
+    if(@week.estado == "")
+      @week.destroy
+      redirect_to home_users_path
+    else
+      @week.destroy
+      redirect_to residences_path
     end
+
   end
 
   def show

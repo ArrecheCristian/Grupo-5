@@ -1,4 +1,3 @@
-
 <div class="jumbotron">
   <div class="row">
     <div class="col-sm">
@@ -80,6 +79,9 @@
           <tr>
             <td> <%= f.residence.complejo %> </td>
             <td> <%= f.fecha %> </td>
+            <td><%= link_to 'Detalle', hotsale_path(:id => f.residence.id), class: 'btn btn-dark btn-sm' %></td>
+            <td><%= link_to 'Eliminar', f, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
+
           </tr>
         <% end %>
   </div>

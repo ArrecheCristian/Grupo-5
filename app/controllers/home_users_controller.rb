@@ -3,7 +3,7 @@ class HomeUsersController < ApplicationController
 
 	def index
 			@residence = Residence.all
-
+			#borra todas las semanas que no tienen dueño
 			Week.where(estado: "").destroy_all
 
 			#Filtros de búsqueda

@@ -73,7 +73,7 @@
 
         <%elsif user_signed_in?%>
           <tr>
-          <td><%= link_to 'COMPRAR', new_hotsale_path(:id => hotsale.id), class: 'btn btn-dark btn-lg', data: { confirm: '¿Está seguro que desea comprar esta semana?' }%></td>
+          <td><%= link_to 'LO QUIERO!', reservation_hotsales_path(:id => hotsale.id), class: 'btn btn-dark btn-lg', data: { confirm: '¿Está seguro que desea comprar esta semana?' }%></td>
           </tr>
         <%end%>
 

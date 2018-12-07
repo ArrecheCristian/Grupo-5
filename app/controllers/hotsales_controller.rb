@@ -29,11 +29,8 @@ class HotsalesController < ApplicationController
 
   def new
     @hotsale = Hotsale.new
-    
     @hotsale.residence_id = params[:id]
     @hotsale.estado = "ACTIVO"
-
-    @hotsale.email = current_user.email
 
   end
 
@@ -52,6 +49,11 @@ class HotsalesController < ApplicationController
         redirect_to residences_path, alert: "ERROR al eliminar el Hot-Sale. Esta reservado o no ha pasado su fecha limite."
       end
 
+  end
+
+  def reservation
+      @hotsale = Hotsale.find(params[:id])
+      @hotsale.update(:email => current_user.email)
   end
 
 
