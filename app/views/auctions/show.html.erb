@@ -1,83 +1,115 @@
-<div class="jumbotron">
-  <div class="row">
-    <div class="col-sm">
-      <img src= <%=@auction.residence.imagen %> , class="rounded" />
-    </div>
-    <div class="col-sm">
-      <table class="table">
-        <tr>
-          <td> <h2><%= @auction.residence.complejo %> <h2></td>
-        </tr>
-         <tr>
-          <td> <h4>Estado:<h4></td>
-          <td> <h5 style="color: green"><%= @auction.estado %><h5></td>
-        </tr>
-        <tr>
-        <tr>
-          <td> <h4>Ubicación:<h4></td>
-          <td> <h5><%= @auction.residence.ubicacion  %><h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Precio:(ARS)<h4></td>
-          <td><h5>$<%= @auction.precioBase %><h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Descripcion:<h4></td>
-          <td> <h5><%= @auction.residence.descripcion  %><h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Capacidad<h4></td>
-          <td> <h5><%= @auction.residence.capacidad  %><h5> </td>
-        </tr>
-        <tr>
-          <td> <h4>Estrellas:<h4></td>
-          <td> <h5><%= @auction.residence.estrellas  %><h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Semana:<h4></td>
-          <td> <h5><%= @auction.fecha  %><h5> </td>
-        </tr>
-         <tr>
-            <td> <h4>Ganador actual:<h4></td>
-            <td> <h5><%= @auction.email %><h5> </td>
-        </tr>
+<% if admin_signed_in? || user_signed_in?%>
 
-        <tr>
-          <td><%= link_to 'Finalizar Subasta', edit_auction_path(@auction), class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea finalizar la subasta? Podrá continuar viendo sus datos en "Ver detalles"' }  %></td>
-          <td><%= link_to 'Eliminar Subasta', auction_path(@auction), method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la subasta? Se perderán todos los datos asociados a ella' }  %></td>
-        </tr>
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-sm">
+        <img src= <%=@auction.residence.imagen %> , class="rounded" />
+      </div>
+      <div class="col-sm">
+        <table class="table">
+          <tr>
+            <td> <h2><%= @auction.residence.complejo %> <h2></td>
+          </tr>
+           <tr>
+            <td> <h4>Estado:<h4></td>
+            <td> <h5 style="color: green"><%= @auction.estado %><h5></td>
+          </tr>
+          <tr>
+          <tr>
+            <td> <h4>Ubicación:<h4></td>
+            <td> <h5><%= @auction.residence.ubicacion  %><h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Precio:(ARS)<h4></td>
+            <td><h5>$<%= @auction.precioBase %><h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Descripcion:<h4></td>
+            <td> <h5><%= @auction.residence.descripcion  %><h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Capacidad<h4></td>
+            <td> <h5><%= @auction.residence.capacidad  %><h5> </td>
+          </tr>
+          <tr>
+            <td> <h4>Estrellas:<h4></td>
+            <td> <h5><%= @auction.residence.estrellas  %><h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Semana:<h4></td>
+            <td> <h5><%= @auction.fecha  %><h5> </td>
+          </tr>
 
-        <tr>
-          <td><%= link_to 'Volver', auctions_path, class: 'btn btn-dark btn-me' %></td>
-        </tr>
+          <% if admin_signed_in?%>
 
-      </table>
-    </div>
-
-    
-    <div class="col-sm">
-
-      
-      <table class="table">
-        <tr>
-          <td> <h2>Registro de Pujas<h2> </td>
-        </tr>
-        <tr>
-          <td> <h4>Cliente:<h4> </td>
-          <td> <h4>Puja:<h4> </td>
-          <td> <h4>Creditos:<h4> </td>
-        </tr>
-          <% m = @auction.pujas.all %>
-          <% m.each do |nombregenerico| %>
-            <tr>
-              <td> <%= nombregenerico.email %> </td>
-              <td> <%= nombregenerico.monto %> </td>
-              <% usuario=User.find_by(email: nombregenerico.email)%>
-              <td> <%= usuario.credito %> </td>
+             <tr>
+                <td> <h4>Ganador actual:<h4></td>
+                <td> <h5><%= @auction.email %><h5> </td>
             </tr>
-        <% end %>
+
+            <tr>
+              <td><%= link_to 'Finalizar Subasta', edit_auction_path(@auction), class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea finalizar la subasta? Podrá continuar viendo sus datos en "Ver detalles"' }  %></td>
+              <td><%= link_to 'Eliminar Subasta', auction_path(@auction), method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la subasta? Se perderán todos los datos asociados a ella' }  %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td><%= link_to 'Volver al listado', auctions_path, class: 'btn btn-dark btn-me' %></td>
+          
+          <% if user_signed_in?%>
+        
+               <td><%= link_to 'Quiero subastar!', new_puja_path(:id => @auction.id), class: 'btn btn-dark btn-lg' %></td>
+            </tr>
+          <% end %>
+
+        </table>
+      </div>
+
+
+      <% if admin_signed_in?%>      
+        <div class="col-sm">
+          <table class="table">
+            <tr>
+              <td> <h2>Registro de Pujas<h2> </td>
+            </tr>
+            <tr>
+              <td> <h4>Cliente:<h4> </td>
+              <td> <h4>Puja:<h4> </td>
+              <td> <h4>Creditos:<h4> </td>
+            </tr>
+              <% m = @auction.pujas.all %>
+              <% m.each do |nombregenerico| %>
+                <tr>
+                  <td> <%= nombregenerico.email %> </td>
+                  <td> <%= nombregenerico.monto %> </td>
+                  <% usuario=User.find_by(email: nombregenerico.email)%>
+                  <td> <%= usuario.credito %> </td>
+                </tr>
+            <% end %>
+
+        </div>
+
+      <%elsif user_signed_in?%>
+        <div class="col-sm">
+          <table class="table">
+            <tr>
+              <h2>Registro de Pujas<h2> 
+            </tr><br>
+            <tr>
+              <td> <h4>Usuario:<h4> </td>
+              <td> <h4>Puja:<h4> </td>
+            </tr>
+              <% m = @auction.pujas.all %>
+              <% m.each do |nombregenerico| %>
+                <tr>
+                  <% usuario=User.find_by(email: nombregenerico.email)%>
+                  <td> <%= usuario.Nombre %> </td>
+                  <td> <%= nombregenerico.monto %> </td>
+                </tr>
+            <% end %>
+        </div>
+      <% end %>
 
     </div>
-
   </div>
-</div>
+
+<% end %>

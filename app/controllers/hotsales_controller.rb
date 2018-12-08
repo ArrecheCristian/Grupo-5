@@ -44,7 +44,7 @@ class HotsalesController < ApplicationController
 
     if (@hotsale.email == nil) || (Date.parse(@hotsale.fecha) > Date.today)
        @hotsale.destroy
-       redirect_to residences_path, notice: "El Hot-Sale' ha sido eliminado con éxito"
+       redirect_to hotsale_path(@hotsale.residence), notice: "El Hot-Sale' ha sido eliminado con éxito"
       else
         redirect_to residences_path, alert: "ERROR al eliminar el Hot-Sale. Esta reservado o no ha pasado su fecha limite."
       end
@@ -66,7 +66,7 @@ class HotsalesController < ApplicationController
 
       if (Date.parse(@hotsale.fecha) > limite1) && (Date.parse(@hotsale.fecha) < limite2) 
         if @hotsale.save
-            redirect_to hotsale_path(@hotsale)
+            redirect_to hotsale_path(@hotsale.residence)
         else
           flash[:alert] = "La semana no esta disponible"
           redirect_to residences_path

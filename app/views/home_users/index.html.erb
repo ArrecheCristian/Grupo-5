@@ -47,7 +47,8 @@
 
 	<div class="row mt-5 justify-content-center">
 
-		<%if @subastaRandom != nil%>
+		<%if @subastaRandom != nil && @subastaRandom.auction.estado == "ACTIVA"%>
+		
 		    <div class="card card-custom mx-5 mb-3" style="width: 80rem;">
 		   <div class="p-3 bg-warning text-black"><h2>NO TE PIERDAS ESTA SUBASTA!!<h2></div>
 		      <img class="card-img-top" src= <%=@subastaRandom.imagen%> alt="Card image cap">
@@ -79,12 +80,6 @@
 	  	<%end%>
 
 	</div>
-
-
-
-
-
-
 
 <% else %>
 		<center><h2>¡ERROR! Antes debe inciar sesión en nuestro sistema</h2></center>

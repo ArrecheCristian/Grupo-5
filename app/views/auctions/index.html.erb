@@ -48,20 +48,21 @@
 
 		<div class="row mt-5 justify-content-center">
 			<% @resiAuction.each do |r| %>
+				<%if r.auction.estado == "ACTIVA"%>
+					<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
+						<img class="card-img-top" src= <%=r.imagen%> alt="Card image cap">
+							<div class="card-body">
+								<h3 class="card-title"> <%= r.complejo %> </h3>
+								<p class="card-text">
+									<h5> <%= r.ubicacion %> </h5><br>
+									Capacidad: <%= r.capacidad %> <br>
+									Precio: $<%= r.auction.precioBase %> <br>
+								</p>
 
-			<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
-				<img class="card-img-top" src= <%=r.imagen%> alt="Card image cap">
-					<div class="card-body">
-						<h3 class="card-title"> <%= r.complejo %> </h3>
-						<p class="card-text">
-							<h5> <%= r.ubicacion %> </h5><br>
-							Capacidad: <%= r.capacidad %> <br>
-							Precio: $<%= r.auction.precioBase %> <br>
-						</p>
-
-						<a><%= link_to 'Ver más', home_user_path(r), class: 'btn btn-info btn-sm'%></a>
+								<a><%= link_to 'Ver más', auction_path(r.auction), class: 'btn btn-info btn-sm'%></a>
+							</div>
 					</div>
-			</div>
+				<% end %>
 			<% end %>
 		</div>
 
