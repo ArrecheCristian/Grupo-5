@@ -31,6 +31,7 @@ class AuctionsController < ApplicationController
 		end
 
 		@resiAuction = @resiAuction - aux
+
 	end
 
 
@@ -91,6 +92,8 @@ class AuctionsController < ApplicationController
 				@ganador=User.find_by(email: @auction.email)
 				@ganador.update(:credito => @ganador.credito - 1)
 
+				#Crea una semana con los datos para que le figure al usuario
+				Week.create(residence_id: @auction.residence_id, fecha: @auction.fecha, estado: @auction.email)
 	 		end
 		else
 			redirect_to edit_auction_path(@auction), alert: 'La subasta ya ha sido finalizada previamente'

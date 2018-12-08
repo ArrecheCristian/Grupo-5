@@ -13,7 +13,8 @@ class WeeksController < ApplicationController
       #borra las reservas sin dueño
       Week.where(estado: "").destroy_all
 
-     @week = Week.all
+      @week = Week.all
+      @hotsale = Hotsale.where(estado: "FINALIZADO")
   end
 
   def destroy
