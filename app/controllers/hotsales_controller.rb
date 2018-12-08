@@ -64,8 +64,9 @@ class HotsalesController < ApplicationController
       @hotsale = Hotsale.new(hotsale_params)
       limite1 = Date.today
       limite2 = Date.today + 6.month
+      ocupada = Week.find_by(residence_id: @hotsale.residence_id, fecha: @hotsale.fecha)
 
-      if (Date.parse(@hotsale.fecha) > limite1) && (Date.parse(@hotsale.fecha) < limite2) 
+      if (Date.parse(@hotsale.fecha) > limite1) && (Date.parse(@hotsale.fecha) < limite2) && (ocupada.blank?) 
         if @hotsale.save
             redirect_to hotsale_path(@hotsale.residence)
         else

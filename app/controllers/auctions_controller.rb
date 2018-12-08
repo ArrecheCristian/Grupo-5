@@ -56,12 +56,19 @@ class AuctionsController < ApplicationController
 
 	def create
 		@auction = Auction.new(auctions_params)
-		@auction.save
-		if (@auction.save )
-			flash[:notice] = "La residencia ha entrado en subasta con éxito"
-			redirect_to residence_path(@auction.residence_id)
+      	limite1 = Date.today + 6.month
+      	ocupada = Week.find_by(residence_id: @auction.residence_id, fecha: @auction.fecha)
+
+      	if (Date.parse(@auction.fecha) > limite1) && (ocupada.blank?) 
+			if (@auction.save )
+				flash[:notice] = "La residencia ha entrado en subasta con éxito"
+				redirect_to residence_path(@auction.residence_id)
+			else
+				flash[:alert] = "No se ha registrado la subasta. Verifique si la subasta ya está iniciada o intentelo nuevamente."
+		    	redirect_to residence_path(@auction.residence_id)
+			end
 		else
-			flash[:alert] = "No se ha registrado la subasta. Verifique si la subasta ya está iniciada o intentelo nuevamente."
+			flash[:alert] = "No se ha registrado la subasta. Verifique si la semana esta en el rango disponible o ya está ocupada."
 		    redirect_to residence_path(@auction.residence_id)
 		end
 	end
@@ -71,15 +78,15 @@ class AuctionsController < ApplicationController
     def edit
 
 		@auction = Auction.find(params[:id])
-		#borra las pujas de los usuarios que no tienen creditos
-		p = User.where(credito:  0)
-        p.each do |nombregenerico|
-            Puja.where(email:  nombregenerico.email, auction_id:  @auction.id).destroy_all
-        end
-        #borra los pedidos de que avise por mail cuando se pase una fecha a subasta
-        List.where(fecha: @auction.fecha, residence_id: @auction.residence_id ).destroy_all
 
-		if(@auction.estado == "ACTIVA") || (@auction.estado == "FINALIZADA")
+			#borra las pujas de los usuarios que no tienen creditos
+			p = User.where(credito:  0)
+        	p.each do |nombregenerico|
+            	Puja.where(email:  nombregenerico.email, auction_id:  @auction.id).destroy_all
+        	end
+        	#borra los pedidos de que avise por mail cuando se pase una fecha a subasta
+        	List.where(fecha: @auction.fecha, residence_id: @auction.residence_id ).destroy_all
+
 
 			@auction.update(:estado => "FINALIZADA")
 
@@ -95,9 +102,6 @@ class AuctionsController < ApplicationController
 				#Crea una semana con los datos para que le figure al usuario
 				Week.create(residence_id: @auction.residence_id, fecha: @auction.fecha, estado: @auction.email)
 	 		end
-		else
-			redirect_to edit_auction_path(@auction), alert: 'La subasta ya ha sido finalizada previamente'
-		end
    end
 
 	def update
