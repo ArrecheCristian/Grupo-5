@@ -1,10 +1,9 @@
 class AuctionsController < ApplicationController
-	
-	before_action :authenticated_admin!
-	
+
+	##before_action :authenticated_admin!
 	## bien aca los user pueden usar index y sshow NADA MAS, y el resto corresponde a los admin
 	## el problema es que los admin tambien tienen que poder usar index y show
-	
+
 	def new
 		@auction = Auction.new
 		@auction.residence_id = params[:id]
@@ -30,7 +29,7 @@ class AuctionsController < ApplicationController
 				aux << r
 			end
 		end
-		
+
 		@resiAuction = @resiAuction - aux
 	end
 
@@ -71,11 +70,13 @@ class AuctionsController < ApplicationController
     def edit
 
 		@auction = Auction.find(params[:id])
-
+		#borra las pujas de los usuarios que no tienen creditos
 		p = User.where(credito:  0)
-        p.each do |nombregenerico| 
-            Puja.where(email:  nombregenerico.email, auction_id:  @auction.id).destroy_all 
+        p.each do |nombregenerico|
+            Puja.where(email:  nombregenerico.email, auction_id:  @auction.id).destroy_all
         end
+        #borra los pedidos de que avise por mail cuando se pase una fecha a subasta
+        List.where(fecha: @auction.fecha, residence_id: @auction.residence_id ).destroy_all
 
 		if(@auction.estado == "ACTIVA") || (@auction.estado == "FINALIZADA")
 
@@ -88,7 +89,7 @@ class AuctionsController < ApplicationController
 				@auction.update(:precioBase => @auction.pujas.first.monto)
 	            @auction.update(:email => @auction.pujas.first.email)
 				@ganador=User.find_by(email: @auction.email)
-				@ganador.update(:credito => @ganador.credito - 1) 
+				@ganador.update(:credito => @ganador.credito - 1)
 
 	 		end
 		else

@@ -1,108 +1,88 @@
 <% if user_signed_in? %>
 
-<br>
-<h2 class="text-uppercase"> Aprovechá nuestras residencias en subasta! </h2>
-<nav class="navbar navbar-dark bg-dark">
-	<%= form_tag '/home_users', :method => :get do %>
-		<%= label_tag :com, 'Complejo', style:'color :white'%>
-		<%= text_field_tag :com,params[:com],
-			placeholder: "Busca tu lugar" %>
-		<%= label_tag :loc, 'Localidad', style:'color :white'%>
-		<%= text_field_tag :loc, params[:loc],
-			placeholder: "Busca tu lugar" %>
-		<%= label_tag :pre, 'Precio', style:'color :white'%>
-		<%= number_field_tag :pre, params[:pre],
-			placeholder: "Busca tu lugar" %>
-		<%= submit_tag 'Buscar' %>
-	<% end %>
-	<%= link_to 'Ver mi pefil', seekers_path(:id =>current_user.id), class: 'btn btn-secondary btn-sm' %>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-0 mt-0">
+		<span class="navbar-brand mt-0 mb-0 h1">
+	  <a class="navbar-brand"> <%= image_tag "HSH-Logo.svg",title: "Logo", class: "logo", style: 'height:100%;width:100%;'%> </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
 
-	<%= link_to 'Cerrar Sesion', destroy_user_session_path, :method => :delete, class: 'btn btn-secondary btn-sm'%>
-</nav>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
 
+		    <div class="mx-3">
+		    <li class="nav-item active">
+		        <a class="nav-link" href="/hotsales">Hot-Sales <span class="sr-only">(current)</span></a>
+		    </li>
+		    </div>
 
+		    <div class="mx-3">
+		    <li class="nav-item">
+		        <a class="nav-link active" href="/auctions">Subastas</a>
+		    </li>
+		    </div>
 
-<%#><span><h4> Filtrando por:</h4></span>
-<table>
-	<tr>
-		<td><%= params[:com] && params[:com] != "" ? "Complejo: " + params[:com] : "" %></td>
-<%#>	</tr>
+		    <div class="mx-3">
+		    <li class="nav-item">
+		        <a class="nav-link active" href="/residences">Residencias</a>
+		    </li>
+		    </div>
 
-	<tr>
-		<td><%= params[:loc] && params[:loc] != "" ? "Localidad: " + params[:loc] : "" %></td>
-	<%#></tr>
+			<div class="ml-5">
+			<li class="ml-5">
+		      	<%= link_to 'Mi perfil', seekers_path(:id =>current_user.id), class: 'btn btn-info btn-lg' %>
+		    </li>
+		    </div>
 
-	<tr>
-		<td><%= @precio != 0.0 ? "Precio: " + "#{@precio}" : "" %></td>
-<%#%>
-
-
-<br>
-
-<div class="row mt-5 justify-content-center">
-
-	<% @residences.each do |r| %>
-
-	<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
-		<img class="card-img-top" src= <%=r.imagen%> alt="Card image cap">
-			<div class="card-body">
-				<h3 class="card-title"> <%= r.complejo %> </h3>
-				<p class="card-text">
-					<h5> <%= r.ubicacion %> </h5><br>
-					Capacidad: <%= r.capacidad %> <br>
-					Precio: $<%= r.auction.precioBase %> <br>
-				</p>
-
-				<a><%= link_to 'Ver más', home_user_path(r), class: 'btn btn-info btn-sm'%></a>
+		    <div class="ml-3">
+		    <li class="nav-item">
+				<%= link_to 'Cerrar Sesion', destroy_user_session_path, :method => :delete, class: 'btn btn-info btn-lg'%>
+			</li>
 			</div>
-	</div>
-	<% end %>
-</div>
-<%# if current_user.premium? %> 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 
-	<h2 class="text-uppercase"> Asegurate nuestras residencias más lujosas mediante reserva directa! </h2>
-	<nav class="navbar navbar-dark bg-dark">
-		<%= form_tag '/home_users', :method => :get do %>
-			<%= label_tag :com2, 'Complejo', style:'color :white'%>
-			<%= text_field_tag :com2,params[:com2],
-				placeholder: "Busca tu lugar" %>
-			<%= label_tag :loc2, 'Localidad', style:'color :white'%>
-			<%= text_field_tag :loc2, params[:loc2],
-				placeholder: "Busca tu lugar" %>
-			<%= label_tag :pre2, 'Precio', style:'color :white'%>
-			<%= number_field_tag :pre2, params[:pre2],
-				placeholder: "Busca tu lugar" %>
-			<%= submit_tag 'Buscar' %>
-		<% end %>
-		
+	    </ul>
+	  </div>
+	  </span>
 	</nav>
-	
+
 	<div class="row mt-5 justify-content-center">
 
-		<% @residences2.each do |resi| %>
+		<%if @subastaRandom != nil%>
+		    <div class="card card-custom mx-5 mb-3" style="width: 80rem;">
+		   <div class="p-3 bg-warning text-black"><h2>NO TE PIERDAS ESTA SUBASTA!!<h2></div>
+		      <img class="card-img-top" src= <%=@subastaRandom.imagen%> alt="Card image cap">
+		        <div class="card-body">
+		          <h3 class="card-title"> <%= @subastaRandom.complejo %> </h3>
+		          <p class="card-text">
+		            <h5> <%= @subastaRandom.ubicacion %> </h5><br>
+		            Capacidad: <%= @subastaRandom.capacidad %> <br>
+		            Precio: <%= @subastaRandom.auction.precioBase %> <br>
+		          </p>
+		          <a><%= link_to 'Ver más detalles', home_user_path(@subastaRandom), class: 'btn btn-info btn-lg'%></a>
+		        </div>
+		    </div>
+	  	<%end%>
 
-		<div class="card card-custom mx-2 mb-3" style="width: 50rem;">
-			<img class="card-img-top" src= <%=resi.imagen%> alt="Card image cap">
-				<div class="card-body">
-					<h3 class="card-title"> <%= resi.complejo %> </h3>
-					<p class="card-text">
-						<h5> <%= resi.ubicacion %> </h5><br>
-						Capacidad: <%= resi.capacidad %> <br>
-					</p>
-					<% if current_user.premium? %> 
-						<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
-					<% else %>
-						<a><%= link_to 'Ver más basico', new_list_path(:id => resi.id), class: 'btn btn-info btn-sm'%></a>
-					<% end %>
-				</div>
-		</div>
-	<% end %>
+	  	<%if @hotsaleRandom != nil%>
+		    <div class="card card-custom mx-5 mb-3" style="width: 80rem;">
+		    <div class="p-3 bg-warning text-black"><h2> RESIDENCIA EN HOT-SALE<h></div>
+		      <img class="card-img-top" src= <%=@hotsaleRandom.imagen%> alt="Card image cap">
+		        <div class="card-body">
+		          <h3 class="card-title"> <%= @hotsaleRandom.complejo %> </h3>
+		          <p class="card-text">
+		            <h5> <%= @hotsaleRandom.ubicacion %> </h5><br>
+		            Capacidad: <%= @hotsaleRandom.capacidad %> <br>
+		          </p>
+		          <a><%= link_to 'Ver más detalles', hotsale_path(@hotsaleRandom), class: 'btn btn-info btn-lg'%></a>
+		        </div>
+		    </div>
+	  	<%end%>
+
 	</div>
+
+
+
+
 
 
 
