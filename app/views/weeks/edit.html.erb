@@ -38,8 +38,9 @@
           <td> <h5><%= @week.fecha  %><h5> </td>
         <tr>
         <tr>
-          <td> <h4>Usuario adquisidor:<h4></td>
-          <td> <h5><%=@week.estado%><h5></td>
+            <td> <h4>Usuario adquisidor:<h4></td>
+            <% product = User.find_by(email: @week.estado) %>
+            <td> <h3><%= link_to @week.estado, user_list_path(:id =>product.id) %><h3></td>
         </tr>
         <tr>
           <td><%= link_to 'Eliminar', @week, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>

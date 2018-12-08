@@ -42,7 +42,7 @@ class HotsalesController < ApplicationController
   def destroy
     @hotsale = Hotsale.find(params[:id])
 
-    if (@hotsale.email == nil) || (Date.parse(@hotsale.fecha) > Date.today)
+    if (@hotsale.email == nil) || (Date.parse(@hotsale.fecha) < Date.today)
        @hotsale.destroy
        redirect_to hotsale_path(@hotsale.residence), notice: "El Hot-Sale' ha sido eliminado con éxito"
       else
@@ -54,6 +54,7 @@ class HotsalesController < ApplicationController
   def reservation
       @hotsale = Hotsale.find(params[:id])
       @hotsale.update(:email => current_user.email)
+      @hotsale.update(:estado => "FINALIZADO")
   end
 
 
