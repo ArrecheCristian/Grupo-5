@@ -1,6 +1,5 @@
 class ResidencesController < ApplicationController
-
-  before_action :authenticated_admin!  
+ 
   def index
     Week.where(estado: "").destroy_all
     
@@ -12,6 +11,11 @@ class ResidencesController < ApplicationController
     @residences = params[:loc] != "" ? @residences.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @residences
 
     @residences = params[:des] != "" ? @residences.where("descripcion LIKE ?", "%#{params[:des]}%") : @residences
+
+    @precio = params[:pre].to_f
+    @residences = @precio != 0.0 ? @residences.where("(precio >= ?) AND (precio <= ?)", (0.8*@precio).to_i, (1.2*@precio).to_i ): @residences
+
+
   end
 
   def show

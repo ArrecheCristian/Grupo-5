@@ -1,6 +1,6 @@
 class AuctionsController < ApplicationController
 	
-	before_action :authenticated_admin!
+	##before_action :authenticated_admin!
 	## bien aca los user pueden usar index y sshow NADA MAS, y el resto corresponde a los admin
 	## el problema es que los admin tambien tienen que poder usar index y show
 
