@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 	resources :seekers
 	resources :users
 	resources :cancellations
+	resources :lists
 	post :admins_controllers, to: 'admins#validations', as: 'validations' 
 	
 	get '/users/edit_custom/:id', to: 'users#edit_custom', as: 'edit_custom'

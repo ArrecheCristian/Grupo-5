@@ -58,7 +58,7 @@
 	</div>
 	<% end %>
 </div>
-<% if current_user.premium? %> 
+<%# if current_user.premium? %> 
 	<br>
 	<br>
 	<br>
@@ -94,13 +94,16 @@
 						<h5> <%= resi.ubicacion %> </h5><br>
 						Capacidad: <%= resi.capacidad %> <br>
 					</p>
-
-					<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
+					<% if current_user.premium? %> 
+						<a><%= link_to 'Ver más', seeker_path(resi), class: 'btn btn-info btn-sm'%></a>
+					<% else %>
+						<a><%= link_to 'Ver más basico', new_list_path(:id => resi.id), class: 'btn btn-info btn-sm'%></a>
+					<% end %>
 				</div>
 		</div>
 	<% end %>
 	</div>
-<% end %>
+
 
 
 <% else %>

@@ -1,0 +1,14 @@
+<div class="ml-5" style="font-size: 9pt">
+
+  <%= simple_form_for @list do |f| %>
+
+  	<%= f.input :residence_id , :readonly => true   %>
+  	<%= f.input :email , :readonly => true   %>
+  	<%= f.label :fecha %>
+  	<input id=@list.fecha name="list[fecha]" type="date" step="7" min=2018-11-18  />
+
+  	<%= link_to 'Cancelar', home_users_path, class: 'btn btn-dark btn-lg' %>
+  	<button type= f.submit class="btn btn-primary btn-lg"> Consultar </button>
+
+<% end %>
+</div>
