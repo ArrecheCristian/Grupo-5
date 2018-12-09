@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	
 	def index
+		
 
 		if (user_signed_in?)
 			redirect_to home_users_path					
@@ -48,11 +49,6 @@ class UsersController < ApplicationController
 	end
 
 
-#	def edit_custom
-    #Recibo el id de la pelicula que quiero editar
-#    	@user = User.find(params[:id])
-
-  #	end
 
 
 
