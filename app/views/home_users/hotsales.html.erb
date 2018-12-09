@@ -1,0 +1,50 @@
+<% if user_signed_in? %>
+  <br>
+  <span> <h2 class="text-uppercase"> Aprovechá de nuestras increíbles ofertas de Hot-Sales!!</h2> </span>
+
+
+
+  <nav class="navbar navbar-dark bg-dark">
+    <%= form_tag '/auctions', :method => :get do %>
+      <%= label_tag :com, 'Complejo', style:'color :white'%>
+      <%= text_field_tag :com,params[:com],
+        placeholder: "¿Qué buscas?" %>
+      <%= label_tag :loc, 'Localidad', style:'color :white'%>
+      <%= text_field_tag :loc, params[:loc],
+        placeholder: "¿Qué buscas?" %>
+      <%= label_tag :des, 'Descripción', style:'color :white'%>
+      <%= text_field_tag :des, params[:des],
+        placeholder: "¿Qué buscas?" %>
+      <%= submit_tag 'Buscar' %>
+    <% end %>
+  </nav>
+
+
+
+  <div class="row mt-5 justify-content-center">
+
+  <% @ResiHotsale.each do |resHot| %>
+
+      <div class="card card-custom mx-2 mb-3" style="width: 50rem;">
+        <img class="card-img-top" src= <%=resHot.imagen%> alt="Card image cap">
+          <div class="card-body">
+            <h3 class="card-title"> <%= resHot.complejo %> </h3>
+            <p class="card-text">
+              <h5> <%= resHot.ubicacion %> </h5><br>
+              Capacidad: <%= resHot.capacidad %> <br>
+            </p>
+
+           <a><%= link_to 'Ver más detalles', hotsale_home_users_path(resHot), class: 'btn btn-info btn-lg'%></a>
+          </div>
+      </div>
+  <% end %>
+  </div>
+
+
+  <% else %>
+      <center><h2>¡ERROR! Antes debe inciar sesión en nuestro sistema</h2></center>
+      <center><h4>Para iniciar sesión o registrarse:</h4></center>
+
+      <center> <%=link_to 'Click aquí', root_path, class: 'btn btn-primary btn-lg' %> </center>
+
+<% end %>

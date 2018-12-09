@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_174701) do
+ActiveRecord::Schema.define(version: 2018_12_07_221919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2018_12_03_174701) do
     t.string "fecha"
   end
 
+  create_table "cancellations", force: :cascade do |t|
+    t.string "complejo"
+    t.string "descripcion"
+    t.string "fecha"
+    t.string "usuario"
+    t.string "motivo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "home_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,6 +57,14 @@ ActiveRecord::Schema.define(version: 2018_12_03_174701) do
     t.string "fecha"
     t.string "estado"
     t.string "email"
+    t.integer "residence_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "email"
+    t.string "fecha"
     t.integer "residence_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

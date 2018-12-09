@@ -3,36 +3,62 @@ class HomeUsersController < ApplicationController
 
 	def index
 			@residence = Residence.all
+			subastas = Residence.all
+			hotsales = Residence.all
 
+			#borra todas las semanas que no tienen dueño
 			Week.where(estado: "").destroy_all
 
-			#Filtros de búsqueda
-			@residences = params[:com] ? Residence.all.where("complejo LIKE ?", "%#{params[:com]}%") : Residence.all
-
-			@residences = params[:loc] != "" ? @residences.where("ubicacion LIKE ?", "%#{params[:loc]}%") : @residences
-
-			@precio = params[:pre].to_f
-			@residences = @precio != 0.0 ? @residences.where("(precio >= ?) AND (precio <= ?)", (0.8*@precio).to_i, (1.2*@precio).to_i ): @residences
-
-
-			#Se filtran las residencias que no están en subasta
-			aux = []
-
-			@residences.each do |r|
-				if (Auction.where(residence_id: r.id, estado: "ACTIVA").count == 0)
-					aux << r
+			#Filtro para quedarme solo con las subastas y Hotsales
+			noSubasta = []
+			noHotsale = []
+			subastas.each do |r|
+				if (Auction.where(residence_id: r.id).count == 0)
+					noSubasta << r
+				end
+				if (Hotsale.where(residence_id: r.id).count == 0)
+					noHotsale << r
 				end
 			end
-			@residences = @residences - aux
+			subastas = subastas - noSubasta
+			hotsales = hotsales - noHotsale
 
+			#Armo un array con los id de las residencais que tienen subastas
+			auxsub = []
+			subastas.each do |s|
+				auxsub << s.id
+			end
 
-			@residences2 = params[:com2] ? Residence.all.where("complejo LIKE ?", "%#{params[:com2]}%") : Residence.all
+			auxhot = []
+			hotsales.each do |h|
+				auxhot << h.id
+			end
 
-			@residences2 = params[:loc2] != "" ? @residences2.where("ubicacion LIKE ?", "%#{params[:loc2]}%") : @residences2
+			if (auxsub.length > 0)
+				#Genero un número random comprendido entre el tamaño del array
+				r = Random.new
+				i = r.rand(0...auxsub.length) 		
+				#Obtengo el id de la pos random
+				id = auxsub[i]
 
-			@precio2 = params[:pre2].to_f
-			@residences2 = @precio2 != 0.0 ? @residences2.where("(precio >= ?) AND (precio <= ?)", (0.8*@precio2).to_i, (1.2*@precio2).to_i ): @residences2
+				#Obtengo la residencia con dicho id
+				@subastaRandom = Residence.find(id)
+			else
+				@subastaRandom = nil
+			end
 
+			if (auxhot.length > 0)
+				#Genero un número random comprendido entre el tamaño del array
+				r = Random.new
+				i = r.rand(0...auxhot.length) 		
+				#Obtengo el id de la pos random
+				id = auxhot[i]
+
+				#Obtengo la residencia con dicho id
+				@hotsaleRandom = Residence.find(id)
+			else
+				@hotsaleRandom = nil
+			end
 
 	end
 
@@ -42,6 +68,8 @@ class HomeUsersController < ApplicationController
 
  	end
 
-
+	def auction_reservation
+    	@auction = Auction.find(params[:id])
+ 	end
 
 end

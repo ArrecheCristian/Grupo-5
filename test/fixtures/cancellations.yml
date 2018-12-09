@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  complejo: MyString
+  descripcion: MyString
+  fecha: MyString
+  usuario: MyString
+  motivo: MyString
+
+two:
+  complejo: MyString
+  descripcion: MyString
+  fecha: MyString
+  usuario: MyString
+  motivo: MyString

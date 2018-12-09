@@ -49,7 +49,7 @@
     <div class="col-sm">
         <table class="table">
     <tr>
-      <th> Reservas de Residencias </th>
+      <th> Residencias Reservadas</th>
     </tr>
         <% product = Week.where(estado: @user.email) %>
         <% product.each do |nombregenerico| %>
@@ -57,6 +57,7 @@
             <td> <%= nombregenerico.residence.complejo %> </td>
             <td> <%= nombregenerico.residence.ubicacion %> </td>
             <td> <%= nombregenerico.fecha %> </td>
+            <td><%= link_to 'Detalle', reservation_weeks_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
           </tr>
         <% end %>
   </div>
@@ -64,22 +65,7 @@
   <div class="col-sm">
         <table class="table">
     <tr>
-      <th> Subastas Ganadas </th>
-    </tr>
-        <% product = Auction.where(email: @user.email,estado: "FINALIZADA") %>
-        <% product.each do |nombregenerico| %>
-          <tr>
-            <td> <%= nombregenerico.residence.complejo %> </td>
-            <td> <%= nombregenerico.residence.ubicacion %> </td>
-            <td> <%= nombregenerico.fecha %> </td>
-          </tr>
-        <% end %>
-  </div>
-
-  <div class="col-sm">
-        <table class="table">
-    <tr>
-      <th> Hot-Sales reservados </th>
+      <th> Hot-Sales Reservados </th>
     </tr>
         <% product = Hotsale.where(email: @user.email) %>
         <% product.each do |nombregenerico| %>
@@ -87,6 +73,23 @@
             <td> <%= nombregenerico.residence.complejo %> </td>
             <td> <%= nombregenerico.residence.ubicacion %> </td>
             <td> <%= nombregenerico.fecha %> </td>
+            <td><%= link_to 'Detalle', reservation_hotsales_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
+          </tr>
+        <% end %>
+  </div>
+
+   <div class="col-sm">
+        <table class="table">
+    <tr>
+      <th> Pujas Realizadas</th>
+    </tr>
+        <% product = Puja.where(email: @user.email) %>
+        <% product.each do |nombregenerico| %>
+          <tr>
+            <td> <%= nombregenerico.auction.residence.complejo %> </td>
+            <td> <%= nombregenerico.auction.fecha %> </td>
+            <td> <%= nombregenerico.monto %> </td>
+            <td> <%= nombregenerico.auction.estado %> </td>
           </tr>
         <% end %>
   </div>

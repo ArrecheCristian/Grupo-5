@@ -1,9 +1,10 @@
+<% if admin_signed_in? %>
+	<div class="jumbotron">
+    	<h2 class="text-uppercase" > Nuevo Hot-Sale </h2>
+ 	</div>
 
- <div class="jumbotron">
-    <h2 class="text-uppercase" > Nuevo Hot-Sale </h2>
- </div>
+	<div class="container">
+    	<%= render "form" %>
+	</div>
 
-  <div class="container">
-    <%= render "form" %>
-  
-  </div>
+<%end%>

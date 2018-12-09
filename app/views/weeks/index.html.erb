@@ -15,8 +15,21 @@
           <td style="font-size: 8pt"><%= semana.residence.complejo %></td>
           <td style="font-size: 8pt"><%= semana.residence.ubicacion %></td>
           <td style="font-size: 8pt"><%= semana.fecha %></td>
-          <td style="font-size: 8pt"><%= semana.estado %></td>
+          <% product = User.find_by(email: semana.estado) %>
+          <td style="font-size: 8pt"><%= link_to semana.estado, user_list_path(:id =>product.id) %></td>
           <td><%= link_to 'Ver detalles', edit_week_path(semana), class: 'btn btn-dark btn-mm'%></td>
+
+        </tr>
+      <% end%>
+
+      <% @hotsale.each do |hots| %>
+        <tr>
+          <td style="font-size: 8pt"><%= hots.residence.complejo %></td>
+          <td style="font-size: 8pt"><%= hots.residence.ubicacion %></td>
+          <td style="font-size: 8pt"><%= hots.fecha %></td>
+          <% product = User.find_by(email: hots.email) %>
+          <td style="font-size: 8pt"><%= link_to hots.email, user_list_path(:id =>product.id) %></td>
+          <td><%= link_to 'Ver detalles', hotsale_path(hots), class: 'btn btn-dark btn-mm'%></td>
 
         </tr>
       <% end%>

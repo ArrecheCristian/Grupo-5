@@ -1,0 +1,51 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm">
+      <img src= <%=@auction.residence.imagen %> , class="rounded" />
+    </div>
+    <div class="col-sm">
+      <table class="table">
+        <tr>
+          <td> <h2><%= @auction.residence.complejo %> <h2></td>
+        </tr>
+        <tr>
+          <td> <h4>Reservado por:<h4></td>
+          <td> <h3 style="color: green"><%= @auction.email %><h3></td>
+        </tr>
+        <tr>
+        <tr>
+          <td> <h4>Ubicación:<h4></td>
+          <td> <h5><%= @auction.residence.ubicacion  %><h5></td>
+        </tr>
+        <tr>
+        <tr>
+          <td> <h4>Precio:(ARS)<h4></td>
+          <td> <h3 style="color: green">$<%= @auction.precioBase %><h3></td>
+        </tr>
+        <tr>
+          <td> <h4>Descripcion:<h4></td>
+          <td> <h5><%= @auction.residence.descripcion  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Capacidad<h4></td>
+          <td> <h5><%= @auction.residence.capacidad  %><h5> </td>
+        </tr>
+        <tr>
+          <td> <h4>Estrellas:<h4></td>
+          <td> <h5><%= @auction.residence.estrellas  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Semana:<h4></td>
+          <td> <h5><%= @auction.fecha  %><h5> </td>
+        <tr>
+          
+        <tr>
+          <td><%= link_to 'Petición de Cancelación', new_cancellation_path(:complejo => @auction.residence.complejo,:fecha => @auction.fecha, :usuario => @auction.email, :descripcion =>@auction.residence.descripcion ), class: 'btn btn-danger btn-me' %></td>
+          <td><%= link_to 'Volver', home_users_path, class: 'btn btn-dark btn-me' %></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+</div>

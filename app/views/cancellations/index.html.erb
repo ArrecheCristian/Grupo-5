@@ -1,0 +1,25 @@
+<span> <h2 class="text-uppercase" > Peticiones de Cancelación:</h2> </span>
+
+<div>
+  <table class="table">
+      <tr>
+        <td style="font-size: 15pt"> Numero: </td>
+        <td style="font-size: 15pt"> Complejo: </td>
+        <td style="font-size: 15pt"> Fecha: </td>
+        <td style="font-size: 15pt"> Usuario: </td>
+
+      </tr>
+
+      <% @cancellation.each do |cancel| %>
+        <tr>
+          <td style="font-size: 8pt"><%= cancel.id %></td>
+          <td style="font-size: 8pt"><%= cancel.complejo %></td>
+          <td style="font-size: 8pt"><%= cancel.fecha %></td>
+          <td style="font-size: 8pt"><%= cancel.usuario %></td>
+          <td><%= link_to 'Ver detalles', cancellation_path(cancel), class: 'btn btn-dark btn-mm'%></td>
+
+        </tr>
+      <% end%>
+
+  </table>
+</div>

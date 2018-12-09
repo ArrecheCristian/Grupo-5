@@ -1,0 +1,50 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm">
+      <img src= <%=@week.residence.imagen %> , class="rounded" />
+    </div>
+    <div class="col-sm">
+      <table class="table">
+        <tr>
+          <td> <h2><%= @week.residence.complejo %> <h2></td>
+        </tr>
+         <tr>
+          <td> <h4>Reservado por:<h4></td>
+          <td> <h5 style="color: green"><%= @week.estado %><h5></td>
+        </tr>
+        <tr>
+        <tr>
+          <td> <h4>Ubicación:<h4></td>
+          <td> <h5><%= @week.residence.ubicacion  %><h5></td>
+        </tr>
+       <%#> <tr>
+          <td> <h4>Precio:(ARS)<h4></td>
+          <td><h5>$<%= @week.residence.precio %><h5></td>
+        <tr>
+          <td> <h4>Descripcion:<h4></td>
+          <td> <h5><%= @week.residence.descripcion  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Capacidad<h4></td>
+          <td> <h5><%= @week.residence.capacidad  %><h5> </td>
+        </tr>
+        <tr>
+          <td> <h4>Estrellas:<h4></td>
+          <td> <h5><%= @week.residence.estrellas  %><h5></td>
+        </tr>
+        <tr>
+          <td> <h4>Semana:<h4></td>
+          <td> <h5><%= @week.fecha  %><h5> </td>
+        <tr>
+          
+        <tr>
+          <td><%= link_to 'Petición de Cancelación', new_cancellation_path(:complejo => @week.residence.complejo,:fecha => @week.fecha, :usuario => @week.estado, :descripcion =>@week.residence.descripcion ), class: 'btn btn-danger btn-me' %></td>
+          <td><%= link_to 'Volver', home_users_path, class: 'btn btn-dark btn-me' %></td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+</div>
