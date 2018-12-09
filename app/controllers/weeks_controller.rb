@@ -24,6 +24,7 @@ class WeeksController < ApplicationController
       @week.destroy
       redirect_to home_users_path
     else
+      @week.send_mail_delete
       @week.destroy
       redirect_to residences_path
     end

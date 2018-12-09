@@ -77,4 +77,20 @@
           </tr>
         <% end %>
   </div>
+
+   <div class="col-sm">
+        <table class="table">
+    <tr>
+      <th> Pujas Realizadas</th>
+    </tr>
+        <% product = Puja.where(email: @user.email) %>
+        <% product.each do |nombregenerico| %>
+          <tr>
+            <td> <%= nombregenerico.auction.residence.complejo %> </td>
+            <td> <%= nombregenerico.auction.fecha %> </td>
+            <td> <%= nombregenerico.monto %> </td>
+            <td> <%= nombregenerico.auction.estado %> </td>
+          </tr>
+        <% end %>
+  </div>
 </div>

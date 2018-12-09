@@ -59,7 +59,7 @@
 		            Capacidad: <%= @subastaRandom.capacidad %> <br>
 		            Precio: <%= @subastaRandom.auction.precioBase %> <br>
 		          </p>
-		          <a><%= link_to 'Ver más detalles', home_user_path(@subastaRandom), class: 'btn btn-info btn-lg'%></a>
+		          <a><%= link_to 'Ver más detalles', auction_path(@subastaRandom.auction), class: 'btn btn-info btn-lg'%></a>
 		        </div>
 		    </div>
 	  	<%end%>
