@@ -1,0 +1,64 @@
+
+<style>
+    { margin: 0; padding: 0; }
+
+    html { 
+        background: url('https://ak9.picdn.net/shutterstock/videos/22089199/thumb/1.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
+
+<div class="float-left">
+     <div class="card card-custom mx-5 mb-3" style="width:50rem;" >
+        <div class="card-body">
+              <p class="card-text">
+                 <h2 class="text-uppercase">¡Codigo de validacion! </h2>
+
+            	   <%= form_for @code do |f| %>
+
+            	      <%= f.label :Codigo %>
+            	      <%= f.password_field :pass, class: 'form-control' %>
+
+            	      <%= f.submit "Validarme", class: "btn btn-primary" %>
+            	    <% end %>
+                  </p>
+        </div>
+    </div>
+
+  </div>
+
+<div class="col-md-5 col-md-offset-0">
+
+    <table width="500" cellspacing="1" cellpadding="3" border="0" bgcolor="#165480"> 
+      <tr> 
+        <td> 
+        <font size=4 face="verdana, arial, helvetica"> 
+        <b>¡Bienvenido a la empresa!</b> 
+        </font> 
+        </td> 
+      </tr> 
+      
+      <tr> 
+        <td bgcolor="#ffffff">
+        <font face="verdana, arial, helvetica" size=2> 
+        <p> Si usted ha sido designado administrador de la pagina,debe ingresar el codigo que se le ha
+        otorgado;luego denera completar el formulario que verá a continuacion. </p>
+        
+     
+       <br>
+        <font face="verdana, arial, helvetica" size=1>
+       <p >  Muchas Gracias, atte.: La Institución.</p>
+
+
+        </font> 
+        </td> 
+      </tr> 
+    </table>
+
+
+
+</div>

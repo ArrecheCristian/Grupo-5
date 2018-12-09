@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters,  if: :devise_controller?
-
+   #incluyo los helpers de code para poder accederlos por ej desde el create de controller codes
+  include CodesHelper
 
 ## corrobora que al menos haya un admin o un user logueado
   def require_login
@@ -10,6 +11,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path # halts request cycle
     end
   end
+
+
+
 	 
   def authenticated_user!
     if user_signed_in?

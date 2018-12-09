@@ -25,11 +25,11 @@
         </tr>
         <tr>
           <td> <h4>Número de tarjeta:<h4></td>
-          <td> <h5><%=@user.Numero_tarjeta%><h5></td>
+          <td> <h5><%="**** **** **** #{@user.Numero_tarjeta.to_s.last(4)}" %><h5></td>
         </tr>
         <tr>
           <td> <h4>Fecha de vencimiento de tarjeta:<h4></td>
-          <td> <h5><%=@user.Vencimiento_tarjeta%><h5></td>
+          <td> <h5> <%=@user.Vencimiento_tarjeta %><h5></td>
         </tr>
         <tr>
           <td> <h4>Email:<h4></td>

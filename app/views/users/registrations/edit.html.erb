@@ -22,12 +22,12 @@
 
     <%= f.input :Apellido, required: true, autofocus: true ,input_html: { autocomplete: "Apellido" }%>
 
-    <%= f.input :Nacimiento, required: true, autofocus: true ,input_html: { autocomplete: "Nacimiento" }%>
+   <%= f.input :Nacimiento, required: true, start_year: Date.today.year - 110, end_year: Date.today.year  ,
+             order: [:day, :month, :year],autofocus: true ,input_html: { autocomplete: "Nacimiento" }%>
 
      <%= f.input :Numero_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Numero_tarjeta" }%>
 
-     <%= f.input :Vencimiento_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Vencimiento_tarjeta" }%>
-
+   <%= f.input :Vencimiento_tarjeta, start_year: Date.today.year , end_year: Date.today.year + 8 , required: true,    order: [:day, :month, :year], autofocus: true ,input_html: { autocomplete: "Vencimiento_tarjeta" }%>
      <%= f.input :Banco, required: true, autofocus: true ,input_html: { autocomplete: "Banco" }%>
 
      <%= f.input :Foto_perfil, required: true, autofocus: true ,input_html: { autocomplete: "Foto_perfil" }%>
