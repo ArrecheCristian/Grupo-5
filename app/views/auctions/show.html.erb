@@ -48,7 +48,9 @@
             </tr>
 
             <tr>
-              <td><%= link_to 'Finalizar Subasta', edit_auction_path(@auction), class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea finalizar la subasta? Podrá continuar viendo sus datos en "Ver detalles"' }  %></td>
+              <% if @auction.estado == "ACTIVA" %>
+                <td><%= link_to 'Finalizar Subasta', edit_auction_path(@auction), class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea finalizar la subasta? Podrá continuar viendo sus datos en "Ver detalles"' }  %></td>
+              <% end %>
               <td><%= link_to 'Eliminar Subasta', auction_path(@auction), method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la subasta? Se perderán todos los datos asociados a ella' }  %></td>
             </tr>
           <% end %>
@@ -92,20 +94,16 @@
         <div class="col-sm">
           <table class="table">
             <tr>
-              <h2>Registro de Pujas<h2> 
+              <h2>Registro: <h2> 
             </tr><br>
             <tr>
-              <td> <h4>Usuario:<h4> </td>
-              <td> <h4>Puja:<h4> </td>
+              
             </tr>
               <% m = @auction.pujas.all %>
-              <% m.each do |nombregenerico| %>
                 <tr>
-                  <% usuario=User.find_by(email: nombregenerico.email)%>
-                  <td> <%= usuario.Nombre %> </td>
-                  <td> <%= nombregenerico.monto %> </td>
+                  <td> <h5>Cantidad de pujas:<h5> </td>
+                  <td>(<%=m.count%>)</td>
                 </tr>
-            <% end %>
         </div>
       <% end %>
 

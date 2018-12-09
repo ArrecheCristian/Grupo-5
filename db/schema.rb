@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(version: 2018_12_09_152719) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "new_admin_passes", force: :cascade do |t|
+    t.string "new_admin_pass"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  
+
   create_table "pujas", force: :cascade do |t|
     t.integer "monto"
     t.string "email"
