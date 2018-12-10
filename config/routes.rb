@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 	resources :home_users do
   		collection do
     		get :auction_reservation
+    		get :contact
   		end
 	end
 
