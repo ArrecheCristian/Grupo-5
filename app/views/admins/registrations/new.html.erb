@@ -1,6 +1,26 @@
+<style>
+    { margin: 0; padding: 0; }
+
+    html { 
+        background: url('https://ak9.picdn.net/shutterstock/videos/22089199/thumb/1.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
 <% if code_in? %>
 
-<h2>Sign up</h2>
+<div class="float-left">
+     <div class="card card-custom mx-5 mt-5" style="width:50rem;" >
+        <div class="card-body">
+              <p class="card-text">
+                <font size=5 face="arial"> 
+                    ¡BIENVENIDO A HOME SWITCH HOME!
+                </font> 
+                <h2>Registrate como administrador</h2>
+
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -24,6 +44,9 @@
   </div>
 <% end %>
 
-<%= render "admins/shared/links" %>
+<%= render "admins/shared/links" %></p>
+        </div>
+    </div>
+</div>
 
 <% end %>
