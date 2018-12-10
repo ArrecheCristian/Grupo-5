@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 	resources :cancellations
 	resources :lists
 	resources :codes
-
+    resources :premiums
 
  	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
 	get 'home_users' => 'homeusers#index', as: :user_root  	

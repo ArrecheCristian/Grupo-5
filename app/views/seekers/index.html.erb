@@ -40,7 +40,8 @@
           <td> <h5><%=@user.credito%><h5></td>
         </tr>
         <tr>
-          
+          <td><%= link_to "¡Quiero ser premium!", new_premium_path, class: 'btn btn-dark btn-lg'%></td>
+        
           <td><%= link_to 'Volver ', home_users_path, class: 'btn btn-dark btn-lg' %></td>
           <td><%= link_to "Editar mi perfil", edit_user_registration_path, class: 'btn btn-dark btn-lg'%></td>
         

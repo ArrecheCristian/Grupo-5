@@ -30,7 +30,8 @@ class UsersController < ApplicationController
 			end
 		end
 	end
-
+    def serPremium
+    end
 
 	def new
 	  @user = User.new
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
 
 
 
-
+	
 
 
 
