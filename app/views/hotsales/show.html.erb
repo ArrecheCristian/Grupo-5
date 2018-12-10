@@ -42,43 +42,60 @@
     <br>
     <span> <h2 class="text-uppercase"> Semanas disponibles:</h2> </span>
 
-    <% Hotsale.where(residence_id: @residence.id).each do |hotsale|%>
-      
-    <div class="col-sm">
-      <table class="w-50">
-        <tr>
-          <td> <h4>Semana:<h4></td>
-          <td> <h5><%= hotsale.fecha  %><h5> </td>
-        </tr>
-        <tr>
-          <td> <h4>Precio:(ARS)<h4></td>
-          <td><h5>$<%= hotsale.monto %><h5></td>
-        </tr>
-
+    
+    <%if admin_signed_in?%>  
+        <% Hotsale.where(residence_id: @residence.id).each do |hotsale|%>
         
-        <%if admin_signed_in?%>
+        <div class="col-sm">
+          <table class="w-50">
+            <tr>
+              <td> <h4>Semana:<h4></td>
+              <td> <h5><%= hotsale.fecha  %><h5> </td>
+            </tr>
+            <tr>
+              <td> <h4>Precio:(ARS)<h4></td>
+              <td><h5>$<%= hotsale.monto %><h5></td>
+            </tr>
+            <tr>
+                <td> <h4>Estado:<h4></td>
+                <td> <h5 style="color: green"><%= hotsale.estado %><h5></td>
+            </tr>
+            <tr>
+              <td> <h4>Reservado por:<h4></td>
+              <td> <h5><%= hotsale.email %><h5> </td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Eliminar Hot-Sale', hotsale_path(hotsale), method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar el Hot-Sale? Se perderán todos los datos asociados' }  %>
+              <%= link_to 'Editar', edit_hotsale_path(hotsale), class: 'btn btn-dark btn-lg'%></td>
+            </tr>
+          </table>
+       </div>
+       <%end%>
 
-          <tr>
-            <td> <h4>Estado:<h4></td>
-            <td> <h5 style="color: green"><%= hotsale.estado %><h5></td>
-          </tr>
-          <tr>
-            <td> <h4>Reservado por:<h4></td>
-            <td> <h5><%= hotsale.email %><h5> </td>
-          </tr>
-          <tr>
-            <td><%= link_to 'Eliminar Hot-Sale', hotsale_path(hotsale), method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar el Hot-Sale? Se perderán todos los datos asociados' }  %>
-            <%= link_to 'Editar', edit_hotsale_path(hotsale), class: 'btn btn-dark btn-lg'%></td>
-          </tr>
+    <%elsif user_signed_in?%>
+        <% Hotsale.where(residence_id: @residence.id, estado: "ACTIVO").each do |hotsale|%>
 
-        <%elsif user_signed_in?%>
-          <tr>
-          <td><%= link_to 'LO QUIERO!', reservation_hotsales_path(:id => hotsale.id), class: 'btn btn-dark btn-lg', data: { confirm: '¿Está seguro que desea comprar esta semana?' }%></td>
-          </tr>
-        <%end%>
+        <div class="col-sm">
+          <table class="w-50">
+            <tr>
+              <td> <h4>Semana:<h4></td>
+              <td> <h5><%= hotsale.fecha  %><h5> </td>
+            </tr>
+            <tr>
+              <td> <h4>Precio:(ARS)<h4></td>
+              <td><h5>$<%= hotsale.monto %><h5></td>
+            </tr>
+            <tr>
+                <td> <h4>Estado:<h4></td>
+                <td> <h5 style="color: green"><%= hotsale.estado %><h5></td>
+            </tr>
+            <tr>
+                <td><%= link_to 'LO QUIERO!', reservation_hotsales_path(:id => hotsale.id), class: 'btn btn-dark btn-lg', data: { confirm: '¿Está seguro que desea comprar esta semana?' }%></td>
+            </tr>
+          </table>
+       </div>
+       <%end%>
 
-      </table>
-    </div>
     <br><br><br><br><br>
 
     <%end%>
@@ -86,3 +103,10 @@
   </div>
 
 <%end%>
+
+
+
+
+
+        
+          

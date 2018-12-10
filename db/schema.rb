@@ -73,14 +73,6 @@ ActiveRecord::Schema.define(version: 2018_12_09_152719) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "new_admin_passes", force: :cascade do |t|
-    t.string "new_admin_pass"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  
-
   create_table "pujas", force: :cascade do |t|
     t.integer "monto"
     t.string "email"
@@ -112,7 +104,7 @@ ActiveRecord::Schema.define(version: 2018_12_09_152719) do
   create_table "users", force: :cascade do |t|
     t.string "Nombre"
     t.string "Apellido"
-    t.date "Nacimiento"
+    t.integer "Nacimiento"
     t.integer "Numero_tarjeta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -121,7 +113,7 @@ ActiveRecord::Schema.define(version: 2018_12_09_152719) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.date "Vencimiento_tarjeta"
+    t.integer "Vencimiento_tarjeta"
     t.string "Banco"
     t.string "Foto_perfil"
     t.integer "DNI"
