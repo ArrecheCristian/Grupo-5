@@ -3,7 +3,9 @@ Rails.application.routes.draw do
  	root 'users#index'
 
   	devise_for :admins
-  	devise_for :users
+  	devise_for :users, controllers: {
+        passwords: 'users/passwords'
+      }
 
 	resources :hotsales do
   		collection do

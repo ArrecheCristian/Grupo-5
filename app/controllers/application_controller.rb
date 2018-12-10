@@ -65,7 +65,10 @@ private
     root_path
   end
 
-
+  protected
+def after_sending_reset_password_instructions_path_for(resource_or_scope)
+  root_path
+end
 
 	 
 end
