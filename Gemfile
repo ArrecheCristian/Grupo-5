@@ -64,3 +64,4 @@ gem 'hirb'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'dotenv-rails'
+

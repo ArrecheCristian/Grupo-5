@@ -30,7 +30,7 @@
           <td style="font-size: 8pt"><%= hots.fecha %></td>
           <% product = User.find_by(email: hots.email) %>
           <td style="font-size: 8pt"><%= link_to hots.email, user_list_path(:id =>product.id) %></td>
-          <td><%= link_to 'Ver detalles', hotsale_path(hots), class: 'btn btn-dark btn-mm'%></td>
+          <td><%= link_to 'Ver detalles', hotsale_path(hots.residence_id), class: 'btn btn-dark btn-mm'%></td>
 
         </tr>
       <% end%>
