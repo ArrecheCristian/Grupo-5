@@ -25,9 +25,7 @@
           <td> <h4>Motivo:<h4></td>
           <td> <h5><%= @cancellation.motivo %><h5></td>
         </tr>
-        <tr>
-          <td><%= link_to 'Rechazar solicitud', @cancellation, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la petición?' }  %></td>
-        </tr>
+        
         <tr>
           <td><%= link_to 'Volver', cancellations_path, class: 'btn btn-dark btn-me' %></td>
         </tr>
@@ -46,9 +44,12 @@
             <tr>
               <td> <%= f.residence.complejo %> </td>
               <td> <%= f.fecha %> </td>
-              <td><%= link_to 'Detalle', edit_week_path(:id => f.id), class: 'btn btn-dark btn-me' %></td>
-              <td><%= link_to 'Cancelar reserva', f, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
+              <td><%= link_to 'Detalle', edit_week_path(:id => f.id), class: 'btn btn-dark btn-lg' %></td>
+            </tr>
+            <tr>  
+              <td><%= link_to 'Rechazar cancelación', @cancellation, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea ignorar la solicitud?' }  %></td>
 
+              <td><%= link_to 'Aceptar cancelación', f, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
             </tr>
           <% end %>
 
@@ -62,9 +63,13 @@
           <tr>
             <td> <%= f.residence.complejo %> </td>
             <td> <%= f.fecha %> </td>
-            <td><%= link_to 'Detalle', hotsale_path(:id => f.residence.id), class: 'btn btn-dark btn-me' %></td>
-            <td><%= link_to 'Cancelar reserva', f, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
+            <td><%= link_to 'Detalle', hotsale_path(:id => f.residence.id), class: 'btn btn-dark btn-lg' %></td>
+          </tr>
 
+          <tr>
+            <td><%= link_to 'Rechazar cancelación', @cancellation, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea ignorar la solicitud' }  %></td>
+
+            <td><%= link_to 'Aceptar cancelación', f, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
           </tr>
           <% end %>
         
