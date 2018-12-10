@@ -7,6 +7,7 @@ class SeekersController < ApplicationController
 
   	def index
   		@user = User.find(params[:id])
+      
   	end
 
   	def edit
