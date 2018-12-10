@@ -30,22 +30,20 @@
           </tr>
            
           <tr>
-            <td><%= link_to 'Volver al listado', hotsales_path, class: 'btn btn-dark btn-me' %></td>
+            <td><%= link_to 'Volver al listado', hotsales_path, class: 'btn btn-dark btn-lg' %></td>
           </tr>
-
         </table>
       </div>
 
     </div>
 
 
-    <br>
+    <br><br>
     <span> <h2 class="text-uppercase"> Semanas disponibles:</h2> </span>
-
     
     <%if admin_signed_in?%>  
         <% Hotsale.where(residence_id: @residence.id).each do |hotsale|%>
-        
+        <br>
         <div class="col-sm">
           <table class="w-50">
             <tr>
@@ -70,38 +68,37 @@
             </tr>
           </table>
        </div>
+       <br><br>
        <%end%>
+
 
     <%elsif user_signed_in?%>
         <% Hotsale.where(residence_id: @residence.id, estado: "ACTIVO").each do |hotsale|%>
-
+        <br>
         <div class="col-sm">
           <table class="w-50">
+          
             <tr>
               <td> <h4>Semana:<h4></td>
               <td> <h5><%= hotsale.fecha  %><h5> </td>
             </tr>
+          
             <tr>
               <td> <h4>Precio:(ARS)<h4></td>
               <td><h5>$<%= hotsale.monto %><h5></td>
             </tr>
-            <tr>
-                <td> <h4>Estado:<h4></td>
-                <td> <h5 style="color: green"><%= hotsale.estado %><h5></td>
-            </tr>
+          
             <tr>
                 <td><%= link_to 'LO QUIERO!', reservation_hotsales_path(:id => hotsale.id), class: 'btn btn-dark btn-lg', data: { confirm: '¿Está seguro que desea comprar esta semana?' }%></td>
             </tr>
           </table>
        </div>
+       <br><br>
        <%end%>
-
-    <br><br><br><br><br>
 
     <%end%>
 
   </div>
-
 <%end%>
 
 

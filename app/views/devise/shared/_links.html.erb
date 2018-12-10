@@ -6,12 +6,12 @@
 <% end -%>
 <br><br>
 
-<font size=3 face="arial"> 
-	Si aún no se ha registrado hágalo aquí y conozca nuestra plataforma 
-</font> 
-<br>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+	<font size=3 face="arial"> 
+		Si aún no se ha registrado hágalo aquí y conozca nuestra plataforma 
+	</font> 
+	<br>
   <%= link_to "Registrarme", new_registration_path(resource_name), class: 'btn btn-dark btn-lg' %>
 <% end -%>
 

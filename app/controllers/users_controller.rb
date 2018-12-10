@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 	
 	def index
-		
 
 		if (user_signed_in?)
 			redirect_to home_users_path					
@@ -47,12 +46,6 @@ class UsersController < ApplicationController
 		     end
 		
 	end
-
-
-
-
-
-
 
   private
   	def user_params
