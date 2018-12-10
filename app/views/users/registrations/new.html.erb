@@ -1,3 +1,15 @@
+<style>
+    { margin: 0; padding: 0; }
+
+    html { 
+        background: url('https://ak9.picdn.net/shutterstock/videos/22089199/thumb/1.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
 <div class="row">
   <div class="col-md-5 col-md-offset-1">
 
@@ -32,7 +44,6 @@
             <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
           
           </div>
-
           <div class="form-actions">
             <%= f.button :submit, "Sign up" %>
           </div>
@@ -40,6 +51,7 @@
 
         <%= render "devise/shared/links" %>
   </div>
+
 
   <div class="col-md-5 col-md-offset-0">
 

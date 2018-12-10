@@ -1,0 +1,44 @@
+<div class="jumbotron">
+  <h1 class="display-4">Home Switch Home</h1>
+  
+  <p class="lead">
+  Home Switch Home es una cadena de residencias de tiempos compartidos y ofrece a sus usuarios la posibilidad de buscar y reservar semanas sobre distintos tipos de residencias, destinos y servicios relacionados. 
+  </p>
+  
+  <hr class="my-4">
+  <font face="arial" size=3>
+    Los siguientes términos y condiciones están sujetos a cambios ocasionales y se aplica a todos los servicios que HSH proporciona directa o indirectamente.
+  </font><br><br>
+  <p>
+      Home Switch Home es una plataforma en la que usted podrá participar de subastas, acceder a Hot-Sales,<br>
+      y si opta por la membresía premium, hasta podrá reservar en fomra directa en nuestras mejores residencias <br>
+      con precios totalmente accesibles y en la semana que desee!! <br>
+
+      Todos nuestros uuarios contarán con 2 CREDITOS por año, de 1 SEMANA CADA UNO, sin excepciones <br>
+
+      Las reservas deverán ser realizadas con un rango de anticipación de entre 6 y 8 meses en las semanas disponibles,<br>
+      a excepción de los Hot-Sales, los cuales serán dentro de un rango de 6 meses.
+  </p>
+
+  <hr class="my-4">
+    <p><br>
+      Para cualquier duda, consulta, sugerencia, queja… no dudes en ponerte en contacto con nosotros. <br>
+      Estaremos a disposición para resolver cualquier cuestión, y prometemos contestar con la mayor brevedad posible. <br><br>
+      Para ponerse en contacto con el área de administración del sistema escriba a:<br>
+
+        h-s-h@admi.com.ar
+        <br><br>
+      O comuníquese por teléfono al:<br>
+      0800-222-3535
+
+    </p>
+
+
+
+
+  <%if user_signed_in?%>
+    <a class="btn btn-primary btn-lg" href="/home_users" role="button">Ver ofertas</a>
+  <%else%>
+    <a class="btn btn-primary btn-lg" href="/" role="button">Ver ofertas</a>
+  <% end %>
+</div>

@@ -1,6 +1,3 @@
-
-
-
 <header>
     <div class="navbar navbar-inverse navbar-fixed-top mb-0" role="navigation">
       <div class="container">
@@ -10,9 +7,13 @@
             <%= image_tag "HSH-Complete.svg",title: "Logo", class: "logo", style: 'height:100%;width:100%;' %>
             <% end %>
             
-		<% else%>
+		<% elsif admin_signed_in?%>
 
-             <%= link_to residences_path, class: 'navbar-brand' do %>
+            <%= link_to residences_path, class: 'navbar-brand' do %>
+            <%= image_tag "HSH-Complete.svg",title: "Logo", class: "logo", style: 'height:100%;width:100%;' %>
+            <% end %>
+    <%else%>
+      <%= link_to root_path, class: 'navbar-brand' do %>
             <%= image_tag "HSH-Complete.svg",title: "Logo", class: "logo", style: 'height:100%;width:100%;' %>
             <% end %>
 		<% end %>

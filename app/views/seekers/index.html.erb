@@ -90,10 +90,12 @@
         <% product = Puja.where(email: @user.email) %>
         <% product.each do |nombregenerico| %>
           <tr>
-            <td> <%= nombregenerico.auction.residence.complejo %> </td>
-            <td> <%= nombregenerico.auction.fecha %> </td>
-            <td> <%= nombregenerico.monto %> </td>
-            <td> <%= nombregenerico.auction.estado %> </td>
+            <% if (nombregenerico.auction.estado == "ACTIVA") %>
+                <td style="font-size: 8pt"><%= link_to nombregenerico.auction.residence.complejo, auction_path(:id =>nombregenerico.auction.id) %></td>
+                <td> <%= nombregenerico.auction.fecha %> </td>
+                <td> <%= nombregenerico.monto %> </td>
+                <td> <%= nombregenerico.auction.estado %> </td>
+            <% end %>  
           </tr>
         <% end %>
   </div>

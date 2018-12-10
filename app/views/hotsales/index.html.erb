@@ -42,8 +42,12 @@
     <%elsif user_signed_in? %>
       <div class="row mt-5 justify-content-center">
 
+
       <% @ResiHotsale.each do |resHot| %>
 
+        <% filtro = Hotsale.where(residence_id: resHot.id, estado: "ACTIVO").count %>
+  
+        <%if filtro != 0 %>
           <div class="card card-custom mx-2 mb-3" style="width: 50rem;">
             <img class="card-img-top" src= <%=resHot.imagen%> alt="Card image cap">
               <div class="card-body">
@@ -56,6 +60,7 @@
                <a><%= link_to 'Ver más detalles', hotsale_path(resHot), class: 'btn btn-info btn-lg'%></a>
               </div>
           </div>
+        <% end %>  
       <% end %>
       </div>
 
