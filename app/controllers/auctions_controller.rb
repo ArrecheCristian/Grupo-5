@@ -100,7 +100,8 @@ class AuctionsController < ApplicationController
 				@ganador.update(:credito => @ganador.credito - 1)
 
 				#Crea una semana con los datos para que le figure al usuario
-				Week.create(residence_id: @auction.residence_id, fecha: @auction.fecha, estado: @auction.email)
+				week = Week.create(residence_id: @auction.residence_id, fecha: @auction.fecha, estado: @auction.email)
+				week.send_mail
 	 		end
    end
 

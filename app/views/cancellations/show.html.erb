@@ -29,36 +29,36 @@
           <td><%= link_to 'Rechazar solicitud', @cancellation, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la petición?' }  %></td>
         </tr>
         <tr>
-          <td><%= link_to 'Volver', residences_path, class: 'btn btn-dark btn-me' %></td>
+          <td><%= link_to 'Volver', cancellations_path, class: 'btn btn-dark btn-me' %></td>
         </tr>
 
       </table>
     </div>
+    
     <div class="col-sm">
         <table class="table">
-    <tr>
-      <th> Residencias Reservadas </th>
-    </tr>
-        <% p = Week.where(estado: @cancellation.usuario) %>
-        <% p.each do |f| %>
           <tr>
-            <td> <%= f.residence.complejo %> </td>
-            <td> <%= f.fecha %> </td>
-            <td><%= link_to 'Detalle', edit_week_path(:id => f.id), class: 'btn btn-dark btn-me' %></td>
-            <td><%= link_to 'Cancelar reserva', f, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
-
+            <th> Reserva: </th>
           </tr>
-        <% end %>
-  </div>
+          <% res = Residence.find_by(complejo: @cancellation.complejo) %>
+          <% p = Week.where(estado: @cancellation.usuario, fecha: @cancellation.fecha, residence_id: res.id) %>
+          <% p.each do |f| %>
+            <tr>
+              <td> <%= f.residence.complejo %> </td>
+              <td> <%= f.fecha %> </td>
+              <td><%= link_to 'Detalle', edit_week_path(:id => f.id), class: 'btn btn-dark btn-me' %></td>
+              <td><%= link_to 'Cancelar reserva', f, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
 
+            </tr>
+          <% end %>
 
-  <div class="col-sm">
+    </div>
+
+ <div class="col-sm">
         <table class="table">
-    <tr>
-      <th> Hot-Sales Reservados </th>
-    </tr>
-        <% p = Hotsale.where(email: @cancellation.usuario) %>
-        <% p.each do |f| %>
+
+          <% p = Hotsale.where(email: @cancellation.usuario, fecha: @cancellation.fecha ) %>
+          <% p.each do |f| %>
           <tr>
             <td> <%= f.residence.complejo %> </td>
             <td> <%= f.fecha %> </td>
@@ -66,7 +66,8 @@
             <td><%= link_to 'Cancelar reserva', f, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
 
           </tr>
-        <% end %>
+          <% end %>
+        
   </div>
 
   </div>
