@@ -44,7 +44,7 @@
 
           <tr>
             <%if current_user.premium? %>
-              <td><button class= "btn btn-warning btn-lg">Premium</button></td>
+              <td><button class= "btn btn-warning btn-lg" disabled>Premium</button></td>
             <%else%>
               <td><%= link_to "Solicitud premium",new_premium_path, class: "btn btn-warning btn-lg" %></td>
             <%end%>

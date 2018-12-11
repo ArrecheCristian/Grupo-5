@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 			end
 		end
 	end
+	
     def serPremium
     end
 
@@ -38,15 +39,13 @@ class UsersController < ApplicationController
 
 
 	def update
+		@user= User.find(params[:id])
 
-		 @user= User.find(params[:id])
-
-		    if @user.update(user_params)
-		      redirect_to user_list_path, notice: 'El usuario fue modificado con éxito'
-		    else
-		       render :edit
-		     end
-		
+	    if @user.update(user_params)
+		    redirect_to user_list_path, notice: 'El usuario fue modificado con éxito'
+		else
+			render :edit
+		end
 	end
 
 
