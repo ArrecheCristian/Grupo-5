@@ -20,7 +20,7 @@
     <%= f.input :apellido, required: true, autofocus: true ,input_html: { autocomplete: "apellido" }%>
 
    <%= f.input :nacimiento, required: true, start_year: Date.today.year - 110, end_year: Date.today.year  ,
-             order: [:day, :month, :year],autofocus: true ,input_html: { autocomplete: "nacimiento" }%>
+      order: [:day, :month, :year],autofocus: true ,input_html: { autocomplete: "nacimiento" }%>
 
      <%= f.input :numero_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "numero_tarjeta" }%>
 

@@ -41,17 +41,18 @@
             <td> <h4>Creditos:<h4></td>
             <td> <h5><%=@user.credito%><h5></td>
           </tr>
-          <tr>
 
-            <%if current_user.premium == false%>
-              <td><%= link_to "Solicitud premium",new_premium_path, class: "btn btn-warning btn-lg" %><td>
+          <tr>
+            <%if current_user.premium? %>
+              <td><button class= "btn btn-warning btn-lg">Premium</button></td>
             <%else%>
-              <td><button class= "btn btn-warning">Premium</button><td>
+              <td><%= link_to "Solicitud premium",new_premium_path, class: "btn btn-warning btn-lg" %></td>
             <%end%>
-          
+          </tr>
+
+          <tr>
             <td><%= link_to 'Volver ', home_users_path, class: 'btn btn-dark btn-lg' %></td>
             <td><%= link_to "Editar mi perfil", edit_user_registration_path, class: 'btn btn-dark btn-lg'%></td>
-        
           </tr>
 
         </table>
