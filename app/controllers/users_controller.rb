@@ -29,7 +29,8 @@ class UsersController < ApplicationController
 			end
 		end
 	end
-
+    def serPremium
+    end
 
 	def new
 	  @user = User.new
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
 	end
 
 
-  	private
+  private
   	def user_params
     	params.require(:user).permit(:premium,:credito)
   	end

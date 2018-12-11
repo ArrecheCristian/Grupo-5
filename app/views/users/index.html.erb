@@ -10,12 +10,11 @@
     }
 </style>
 
-
 <%#> Residencia aleatoria, usando card<%>
 <div class="float-left">
-
   <%if @residence != nil%>
-    <div class="card card-custom mx-5 mb-3" style="width: 80rem;">
+
+    <div class="card card-custom mx-5 mt-3" style="width: 80rem;">
       <img class="card-img-top" src= <%=@residence.imagen%> alt="Card image cap">
         <div class="card-body">
           <h3 class="card-title"> <%= @residence.complejo %> </h3>
@@ -25,6 +24,7 @@
           </p>
         </div>
     </div>
+
   <%else%>
     <div class="jumbotron mx-5 mt-3">
       <h1 class="display-4">Lo sentimos!</h1>
@@ -36,52 +36,34 @@
 </div>
 
 
-
-
 <div class="float-right">
-
-
   <% if !admin_signed_in? %>
-
       <%#> Inicio de sesion, tambien uso una card para que quede mejor ubicada, sino queda en cualquier lado<%>
-      <div class="card card-custom mx-5 mb-3" style="width:40rem;" >
-            
+      <div class="card card-custom mx-5 mt-3" style="width:40rem;" >
             <div class="card-body">
-              <h4 class="card-title"> Iniciar sesión</h4>
+              <h4 class="card-title"> Ingresar</h4>
             
             <p class="card-text"> 
-              
               <%= render 'users/sessions/form' %>
-
             </p>
+            
             </div>
         </div>
-    
   <% end %>
 
   <% if !user_signed_in? %>
       <% if !admin_signed_in? %>
-
+        <br><br><br>
         <div class="card card-custom mx-5 mb-3" style="width:40rem;" >           
             <div class="card-body">
               <h4 class="card-title"> Administración  </h4>
               <p class="card-text">   
-                <td><%= link_to 'Soy administrador', new_admin_session_path, class: 'btn btn-dark btn-mm'%></td>
+                <td><%= link_to 'Soy administrador', new_admin_session_path, class: 'btn btn-dark btn-lg'%></td>
               </p>
-            
-              <h4 class="card-title"> ¿Nuevo Admin?  </h4>
-              <p class="card-text">   
-                <%= render 'admins/formCodigoFijo' %>
-              </p>
-        
             </div>
         </div>
 
-        
-            
-
       <%else%>
-
 
           <div class="card card-custom mx-5 mb-3" style="width:40rem;" >
               <div class="card-body">

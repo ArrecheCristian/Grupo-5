@@ -1,4 +1,6 @@
 <%#  Confirmacion de reserva para usuarios premium%>
+<% if user_signed_in?%>
+
 <div class="jumbotron">
   <div class="row">
     <div class="col-sm">
@@ -48,3 +50,7 @@
   </div>
 </div>
 </div>
+
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>

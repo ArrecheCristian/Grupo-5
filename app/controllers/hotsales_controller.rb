@@ -44,7 +44,7 @@ class HotsalesController < ApplicationController
  #   if (@hotsale.email == nil) || (Date.parse(@hotsale.fecha) < Date.today)
     if (@hotsale.email == nil)
       @hotsale.destroy
-      redirect_to residences_path, notice: "El Hot-Sale' ha sido eliminado con éxito  1"
+      redirect_to residences_path, notice: "El Hot-Sale' ha sido eliminado con éxito."
     else
       @hotsale.send_mail_delete
       @hotsale.destroy

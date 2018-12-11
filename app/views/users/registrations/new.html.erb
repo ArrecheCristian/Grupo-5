@@ -1,6 +1,20 @@
-<div class="row">
-  <div class="col-md-5 col-md-offset-1">
+<style>
+    { margin: 0; padding: 0; }
 
+    html { 
+        background: url('https://ak9.picdn.net/shutterstock/videos/22089199/thumb/1.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
+
+<div class="float-left">
+     <div class="card card-custom mx-5 mt-5" style="width:50rem;" >
+        <div class="card-body">
+              <p class="card-text">
         <h2 class="text-uppercase">Registrarme </h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -14,11 +28,15 @@
 
             <%= f.input :dni, required: true, autofocus: true ,input_html: { autocomplete: "dni" }%>
 
-            <%= f.input :nacimiento, required: true, autofocus: true ,input_html: { autocomplete: "nacimiento" }%>
+
+            <%= f.input :nacimiento, required: true, :default => Date.today - 28.year ,start_year: Date.today.year - 110, end_year: Date.today.year  ,
+             order: [:day, :month, :year],autofocus: true ,input_html: { autocomplete: "nacimiento" }%>
 
             <%= f.input :numero_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "numero_tarjeta" }%>
 
-            <%= f.input :vencimiento_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "vencimiento_tarjeta" }%>
+
+            <%= f.input :vencimiento_tarjeta, start_year: Date.today.year , end_year: Date.today.year + 8 , required: true,    order: [:day, :month, :year], autofocus: true ,input_html: { autocomplete: "vencimiento_tarjeta" }%>
+
 
             <%= f.input :banco, required: true, autofocus: true ,input_html: { autocomplete: "banco" }%>
 
@@ -31,54 +49,64 @@
             <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
           
           </div>
-
           <div class="form-actions">
-            <%= f.button :submit, "Registrarme" %>
+
+            <%= f.button :submit, "Registrarme", class: 'btn btn-dark btn-lg'%>
+
           </div>
         <% end %>
 
         <%= render "devise/shared/links" %>
-  </div>
-
-  <div class="col-md-5 col-md-offset-0">
-
-    <table width="500" cellspacing="1" cellpadding="3" border="0" bgcolor="#165480"> 
-      <tr> 
-        <td> 
-        <font size=5 face="verdana, arial, helvetica"> 
-        <b>Home Switch Home</b> 
-        </font> 
-        </td> 
-      </tr> 
-      
-      <tr> 
-        <td bgcolor="#ffffff">
-        <font face="verdana, arial, helvetica" size=3> 
-        <p> Home Switch Home es una plataforma en la que usted podrá participar
-        en las subastas de nuestras mejores residencias con precios totalmente accesibles.</p>
-        
-        <p> Con la contratación del servicio todos los usuarios contarán con 2 CREDITOS por año, de 1 SEMANA CADA UNO. 
-          Los mismos le permitirán participar de las subastas vigentes en nuestra plataforma y, de ser el ganador, 
-        podrá disfrutar de una semana completa en nuestras lujosas residencias.</p>
-
-        <p> Tambien, tendrá la posibilidad de adquirir la membresía PREMIUM,
-        con la que, además de los servicios ya mencionados, contará con la posibilidad
-        de adjudicarse residencias por semana EN FORMA DIRECTA!! <br>
-          Para esto, las reservas deverán 
-        ser realizadas con un rango de anticipación de entre 6 y 8 meses en las semanas disponibles, 
-      por eso no pierda tiempo y empiece a disfrutar de nuestros servicios!</p>
-       <p>  La membresía premium tendrá una duración de 1 año y tambien contará con 2 CREDITOS por año.</p>
-       <br>
-        <font face="verdana, arial, helvetica" size=1>
-       <p >   La membresía premium no es gratuita, puede ser adquirida abonando un servicio extra.
-       Para más información, contáctese con nuestra administración</p>
-
-
-        </font> 
-        </td> 
-      </tr> 
-    </table>
-
-  </div>
-  
+          </p>
+        </div>
+    </div>
 </div>
+
+<div class="col-md-5 col-md-offset-0">
+  <div class="float-left">
+    <div class="card card-custom mx-5 mt-5" style="width:55rem;" >
+      <div class="card-body">
+          <p class="card-text">
+
+                  <table width="500" cellspacing="1" cellpadding="3" border="0" bgcolor="#165480"> 
+                    <tr> 
+                      <td> 
+                      <font size=5 face="verdana, arial, helvetica"> 
+                      <b><h3 class="display-4">HOME SWITCH HOME</h3</b> 
+                      </font> 
+                      </td> 
+                    </tr> 
+                    
+                    <tr> 
+                      <td bgcolor="#ffffff">
+                      <font face="verdana, arial, helvetica" size=2> 
+                      <p> Home Switch Home es una plataforma en la que usted podrá participar
+                      en las subastas de nuestras mejores residencias con precios totalmente accesibles.</p>
+                      
+                      <p> Con la contratación del servicio todos los usuarios contarán con 2 CREDITOS por año, de 1 SEMANA CADA UNO. 
+                        Los mismos le permitirán participar de las subastas vigentes en nuestra plataforma y, de ser el ganador, 
+                      podrá disfrutar de una semana completa en nuestras lujosas residencias.</p>
+
+                      <p> Tambien, tendrá la posibilidad de adquirir la membresía PREMIUM,
+                      con la que, además de los servicios ya mencionados, contará con la posibilidad
+                      de adjudicarse residencias por semana EN FORMA DIRECTA!! <br>
+                        Para esto, las reservas deverán 
+                      ser realizadas con un rango de anticipación de entre 6 y 8 meses en las semanas disponibles, 
+                    por eso no pierda tiempo y empiece a disfrutar de nuestros servicios!</p>
+                     <p>  La membresía premium tendrá una duración de 1 año y tambien contará con 2 CREDITOS por año.</p>
+                     <br>
+                      <font face="verdana, arial, helvetica" size=1>
+                     <p >   La membresía premium no es gratuita, puede ser adquirida abonando un servicio extra.
+                     Para más información, contáctese con nuestra administración</p>
+
+
+                      </font> 
+                      </td> 
+                    </tr> 
+                  </table>
+            </p>
+        </div>
+    </div>
+  </div>
+</div>
+  

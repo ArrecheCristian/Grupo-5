@@ -1,4 +1,7 @@
-<span> <h2 class="text-uppercase" > Reservas generadas:</h2> </span>
+<% if admin_signed_in? || user_signed_in?%>
+
+<br>
+<span> <h2 class="text-uppercase" style="color: black"> Reservas actuales:</h2> </span>
 
 <div>
   <table class="table">
@@ -9,19 +12,35 @@
         <td style="font-size: 15pt"> Usuario: </td>
 
       </tr>
-
       <% @week.each do |semana| %>
         <tr>
+          <%if semana != nil%>
           <td style="font-size: 8pt"><%= semana.residence.complejo %></td>
           <td style="font-size: 8pt"><%= semana.residence.ubicacion %></td>
           <td style="font-size: 8pt"><%= semana.fecha %></td>
           <% product = User.find_by(email: semana.estado) %>
           <td style="font-size: 8pt"><%= link_to semana.estado, user_list_path(:id =>product.id) %></td>
           <td><%= link_to 'Ver detalles', edit_week_path(semana), class: 'btn btn-dark btn-mm'%></td>
-
+          <% end %>
         </tr>
       <% end%>
 
+  </table>
+</div>
+
+
+<br><br><br>
+<span> <h2 class="text-uppercase" style="color: black" > Reservas por Hot-Sale:</h2> </span>
+
+<div>
+  <table class="table">
+      <tr>
+        <td style="font-size: 15pt"> Complejo: </td>
+        <td style="font-size: 15pt"> Ubicación: </td>
+        <td style="font-size: 15pt"> Fecha: </td>
+        <td style="font-size: 15pt"> Usuario: </td>
+
+      </tr>
       <% @hotsale.each do |hots| %>
         <tr>
           <td style="font-size: 8pt"><%= hots.residence.complejo %></td>
@@ -29,10 +48,13 @@
           <td style="font-size: 8pt"><%= hots.fecha %></td>
           <% product = User.find_by(email: hots.email) %>
           <td style="font-size: 8pt"><%= link_to hots.email, user_list_path(:id =>product.id) %></td>
-          <td><%= link_to 'Ver detalles', hotsale_path(hots), class: 'btn btn-dark btn-mm'%></td>
-
+          <td><%= link_to 'Ver detalles', hotsale_path(hots.residence_id), class: 'btn btn-dark btn-mm'%></td>
         </tr>
       <% end%>
 
   </table>
 </div>
+
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>

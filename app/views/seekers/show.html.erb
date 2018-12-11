@@ -1,4 +1,6 @@
 <%#  Calendario para cada residencia %>
+<% if admin_signed_in? || user_signed_in?%>
+
 <div class="jumbotron">
   <div class="row">
     <div class="col-sm">
@@ -36,3 +38,7 @@
 
   </div>
 </div>
+
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>

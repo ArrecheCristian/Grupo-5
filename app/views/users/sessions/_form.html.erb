@@ -3,13 +3,15 @@
     <%= f.input :email,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "email" },
+                placeholder: 'Ingrese su correo electrónico' %>
     <%= f.input :password,
                 required: false,
-                input_html: { autocomplete: "current-password" } %>
+                input_html: { autocomplete: "current-password" },
+                placeholder: 'Ingrese su clave' %>
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions mx-2">
     <%= f.button :submit, "Iniciar sesión", class: 'btn btn-dark btn-lg' %>
   </div>
 <% end %>

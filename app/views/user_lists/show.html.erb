@@ -1,3 +1,4 @@
+<% if admin_signed_in?%>
 
 <div class="jumbotron">
   <div class="row">
@@ -107,9 +108,14 @@
             <td> <%= nombregenerico.residence.complejo %> </td>
             <td> <%= nombregenerico.residence.ubicacion %> </td>
             <td> <%= nombregenerico.fecha %> </td>
+            <td><%= link_to 'Detalle', hotsale_path(:id => nombregenerico.residence.id), class: 'btn btn-dark btn-sm' %></td>
+            <td><%= link_to 'Eliminar', nombregenerico, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '¿Está seguro que desea eliminar la reserva?' }  %></td>
           </tr>
         <% end %>
   </div>
   </div>
 </div>
 
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>

@@ -1,3 +1,6 @@
+<% if admin_signed_in?%>
+
+<br>
 <span> <h2 class="text-uppercase" > Usuarios registrados:</h2> </span>
 
 <nav class="navbar navbar-dark bg-dark">
@@ -17,7 +20,6 @@
 
 
 <div>
-	
 	<table class="table">
 			<tr>
 				<td style="font-size: 15pt"> Nombre: </td>
@@ -39,3 +41,7 @@
 	</table>
 
 </div>
+
+<% else %>
+	<%= render 'layouts/error' %>
+<% end %>

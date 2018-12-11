@@ -1,14 +1,19 @@
 <%#><%- if controller_name != 'sessions' %>
-  <%#><%= link_to "Log in", new_session_path(resource_name) %><br />
-<%#><% end -%>
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Registrarme", new_registration_path(resource_name), class: 'btn btn-dark btn-lg' %>
-<% end -%>
+  <%#><%= link_to "Log in", new_session_path(resource_name) %><%#><% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <<%= link_to "Olvidé mi contraseña", new_password_path(resource_name), class: 'btn btn-secondary btn-sm' %><br />
+  <%= link_to "Olvidé mi clave", new_password_path(resource_name), class: 'btn  btn-lg' %><br />
 <% end -%>
+<br><br>
 
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+	<font size=3 face="arial"> 
+		Si aún no se ha registrado hágalo aquí y conozca nuestra plataforma 
+	</font> 
+	<br>
+  <%= link_to "Registrarme", new_registration_path(resource_name), class: 'btn btn-dark btn-lg' %>
+<% end -%>
 
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

@@ -15,7 +15,7 @@
      <div class="card card-custom mx-5 mb-3" style="width:50rem;" >
         <div class="card-body">
               <p class="card-text">
-                <h2>Iniciar Sesión</h2>
+                <h2>INICIAR SESIÓN</h2>
                     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                       <div class="form-inputs">
                         <%= f.input :email,
@@ -28,9 +28,20 @@
                       </div>
 
                       <div class="form-actions">
-                        <%= f.button :submit, "Iniciar sesión",  class: 'btn btn-dark btn-lg' %>
+                        <%= f.button :submit, "Ingresar",  class: 'btn btn-dark btn-lg' %>
                       </div>
                     <% end %>
+
+                   <p class="card-text">   
+                   <br><br>
+                   <font size=3 face="arial"> 
+                     Si es miembro nuevo de nuestra empresa, 
+                     regístrese! 
+                    </font> 
+                    <br>
+
+                <td><%= link_to 'Nuevo administrador', new_code_path, class: 'btn btn-dark btn-lg'%></td>
+              </p> 
             </p>
         </div>
     </div>

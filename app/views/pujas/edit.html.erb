@@ -1,7 +1,13 @@
-<div class="jumbotron">
-	<h2 class="text-uppercase" > Editar residencia </h2>
-</div>
+<% if admin_signed_in? || user_signed_in?%>
 
-<div class="container">
-	<%= render "form" %>
-</div>
+	<div class="jumbotron">
+		<h2 class="text-uppercase" > Editar residencia </h2>
+	</div>
+
+	<div class="container">
+		<%= render "form" %>
+	</div>
+
+<% else %>
+	<%= render 'layouts/error' %>
+<% end %>

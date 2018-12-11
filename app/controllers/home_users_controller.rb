@@ -34,28 +34,34 @@ class HomeUsersController < ApplicationController
 				auxhot << h.id
 			end
 
-			if (auxsub.length > 0)
-				#Genero un número random comprendido entre el tamaño del array
-				r = Random.new
-				i = r.rand(0...auxsub.length) 		
-				#Obtengo el id de la pos random
-				id = auxsub[i]
+			if (Auction.where(estado: "ACTIVA").count != 0)
+				loop do
+					#Genero un número random comprendido entre el tamaño del array
+					r = Random.new
+					i = r.rand(0...auxsub.length) 		
+					#Obtengo el id de la pos random
+					id = auxsub[i]
 
-				#Obtengo la residencia con dicho id
-				@subastaRandom = Residence.find(id)
+					#Obtengo la residencia con dicho id
+					@subastaRandom = Residence.find(id)
+					break if (Auction.where(residence_id: @subastaRandom.id, estado: "ACTIVA").count != 0)
+				end
 			else
 				@subastaRandom = nil
 			end
 
-			if (auxhot.length > 0)
-				#Genero un número random comprendido entre el tamaño del array
-				r = Random.new
-				i = r.rand(0...auxhot.length) 		
-				#Obtengo el id de la pos random
-				id = auxhot[i]
+			if (Hotsale.where(estado: "ACTIVO").count != 0)
+				loop do
+					#Genero un número random comprendido entre el tamaño del array
+					r = Random.new
+					i = r.rand(0...auxhot.length) 		
+					#Obtengo el id de la pos random
+					id = auxhot[i]
 
-				#Obtengo la residencia con dicho id
-				@hotsaleRandom = Residence.find(id)
+					#Obtengo la residencia con dicho id
+					@hotsaleRandom = Residence.find(id)
+					break if (Hotsale.where(residence_id: @hotsaleRandom.id, estado: "ACTIVO").count != 0)
+				end
 			else
 				@hotsaleRandom = nil
 			end

@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters,  if: :devise_controller?
-
+   #incluyo los helpers de code para poder accederlos por ej desde el create de controller codes
+  include CodesHelper
 
 ## corrobora que al menos haya un admin o un user logueado
   def require_login
@@ -10,6 +11,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path # halts request cycle
     end
   end
+
+
+
 	 
 
   def authenticated_user!
@@ -59,6 +63,13 @@ class ApplicationController < ActionController::Base
 
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
+
+
+  protected
+  
+  def after_sending_reset_password_instructions_path_for(resource_or_scope)
     root_path
   end
 

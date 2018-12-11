@@ -1,0 +1,50 @@
+<% if user_signed_in?%>
+
+<center><div><div class="panel panel-primary">
+<div class="panel-heading">
+
+
+<h3 class="display-4">¡QUIERO SER PREMIUM!</h3></div>
+<div class="panel-body">
+        <h5 class="display-4">Lea atentamente</h5> <br>
+
+    <table width="500" cellspacing="1" cellpadding="3" border="0" bgcolor="#165480"> 
+      <tr> 
+        <td> 
+        
+        </td> 
+      </tr> 
+      
+      <tr> 
+        <td bgcolor="#ffffff">
+        <font face="verdana, arial, helvetica" size=1> 
+       
+
+
+<p> Los usuarios pueden solicitar la membresía premium en cualquier momento del año.
+          Una vez realizado el trámite, la sección de administración se encargará de modificar su usuario y serán beneficiados con todos los servicios de un cliente premium.</p>
+        
+        <p> Para más información acerca de los requisitos, trámites, y beneficios podrá acceder al link en el pie de la página "Acerca de HSH".</p> 
+
+       <p >  Muchas gracias por formar parte de nosotros. Atte.: Dirección de HSH.</p>
+
+        </font> 
+        </td> 
+      </tr> 
+    </table>
+    
+        
+
+
+</div>
+</div>
+</div>
+</center>
+<%= render 'layouts/footer' %>
+
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>
+
+
+

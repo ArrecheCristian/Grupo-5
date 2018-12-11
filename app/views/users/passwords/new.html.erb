@@ -1,18 +1,37 @@
-<h2>Forgot your password?</h2>
+<style>
+    { margin: 0; padding: 0; }
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+    html { 
+        background: url('https://ak9.picdn.net/shutterstock/videos/22089199/thumb/1.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+<div class="float-left">
+  <div class="card card-custom mx-5 mt-4" style="width:50rem;" >
+    <div class="card-body">
+      
+      <p class="card-text">
+      <h2>¿Ha olvidado su contraseña?</h2>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+    
+        <div class="form-inputs">
+          <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" },
+                  placeholder: 'Ingrese su email' %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Recuperar contraseña", class: 'btn btn-dark btn-lg' %>
+        </div>
+      <% end %>
+      </p>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

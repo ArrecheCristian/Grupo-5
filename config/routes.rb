@@ -3,7 +3,9 @@ Rails.application.routes.draw do
  	root 'users#index'
 
   	devise_for :admins
-  	devise_for :users
+  	devise_for :users, controllers: {
+        passwords: 'users/passwords' , registrations: 'users/registrations'
+      }
 
 	resources :hotsales do
   		collection do
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
 	resources :home_users do
   		collection do
     		get :auction_reservation
+    		get :contact
   		end
 	end
 
@@ -33,12 +36,11 @@ Rails.application.routes.draw do
 	resources :users
 	resources :cancellations
 	resources :lists
-	post :admins_controllers, to: 'admins#validations', as: 'validations' 
-	
-	get '/users/edit_custom/:id', to: 'users#edit_custom', as: 'edit_custom'
+	resources :codes
+    resources :premiums
+
  	get '/auctions/new/:id', to: 'auctions#new', as: 'new_auction'
 	get 'home_users' => 'homeusers#index', as: :user_root  	
 
-	put  '/users/edit_custom/:id', to: 'users#update_custom', as: 'update_custom'
 
 end

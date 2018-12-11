@@ -1,6 +1,7 @@
 class ResidencesController < ApplicationController
-  #before_action :authenticated_admin!  
 
+  before_action :require_login
+ 
   def index
     Week.where(estado: "").destroy_all
     

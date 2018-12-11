@@ -1,6 +1,6 @@
 <% if admin_signed_in? || user_signed_in?%>
 
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-inverse navbar-fixed-top mt-0">
     <%= form_tag '/hotsales', :method => :get do %>
       <%= label_tag :com, 'Complejo', style:'color :white'%>
       <%= text_field_tag :com,params[:com],
@@ -42,8 +42,12 @@
     <%elsif user_signed_in? %>
       <div class="row mt-5 justify-content-center">
 
+
       <% @ResiHotsale.each do |resHot| %>
 
+        <% filtro = Hotsale.where(residence_id: resHot.id, estado: "ACTIVO").count %>
+  
+        <%if filtro != 0 %>
           <div class="card card-custom mx-2 mb-3" style="width: 50rem;">
             <img class="card-img-top" src= <%=resHot.imagen%> alt="Card image cap">
               <div class="card-body">
@@ -56,14 +60,13 @@
                <a><%= link_to 'Ver más detalles', hotsale_path(resHot), class: 'btn btn-info btn-lg'%></a>
               </div>
           </div>
+        <% end %>  
       <% end %>
       </div>
-
-    <% else %>
-      <center><h2>¡ERROR! Antes debe inciar sesión en nuestro sistema</h2></center>
-      <center><h4>Para iniciar sesión o registrarse:</h4></center>
-
-      <center> <%=link_to 'Click aquí', root_path, class: 'btn btn-primary btn-lg' %> </center>
-
+      <%= render 'layouts/footer' %>
   <%end%>
+
+  <% else %>
+    <%= render 'layouts/error' %>
+    
 <%end%>
