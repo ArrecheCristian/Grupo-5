@@ -1,3 +1,5 @@
+<% if user_signed_in?%>
+
 <center><div><div class="panel panel-primary">
 <div class="panel-heading">
 
@@ -19,12 +21,12 @@
        
 
 
-<p> Los usuarios pueden solicitar formar parte de los clientes premium en cualquier momento del año.
-          Dicha solicitud se realiza de manera externa a la pagina, y una vez realizado el tramite, se les indicara a nuestros administradores su usuario y seran beneficiados con todas las caraceristicas de un cliente premium.</p>
+<p> Los usuarios pueden solicitar la membresía premium en cualquier momento del año.
+          Una vez realizado el trámite, la sección de administración se encargará de modificar su usuario y serán beneficiados con todos los servicios de un cliente premium.</p>
         
-        <p> La informacion acerca de los requisitos,trámites, y beneficios podra obtenerlas accediendo en el link al pie de la pagina "Acerca de HSH"</p> 
+        <p> Para más información acerca de los requisitos, trámites, y beneficios podrá acceder al link en el pie de la página "Acerca de HSH".</p> 
 
-       <p >  Desde ya, muchas gracias por formar parte de nosotros- Atte.: Direccion de HSH.</p>
+       <p >  Muchas gracias por formar parte de nosotros. Atte.: Dirección de HSH.</p>
 
         </font> 
         </td> 
@@ -38,7 +40,11 @@
 </div>
 </div>
 </center>
+<%= render 'layouts/footer' %>
 
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>
 
 
 

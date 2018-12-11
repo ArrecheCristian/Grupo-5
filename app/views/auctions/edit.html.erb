@@ -1,3 +1,5 @@
+<% if admin_signed_in?%>
+
 <div class="jumbotron">
 	<h2 class="text-uppercase" > Subasta Finalizada </h2>
 </div>
@@ -44,3 +46,6 @@
    	</table>
  
 </div>
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>

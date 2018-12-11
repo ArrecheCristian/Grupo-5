@@ -1,9 +1,13 @@
+<% if admin_signed_in? || user_signed_in?%>
 
- <div class="jumbotron">
-    <h2 class="text-uppercase" >Solicitud de Cancelación </h2>
- </div>
+<div class="jumbotron">
+	<h2 class="text-uppercase" >Solicitud de Cancelación </h2>
+</div>
 
-  <div class="container">
-    <%= render "form" %>
-  
-  </div>
+<div class="container">
+	<%= render "form" %>
+</div>
+
+<% else %>
+	<%= render 'layouts/error' %>
+<% end %>

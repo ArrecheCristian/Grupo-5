@@ -50,7 +50,7 @@
 		<%if @subastaRandom != nil && @subastaRandom.auction.estado == "ACTIVA"%>
 		
 		    <div class="card card-custom mx-5 mb-3" style="width: 80rem;">
-		   <div class="p-3 bg-warning text-black"><h2>NO TE PIERDAS ESTA SUBASTA!!<h2></div>
+		   <div class="p-3 bg-warning text-black"><h2>PARTICIPÁ DE LA SUBASTA!<h2></div>
 		      <img class="card-img-top" src= <%=@subastaRandom.imagen%> alt="Card image cap">
 		        <div class="card-body">
 		          <h3 class="card-title"> <%= @subastaRandom.complejo %> </h3>
@@ -66,7 +66,7 @@
 
 	  	<%if @hotsaleRandom != nil%>
 		    <div class="card card-custom mx-5 mb-3" style="width: 80rem;">
-		    <div class="p-3 bg-warning text-black"><h2> RESIDENCIA EN HOT-SALE<h></div>
+		    <div class="p-3 bg-warning text-black"><h2> IMPERDIBLE HOT-SALE!!<h></div>
 		      <img class="card-img-top" src= <%=@hotsaleRandom.imagen%> alt="Card image cap">
 		        <div class="card-body">
 		          <h3 class="card-title"> <%= @hotsaleRandom.complejo %> </h3>
@@ -80,11 +80,10 @@
 	  	<%end%>
 
 	</div>
+    
+    <%= render 'layouts/footer' %>
+
 
 <% else %>
-		<center><h2>¡ERROR! Antes debe inciar sesión en nuestro sistema</h2></center>
-		<center><h4>Para iniciar sesión o registrarse:</h4></center>
-
-		<center> <%=link_to 'Click aquí', root_path, class: 'btn btn-primary btn-lg' %> </center>
-
+	<%= render 'layouts/error' %>
 <% end %>

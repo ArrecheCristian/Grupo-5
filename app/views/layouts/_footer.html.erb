@@ -1,10 +1,12 @@
 <%if (admin_signed_in? | user_signed_in?)%>
 	<br><br>
-	<span class="text-muted">
-		Copyright 2018 HomeSwitchHome | Todos los derechos reservados. 
-	</span>
+	<div class="container">
+		<span class="text-muted">
+			Copyright 2018 HomeSwitchHome | Todos los derechos reservados. 
+		</span>
 
-	<span class="mx-5">
-		<%= link_to "Acerca de HSH", contact_home_users_path%>
-	</span>
+		<span class="mx-5">
+			<%= link_to "Acerca de HSH", contact_home_users_path%>
+		</span>
+	</div>
 <% end %>

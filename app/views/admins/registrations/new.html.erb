@@ -19,7 +19,7 @@
                 <font size=5 face="arial"> 
                     ¡BIENVENIDO A HOME SWITCH HOME!
                 </font> 
-                <h2>Registrate como administrador</h2>
+                <h2>Regístrate como administrador</h2>
 
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -40,11 +40,10 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Registrarme", class: 'btn btn-dark btn-lg' %>
   </div>
 <% end %>
 
-<%= render "admins/shared/links" %></p>
         </div>
     </div>
 </div>

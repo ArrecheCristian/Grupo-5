@@ -1,102 +1,108 @@
 <%#  Perfil de usuario para clientes %>
-<div class="jumbotron">
-  <div class="row">
-    
-    <div class="col-sm">
-      <img src= <%=@user.Foto_perfil%> />
+<%if (user_signed_in?)%>
+
+  <div class="jumbotron">
+    <div class="row">
+      
+      <div class="col-sm">
+        <img src= <%=@user.Foto_perfil%> />
+      </div>
+
+      <div class="col-sm">
+        <table class="table">
+          <tr>
+            <td> <h2><%=@user.Nombre%> <%=@user.Apellido%><h2></td>
+          </tr>
+          <tr>
+            <td> <h4>DNI:<h4></td>
+            <td> <h5> <%=@user.DNI%> <h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Fecha de nacimiento:<h4></td>
+            <td> <h5><%=@user.Nacimiento%><h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Banco:<h4></td>
+            <td> <h5><%=@user.Banco%><h5> </td>
+          </tr>
+          <tr>
+            <td> <h4>Número de tarjeta:<h4></td>
+            <td> <h5><%="**** **** **** #{@user.Numero_tarjeta.to_s.last(4)}" %><h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Fecha de vencimiento de tarjeta:<h4></td>
+            <td> <h5> <%=@user.Vencimiento_tarjeta %><h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Email:<h4></td>
+            <td> <h5><%=@user.email%><h5></td>
+          </tr>
+          <tr>
+            <td> <h4>Creditos:<h4></td>
+            <td> <h5><%=@user.credito%><h5></td>
+          </tr>
+          <tr>
+            <td><%= link_to "¡Quiero ser premium!", new_premium_path, class: 'btn btn-dark btn-lg'%></td>
+          
+            <td><%= link_to 'Volver ', home_users_path, class: 'btn btn-dark btn-lg' %></td>
+            <td><%= link_to "Editar mi perfil", edit_user_registration_path, class: 'btn btn-dark btn-lg'%></td>
+          
+
+          </tr>
+
+        </table>
+      </div>
+      <div class="col-sm">
+          <table class="table">
+      <tr>
+        <th> Residencias Reservadas</th>
+      </tr>
+          <% product = Week.where(estado: @user.email) %>
+          <% product.each do |nombregenerico| %>
+            <tr>
+              <td> <%= nombregenerico.residence.complejo %> </td>
+              <td> <%= nombregenerico.residence.ubicacion %> </td>
+              <td> <%= nombregenerico.fecha %> </td>
+              <td><%= link_to 'Detalle', reservation_weeks_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
+            </tr>
+          <% end %>
     </div>
 
     <div class="col-sm">
+          <table class="table">
+      <tr>
+        <th> Hot-Sales Reservados </th>
+      </tr>
+          <% product = Hotsale.where(email: @user.email) %>
+          <% product.each do |nombregenerico| %>
+            <tr>
+              <td> <%= nombregenerico.residence.complejo %> </td>
+              <td> <%= nombregenerico.residence.ubicacion %> </td>
+              <td> <%= nombregenerico.fecha %> </td>
+              <td><%= link_to 'Detalle', reservation_hotsales_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
+            </tr>
+          <% end %>
+    </div>
+
+     <div class="col-sm">
       <table class="table">
-        <tr>
-          <td> <h2><%=@user.Nombre%> <%=@user.Apellido%><h2></td>
-        </tr>
-        <tr>
-          <td> <h4>DNI:<h4></td>
-          <td> <h5> <%=@user.DNI%> <h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Fecha de nacimiento:<h4></td>
-          <td> <h5><%=@user.Nacimiento%><h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Banco:<h4></td>
-          <td> <h5><%=@user.Banco%><h5> </td>
-        </tr>
-        <tr>
-          <td> <h4>Número de tarjeta:<h4></td>
-          <td> <h5><%="**** **** **** #{@user.Numero_tarjeta.to_s.last(4)}" %><h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Fecha de vencimiento de tarjeta:<h4></td>
-          <td> <h5> <%=@user.Vencimiento_tarjeta %><h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Email:<h4></td>
-          <td> <h5><%=@user.email%><h5></td>
-        </tr>
-        <tr>
-          <td> <h4>Creditos:<h4></td>
-          <td> <h5><%=@user.credito%><h5></td>
-        </tr>
-        <tr>
-          <td><%= link_to "¡Quiero ser premium!", new_premium_path, class: 'btn btn-dark btn-lg'%></td>
-        
-          <td><%= link_to 'Volver ', home_users_path, class: 'btn btn-dark btn-lg' %></td>
-          <td><%= link_to "Editar mi perfil", edit_user_registration_path, class: 'btn btn-dark btn-lg'%></td>
-        
-
-        </tr>
-
-      </table>
+      <tr>
+        <th> Pujas Realizadas</th>
+      </tr>
+          <% product = Puja.where(email: @user.email) %>
+          <% product.each do |nombregenerico| %>
+            <tr>
+              <% if (nombregenerico.auction.estado == "ACTIVA") %>
+                  <td style="font-size: 8pt"><%= link_to nombregenerico.auction.residence.complejo, auction_path(:id =>nombregenerico.auction.id) %></td>
+                  <td> <%= nombregenerico.auction.fecha %> </td>
+                  <td> <%= nombregenerico.monto %> </td>
+                  <td> <%= nombregenerico.auction.estado %> </td>
+              <% end %>  
+            </tr>
+          <% end %>
     </div>
-    <div class="col-sm">
-        <table class="table">
-    <tr>
-      <th> Residencias Reservadas</th>
-    </tr>
-        <% product = Week.where(estado: @user.email) %>
-        <% product.each do |nombregenerico| %>
-          <tr>
-            <td> <%= nombregenerico.residence.complejo %> </td>
-            <td> <%= nombregenerico.residence.ubicacion %> </td>
-            <td> <%= nombregenerico.fecha %> </td>
-            <td><%= link_to 'Detalle', reservation_weeks_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
-          </tr>
-        <% end %>
   </div>
 
-  <div class="col-sm">
-        <table class="table">
-    <tr>
-      <th> Hot-Sales Reservados </th>
-    </tr>
-        <% product = Hotsale.where(email: @user.email) %>
-        <% product.each do |nombregenerico| %>
-          <tr>
-            <td> <%= nombregenerico.residence.complejo %> </td>
-            <td> <%= nombregenerico.residence.ubicacion %> </td>
-            <td> <%= nombregenerico.fecha %> </td>
-            <td><%= link_to 'Detalle', reservation_hotsales_path(:id => nombregenerico.id), class: 'btn btn-dark btn-sm' %></td>
-          </tr>
-        <% end %>
-  </div>
-
-   <div class="col-sm">
-        <table class="table">
-    <tr>
-      <th> Pujas Realizadas</th>
-    </tr>
-        <% product = Puja.where(email: @user.email) %>
-        <% product.each do |nombregenerico| %>
-          <tr>
-            <% if (nombregenerico.auction.estado == "ACTIVA") %>
-                <td style="font-size: 8pt"><%= link_to nombregenerico.auction.residence.complejo, auction_path(:id =>nombregenerico.auction.id) %></td>
-                <td> <%= nombregenerico.auction.fecha %> </td>
-                <td> <%= nombregenerico.monto %> </td>
-                <td> <%= nombregenerico.auction.estado %> </td>
-            <% end %>  
-          </tr>
-        <% end %>
-  </div>
-</div>
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>

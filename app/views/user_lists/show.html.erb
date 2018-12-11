@@ -1,3 +1,4 @@
+<% if admin_signed_in?%>
 
 <div class="jumbotron">
   <div class="row">
@@ -115,3 +116,6 @@
   </div>
 </div>
 
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>
