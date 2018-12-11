@@ -43,7 +43,7 @@
           </tr>
           <tr>
 
-            <%if current_usuario.vip == false%>
+            <%if current_usuario.premium == false%>
               <td><%= link_to "Solicitud premium",new_premium_path, class: "btn btn-warning btn-lg" %><td>
             <%else%>
               <td><button class= "btn btn-warning">Premium</button><td>
