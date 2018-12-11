@@ -28,7 +28,7 @@
 
             <%= f.input :DNI, required: true, autofocus: true ,input_html: { autocomplete: "DNI" }%>
 
-            <%= f.input :Nacimiento, required: true, start_year: Date.today.year - 110, end_year: Date.today.year  ,
+            <%= f.input :Nacimiento, required: true, :default => Date.today - 28.year ,start_year: Date.today.year - 110, end_year: Date.today.year  ,
              order: [:day, :month, :year],autofocus: true ,input_html: { autocomplete: "Nacimiento" }%>
 
             <%= f.input :Numero_tarjeta, required: true, autofocus: true ,input_html: { autocomplete: "Numero_tarjeta" }%>
