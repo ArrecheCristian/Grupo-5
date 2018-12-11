@@ -1,6 +1,6 @@
 <% if admin_signed_in? || user_signed_in?%>
 
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-inverse navbar-fixed-top mt-0">
     <%= form_tag '/hotsales', :method => :get do %>
       <%= label_tag :com, 'Complejo', style:'color :white'%>
       <%= text_field_tag :com,params[:com],
@@ -63,12 +63,10 @@
         <% end %>  
       <% end %>
       </div>
-
-    <% else %>
-      <center><h2>¡ERROR! Antes debe inciar sesión en nuestro sistema</h2></center>
-      <center><h4>Para iniciar sesión o registrarse:</h4></center>
-
-      <center> <%=link_to 'Click aquí', root_path, class: 'btn btn-primary btn-lg' %> </center>
-
+      <%= render 'layouts/footer' %>
   <%end%>
+
+  <% else %>
+    <%= render 'layouts/error' %>
+    
 <%end%>

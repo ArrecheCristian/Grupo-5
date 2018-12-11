@@ -28,16 +28,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
                     if(difDia <0 )
                       super
                     else
-                      flash[:alert] = "Eres menor de edad"
+                      flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema."
                       redirect_to root_path 
                     end
                   else
-                    flash[:alert] = "Eres menor de edad"
+                    flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema."
                     redirect_to root_path
                   end
               end  
         else
-              flash[:alert] = "Eres menor de edad"
+              flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema."
               redirect_to root_path
         end
    end

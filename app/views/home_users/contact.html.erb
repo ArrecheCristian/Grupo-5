@@ -1,3 +1,5 @@
+<% if admin_signed_in? || user_signed_in?%>
+
 <div class="jumbotron">
   <h1 class="display-4">Home Switch Home</h1>
   
@@ -33,12 +35,13 @@
 
     </p>
 
-
-
-
   <%if user_signed_in?%>
     <a class="btn btn-primary btn-lg" href="/home_users" role="button">Ver ofertas</a>
   <%else%>
     <a class="btn btn-primary btn-lg" href="/" role="button">Ver ofertas</a>
   <% end %>
 </div>
+
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>

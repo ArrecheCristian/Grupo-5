@@ -1,3 +1,9 @@
-<div class="container">
-  <%= render "form" %>
-</div>
+<% if admin_signed_in? || user_signed_in?%>
+
+	<div class="container">
+	  <%= render "form" %>
+	</div>
+
+<% else %>
+	<%= render 'layouts/error' %>
+<% end %>

@@ -1,3 +1,5 @@
+<% if admin_signed_in? || user_signed_in?%>
+
 <br>
 <span> <h2 class="text-uppercase" > Solicitudes de cancelación:</h2> </span>
 
@@ -24,3 +26,7 @@
 
   </table>
 </div>
+
+<% else %>
+  <%= render 'layouts/error' %>
+<% end %>

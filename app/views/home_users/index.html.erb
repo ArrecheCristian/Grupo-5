@@ -80,11 +80,10 @@
 	  	<%end%>
 
 	</div>
+    
+    <%= render 'layouts/footer' %>
+
 
 <% else %>
-		<center><h2>¡ERROR! Antes debe inciar sesión en nuestro sistema</h2></center>
-		<center><h4>Para iniciar sesión o registrarse:</h4></center>
-
-		<center> <%=link_to 'Click aquí', root_path, class: 'btn btn-primary btn-lg' %> </center>
-
+	<%= render 'layouts/error' %>
 <% end %>

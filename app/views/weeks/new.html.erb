@@ -1,3 +1,5 @@
+<% if admin_signed_in? || user_signed_in?%>
+
   <div class="jumbotron">
     <h2 class="text-uppercase" > Búsqueda de semana: </h2>
   </div>
@@ -6,3 +8,7 @@
     <%= render "form" %>
 
   </div>
+  
+<% else %>
+	<%= render 'layouts/error' %>
+<% end %>
