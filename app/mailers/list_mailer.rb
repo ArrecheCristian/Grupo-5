@@ -4,7 +4,7 @@ class ListMailer < ApplicationMailer
 
 		p = List.where(fecha: @auction.fecha, residence_id: @auction.residence_id )
 		p.each do |user|
-			mail(to: user.email, subject: "La subasta que buscabas inicio!"  )
+			mail(to: user.email, subject: "La subasta que buscabas inició! Comienza a pujar!!"  )
 		end
 
 	end

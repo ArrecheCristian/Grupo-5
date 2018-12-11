@@ -1,14 +1,8 @@
 class CodesController < ApplicationController
 
-
-
-
-
-	   def new
-     	@code = Code.new
-     	
-     end
-
+	def new
+    	@code = Code.new
+    end
 
 	def create
 
@@ -25,11 +19,10 @@ class CodesController < ApplicationController
 	end
 
     def index
-    	
     end
 
-private
+	private
   		def code_params
     		params.require(:code).permit(:pass)
-  	end
+  		end
 end
