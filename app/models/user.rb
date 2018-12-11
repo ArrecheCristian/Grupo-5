@@ -5,10 +5,10 @@ class User < ApplicationRecord
   validates :nombre, presence: true
   validates :apellido, presence: true
   validates :nacimiento, presence: true
-  validates :numero_tarjeta, presence: true , length: { is: 16 }
+  validates :numero_tarjeta, presence: true 
   validates :vencimiento_tarjeta, presence: true
   validates :banco, presence: true
-  validates :dni, presence: true, length: { in: 8..13 }
+  validates :dni, presence: true
 
 
   default_scope->{order("nombre asc")}
