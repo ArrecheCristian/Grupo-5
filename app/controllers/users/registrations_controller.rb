@@ -13,9 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def create
      @user = User.new sign_up_params
      
-     difAño = Time.now.year-@user.Nacimiento.year
-     difMes =  @user.Nacimiento.month-Time.now.month
-     difDia = @user.Nacimiento.day-Time.now.day
+     difAño = Time.now.year-@user.nacimiento.year
+     difMes =  @user.nacimiento.month-Time.now.month
+     difDia = @user.nacimiento.day-Time.now.day
 
      if(difAño>18)
        super
