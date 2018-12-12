@@ -6,7 +6,7 @@
   	<%= f.input :estado , :readonly => true   %>
   	<%= f.input :monto %>
   	<%= f.label :fecha %>
-  	<input id=@hotsale.fecha name="hotsale[fecha]" type="date" step="7" min=2018-11-18  /><h6>(Debe crearse antes del limite de 6 meses)<h6>
+  	<input id=@hotsale.fecha name="hotsale[fecha]" type="date" step="7" min=2018-11-18 value=2018-11-18 /><h6>(Debe crearse antes del limite de 6 meses)<h6>
 
   	<%= link_to 'Cancelar', residences_path, class: 'btn btn-dark btn-lg' %>
   	<button type= f.submit class="btn btn-primary btn-lg"> Crear Hot-Sale </button>

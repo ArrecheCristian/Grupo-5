@@ -58,9 +58,11 @@ class HotsalesController < ApplicationController
 
   def reservation
       @hotsale = Hotsale.find(params[:id])
-      @hotsale.update(:email => current_user.email)
-      @hotsale.send_mail
-      @hotsale.update(:estado => "FINALIZADO")
+      if(@hotsale.email.blank?)
+        @hotsale.update(:email => current_user.email)
+        @hotsale.send_mail
+        @hotsale.update(:estado => "FINALIZADO")
+      end
   end
 
 

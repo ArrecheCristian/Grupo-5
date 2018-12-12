@@ -10,8 +10,7 @@ class UserListsController < ApplicationController
 
     @users = params[:ape] != "" ? @users.where("apellido LIKE ?", "%#{params[:ape]}%"): @users
 
-    doc = params[:docu].to_i
-    @users = doc != 0 ? @users.where("dni = ?", doc): @users
+    @users = params[:docu] != "" ? @users.where("dni = ?", params[:docu]): @users
 
   end
 

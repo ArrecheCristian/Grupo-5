@@ -20,7 +20,7 @@
           <td style="font-size: 8pt"><%= cancel.fecha %></td>
           <td style="font-size: 8pt"><%= cancel.usuario %></td>
           <td><%= link_to 'Ver detalles', cancellation_path(cancel), class: 'btn btn-dark btn-lg'%></td>
-
+          <td><%= link_to 'Eliminar', cancel, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: '¿Está seguro que desea borrar el registro de solicitud de cancelación?' }  %></td>
         </tr>
       <% end%>
 
