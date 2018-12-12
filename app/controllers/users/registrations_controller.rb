@@ -61,16 +61,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
               if(difDia <0 )
                 super
               else
-                flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema. Si por confusión no es así, no podrá acceder a sus reservas al momento de realizar los trámites."
+                flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema. Si por confusión no es así, no podrá acceder a sus reservas al momento de realizar los trámites. PUEDE BORRAR SU CUENTA ES SU PERFIL"
                       redirect_to root_path 
               end
             else
-              flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema. Si por confusión no es así, no podrá acceder a sus reservas al momento de realizar los trámites."
+              flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema. Si por confusión no es así, no podrá acceder a sus reservas al momento de realizar los trámites. PUEDE BORRAR SU CUENTA ES SU PERFIL"
                     redirect_to root_path
             end
           end  
         else
-              flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema. Si por confusión no es así, no podrá acceder a sus reservas al momento de realizar los trámites."
+              flash[:alert] = "Debe ser mayor de 18 años para acceder al sistema. Si por confusión no es así, no podrá acceder a sus reservas al momento de realizar los trámites. PUEDE BORRAR SU CUENTA ES SU PERFIL"
               redirect_to root_path
         end
       end
